@@ -7,3 +7,4 @@ source SQLInserts/PLAYER-insert.sql
 source SQLInserts/PLAY-insert.sql
 source SQLInserts/RUSH-insert.sql
 source SQLInserts/TD-insert.sql
+source PLAYER-modify.sql

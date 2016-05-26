@@ -12,6 +12,8 @@ NOTE2: Rush table bc col should reference player(player)??
 CLASSES 
 MAIN.java
 GUI.java
+
+
 - GUI()
 DBConnection.java
 -getQuery(String Query)
@@ -20,11 +22,17 @@ DBConnection.java
 Player.java // ID is always 1
 -getTeamName
 -getTeam
+
+
 Draft.java
 -getDraftOrder(numPlayers)
 -draftPlayer(INT PlayerId,String player)
 -draft(Players)
+
+
 AI.java // Id starts at 2 and up
+
+
 Fantasysim.java
 -getWeekPlayerScore
 -getWeekScoreTeam(Array players scores)

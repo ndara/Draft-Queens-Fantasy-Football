@@ -10,31 +10,29 @@ NOTE2: Rush table bc col should reference player(player)??
 
 
 CLASSES 
-MAIN.java
-GUI.java
+- MAIN.java
+- GUI.java
+
+- DBConnection.java
+getQuery(String Query)
+getCount(String table)
+
+- Player.java // ID is always 1
+getTeamName
+getTeam
 
 
-- GUI()
-DBConnection.java
--getQuery(String Query)
--getCount(String table)
-
-Player.java // ID is always 1
--getTeamName
--getTeam
-
-
-Draft.java
--getDraftOrder(numPlayers)
--draftPlayer(INT PlayerId,String player)
--draft(Players)
+- Draft.java
+getDraftOrder(numPlayers)
+draftPlayer(INT PlayerId,String player)
+draft(Players)
 
 
 AI.java // Id starts at 2 and up
 
 
-Fantasysim.java
--getWeekPlayerScore
--getWeekScoreTeam(Array players scores)
--eliminateLowest Player() // search team scores
--swapPlayer
+- Fantasysim.java
+getWeekPlayerScore
+getWeekScoreTeam(Array players scores)
+eliminateLowest Player() // search team scores
+swapPlayer

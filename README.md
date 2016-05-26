@@ -9,7 +9,5 @@ export CLASSPATH=$CLASSPATH:mysql-connector-java-5.1.15-bin.jar
 
 first commit - Nish
 
-
-
-NOTE: Player table incorrect apostrophe's not fixed?
+FIXED PLayer-insert
 NOTE2: Rush table bc col should reference player(player)??

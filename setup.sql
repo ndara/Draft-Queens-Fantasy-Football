@@ -39,7 +39,7 @@ PRIMARY KEY(player)
 CREATE TABLE Rush
 (
 pid INT REFERENCES Play(pid),
-bc CHAR(7),
+bc CHAR(7) REFERENCES Player(player),
 yds INT,
 PRIMARY KEY(pid)
 );

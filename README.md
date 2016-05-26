@@ -3,6 +3,7 @@ This repository will be used to store our source code for our CPE365 final proje
 
 
 CLASSPATH info (make sure .jar is in same directory as java files)
+
 export CLASSPATH=$CLASSPATH:mysql-connector-java-5.1.15-bin.jar
 
 

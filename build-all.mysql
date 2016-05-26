@@ -1,0 +1,9 @@
+-- MYSQL Build-all
+
+source setup.sql
+source SQLInserts/GAME-insert.sql
+source SQLInserts/PASS-insert.sql
+source SQLInserts/PLAYER-insert.sql
+source SQLInserts/PLAY-insert.sql
+source SQLInserts/RUSH-insert.sql
+source SQLInserts/TD-insert.sql

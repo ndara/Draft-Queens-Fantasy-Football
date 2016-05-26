@@ -28,7 +28,7 @@ draftPlayer(INT PlayerId,String player)
 draft(Players)
 
 
-AI.java // Id starts at 2 and up
+- AI.java // Id starts at 2 and up
 
 
 - Fantasysim.java

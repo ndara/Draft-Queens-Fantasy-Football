@@ -4,7 +4,7 @@ WHERE
 
 DELETE FROM Player
 WHERE
-  pos1 NOT IN (SELECT DISTINCT trg FROM Pass 
+  player NOT IN (SELECT DISTINCT trg FROM Pass 
                UNION 
                SELECT DISTINCT psr FROM Pass 
                UNION 

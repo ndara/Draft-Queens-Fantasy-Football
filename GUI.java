@@ -1,4 +1,5 @@
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,13 +8,17 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
-
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import java.awt.*;
+import javax.swing.*;
 
 
 public class GUI extends JFrame implements ActionListener, WindowListener, MouseListener {
-
+	private JTextField teamName =new JTextField("", 20);// 20 is variable
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 	         @Override
@@ -30,6 +35,19 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		Container cp = getContentPane();
 	      cp.setLayout(new GridLayout(1,1,1,1));
 	      //this is where main GUI Goes
+	      JPanel title=new JPanel();
+	      title.setLayout(new FlowLayout());
+	      title.add(new JLabel("Team Name"));
+	      teamName.setEditable(true);
+	      JButton titleButton= new JButton("Continue");
+	      title.add(teamName);
+	      title.add(titleButton);
+	      cp.add(title);
+	      titleButton.addActionListener(this);
+	      teamName.addActionListener(this);
+	      
+	      
+	      
 	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
 	      setTitle("Draft Queens"); // "this" JFrame sets title
 	      setSize(1000, 500);         // "this" JFrame sets initial size

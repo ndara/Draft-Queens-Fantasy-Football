@@ -104,12 +104,122 @@ public class DBConnection {
          } catch (Exception ex) {
             System.err.println("Error closing query: " + ex);
             ex.printStackTrace(System.err);
-         }
-         //close(conn);
-
-
-         
+         }     
       }
    }
+
+   public static void updatePlayer(Connection conn, String playerId, String teamId) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "UPDATE Player SET teamOn = "+ teamId + " WHERE player =  " +  playerId;
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         results = statement.executeQuery(query);
+   }
   
+
+  public static void resetPlayer(Connection conn) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "UPDATE Player SET teamOn = 0";
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         results = statement.executeQuery(query);
+   }
+
+   public static void getPosPlayers(Connection conn, boolean QB, boolean RB, boolean WR, boolean TE, int numTrue) {
+      Statement statement = null;
+      ResultSet results = null;
+      int count = 0;
+
+
+      String query = "SELECT player, pos1, fname, lname FROM Player";
+      if (numTrue) {
+         query += "WHERE ";
+         if (QB) {
+            if (count) {
+               query += " OR pos1 = QB";
+            }
+            else {
+               query += " pos1 = QB";
+            }
+            count++;
+
+         }
+         if (RB) {
+            if (count) {
+               query += " OR pos1 = RB";
+            }
+            else {
+               query += " pos1 = RB";
+            }
+            count++;
+
+         }
+         if (WR) {
+            if (count) {
+               query += " OR pos1 = WR";
+            }
+            else {
+               query += " pos1 = WR";
+            }
+            count++;
+
+         }
+         if (TE) {
+            if (count) {
+               query += " OR pos1 = TE";
+            }
+            else {
+               query += " pos1 = TE";
+            }
+            count++;
+
+         }
+
+      }
+      System.out.println("QUERY MADE:");
+      System.out.println(query);
+      try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         results = statement.executeQuery(query);
+
+         while (results.next()) {
+            String playerID = results.getString(1);
+            String pos1 = results.getString(2);
+            String first = results.getString(3);
+            String last = results.getString(4);
+            //String first = results.getString("first");
+            //int room = results.getInt(3);
+
+            System.out.println(String.format("%s, %s, %s, %s", playerID, pos1, first, last));
+         }
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+   }
+
 }

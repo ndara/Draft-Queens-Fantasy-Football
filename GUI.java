@@ -55,6 +55,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
       //tab1
       
       JPanel hTab=new JPanel();
+      hTab.setLayout(new GridLayout(1,1));
       //this nextpart is for testing
       String[] input={"Positions","QB","RB","RB","WR","WR","WR","TE"};
       JList<String> cTeam=new JList<String>(input);
@@ -62,9 +63,13 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
       
       
       tabs.addTab("HUMAN TEAM", hTab);
+      JPanel aTab=new JPanel();
+      aTab.setLayout(new GridLayout(1,1));
+      JList<String> aTeam=new JList<String>(input);
       for(int x=1;x<8;x++)
       {
-         tabs.addTab("Ai"+x, new JPanel());
+  	aTab.add(aTeam);
+         tabs.addTab("Ai"+x, aTab);
       }
       tabs.addTab("Players", new JPanel());
       

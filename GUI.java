@@ -18,17 +18,18 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	
 	
 	
+	//MOVED MAIN TO main.java
 	
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-	         @Override
-	         public void run() 
-	         {
-					new GUI();
-	         }}
-		);
+	// public static void main(String[] args) {
+		// SwingUtilities.invokeLater(new Runnable() {
+	 //         @Override
+	 //         public void run() 
+	 //         {
+		// 			new GUI();
+	 //         }}
+		// );
 
-	}
+	// }
 
 	public GUI()
 	{

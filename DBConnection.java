@@ -12,6 +12,12 @@ public class DBConnection {
    /**
     * Get a connection to the database.
     */
+    private Connection con;
+    public DBConnection()
+    {
+       con=getConnection();
+    }
+    
    public static Connection getConnection() throws Exception {
       // Instantiate Driver
       Class.forName("com.mysql.jdbc.Driver");

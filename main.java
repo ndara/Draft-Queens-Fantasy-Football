@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-import DBConnection.java;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -25,7 +24,7 @@ public class main {
 	public static void main(String[] args) throws Exception {
 
       //DO ALL DB STUFF HERE
-      Connection conn = getConnection();
+      Connection conn = DBConnection.getConnection();
       Statement statement = null;
       ResultSet results = null;
 
@@ -77,7 +76,7 @@ public class main {
             }}
          );
 
-         //close connection to DB ---CURRENTLY BROKEN
-         //close(conn);
+         //close connection to DB 
+         DBConnection.close(conn);
    }
 }

@@ -32,6 +32,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 
 	public GUI()
 	{
+      // TITLE CONTAINER PANE
+      /*
 		Container cp = getContentPane();
 	      cp.setLayout(new GridLayout(1,1,1,1));
 	      //this is where main GUI Goes
@@ -47,11 +49,50 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	      teamName.addActionListener(this);
 	      
 	      
-	      
-	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
-	      setTitle("Draft Queens"); // "this" JFrame sets title
-	      setSize(1000, 500);         // "this" JFrame sets initial size
-	      setVisible(true);  
+        */ 
+      // We need to test loading screen idea
+      //OTHER Possibilities include CardLayout
+	// GRIDBagLayout is porbably way to go 
+      // STARTING Pane for INTIAL DRAFT
+      // this is an example for how it could be done
+      
+      Container cp = getContentPane();
+	      cp.setLayout(new GridLayout(1,1,1,1));
+      JPanel initialDraft=new JPanel();
+      initialDraft.setLayout(new GridLayout(2,2));
+      JTabbedPane tabs =new JTabbedPane();
+      
+      //tab1
+      tabs.addTab("HUMAN TEAM", new JPanel());
+      for(int x=1;x<8;x++)
+      {
+         tabs.addTab("Ai"+x, new JPanel());
+      }
+      tabs.addTab("Players", new JPanel());
+      
+      initialDraft.add(tabs);
+      initialDraft.add(new JLabel("grid 2"));
+      
+      
+      JPanel adder=new JPanel();
+      adder.setLayout(new FlowLayout());
+      adder.add(new JLabel("Add"));
+      teamName.setEditable(true);
+      JButton titleButton= new JButton("Confirm");
+      adder.add(teamName);
+      adder.add(titleButton);
+      
+      initialDraft.add(adder);
+
+      initialDraft.add(new JLabel("remaining player positions"));
+      cp.add(initialDraft);
+         
+         
+	   //set main setting of CP
+	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
+	   setTitle("Draft Queens"); // "this" JFrame sets title
+	   setSize(1000, 500);         // "this" JFrame sets initial size
+	   setVisible(true);  
 	}
 	
 	

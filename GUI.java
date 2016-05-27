@@ -63,7 +63,15 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
       JTabbedPane tabs =new JTabbedPane();
       
       //tab1
-      tabs.addTab("HUMAN TEAM", new JPanel());
+      
+      JPanel hTab=new JPanel();
+      //this nextpart is for testing
+      String[] input={"Positions","QB","RB","RB","WR","WR","WR","TE"};
+      JList<String> cTeam=new JList<String>(input);
+      hTab.add(cTeam);
+      
+      
+      tabs.addTab("HUMAN TEAM", hTab);
       for(int x=1;x<8;x++)
       {
          tabs.addTab("Ai"+x, new JPanel());

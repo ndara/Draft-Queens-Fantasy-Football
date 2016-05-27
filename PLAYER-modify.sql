@@ -10,6 +10,13 @@ WHERE
    dcp = 0
    OR dcp > 2;
 
+
+DELETE FROM Play
+WHERE
+	type != 'RUSH'
+	AND type != 'PASS';
+
+
 ALTER TABLE Player 
   ADD COLUMN teamOn INT DEFAULT 0;
 

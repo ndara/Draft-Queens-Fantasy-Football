@@ -1,10 +1,11 @@
-
 DROP TABLE IF EXISTS Rush;
 DROP TABLE IF EXISTS Td;
 DROP TABLE IF EXISTS Pass;
 DROP TABLE IF EXISTS Play;
 DROP TABLE IF EXISTS Game;
 DROP TABLE IF EXISTS Player;
+DROP TABLE IF EXISTS Team;
+DROP TABLE IF EXISTS Leaderboard;
 
 CREATE TABLE Game
 (
@@ -31,8 +32,13 @@ fname VARCHAR(64),
 lname VARCHAR(64),
 pname VARCHAR(64),
 pos1 CHAR(5),
+height INT,
+weight INT,
 col VARCHAR(64),
+start INT,
 cteam CHAR(5),
+jnum INT,
+dcp INT,
 PRIMARY KEY(player)
 );
 
@@ -62,6 +68,32 @@ yds INT,
 comp INT,
 PRIMARY KEY(pid)
 );
+
+CREATE TABLE Team
+(
+id INT,
+name VARCHAR(32),
+score INT,
+QB CHAR(7) REFERENCES Player(player),
+RB1 CHAR(7) REFERENCES Player(player),
+RB2 CHAR(7) REFERENCES	Player(player),
+WR1 CHAR(7) REFERENCES Player(player),
+WR2 CHAR(7) REFERENCES Player(player),
+WR3 CHAR(7) REFERENCES Player(player),
+TE CHAR(7) REFERENCES Player(player)
+);
+
+CREATE TABLE Leaderboard (
+name VARCHAR(32),
+score INT,
+QB CHAR(7) REFERENCES Player(player),
+RB1 CHAR(7) REFERENCES Player(player),
+RB2 CHAR(7) REFERENCES	Player(player),
+WR1 CHAR(7) REFERENCES Player(player),
+WR2 CHAR(7) REFERENCES Player(player),
+WR3 CHAR(7) REFERENCES Player(player),
+TE CHAR(7) REFERENCES Player(player)
+)
 
 
 

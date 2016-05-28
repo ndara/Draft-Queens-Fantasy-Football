@@ -125,7 +125,7 @@ public class DBConnection {
    public static ArrayList<String> getAllTeamPlayers(Connection conn, int teamId) {
       Statement statement = null;
       ResultSet results = null;
-      ArrayList<String> allPlayers = new ArrayList();
+      ArrayList<String> allPlayers = new ArrayList<String>();
       String query = "SELECT player, fname, lname FROM Player WHERE teamOn = " + teamId;
       try {
          // Get a statement from the connection
@@ -307,7 +307,8 @@ public class DBConnection {
       ArrayList<String> allPlayers = new ArrayList<String>();
       int count = 0;
       if (numTrue == 0) {
-         return;
+         allPlayers.add("EMPTY");
+         return allPlayers;
       }
 
 
@@ -389,7 +390,8 @@ public class DBConnection {
             ex.printStackTrace(System.err);
          }     
       }
+      return allPlayers;
    }
-   return allPlayers;
+
 
 }

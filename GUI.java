@@ -255,6 +255,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		DBConnection.initTeam(conn,teamName.getText());
 		//cp.remove(title);
 		cp.add(initialDraft);
+		this.repaint();
 	}
 
 }

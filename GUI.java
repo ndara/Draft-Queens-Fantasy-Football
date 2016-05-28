@@ -25,7 +25,9 @@ import java.sql.Statement;
 public class GUI extends JFrame implements ActionListener, WindowListener, MouseListener {
 	private JTextField teamName =new JTextField("", 20);// 20 is variable
 	private JTextField playerAdd=new JTextField("", 20);
-	public String teamN="test";
+	private Container cp;
+	private JPanel title;
+	private JPanel initialDraft;
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
@@ -36,14 +38,14 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	{
 	
 	conn = DBConnection.getConnection();
-	Container cp = getContentPane();
+	 cp = getContentPane();
 	 cp.setLayout(new GridLayout(1,1,1,1));
 	 
 	 
 	 
 	 
 	 //Title screen
-	 JPanel title =new JPanel();
+	 title =new JPanel();
 	 title.setLayout(new GridLayout(3,1));
 	 //first item in grid
 	 title.add(new JLabel("Draft Queens"));
@@ -66,14 +68,22 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 title.add(leader);
 	 leaderboardButton.addActionListener(this);
 	 cp.add(title);
-	 //this is how to get team name
-	 //teamName.getText()
 	 
 	 
-	 
-	 /*
+        
+	   //set main setting of CP
+	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
+	   setTitle("Draft Queens"); // "this" JFrame sets title
+	   setSize(1000, 500);         // "this" JFrame sets initial size
+	   setVisible(true);    
+	}
+	
+	
+	public void initDraft()
+	{
+	
 	 //this is initial draft
-     JPanel initialDraft=new JPanel();
+    initialDraft=new JPanel();
      initialDraft.setLayout(new GridLayout(2,2));
      JTabbedPane tabs =new JTabbedPane();
      
@@ -166,15 +176,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 
      initialDraft.add(new JLabel("remaining player positions"));
      cp.add(initialDraft);
-        */
         
-	   //set main setting of CP
-	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
-	   setTitle("Draft Queens"); // "this" JFrame sets title
-	   setSize(1000, 500);         // "this" JFrame sets initial size
-	   setVisible(true);    
+		
 	}
-	
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
@@ -251,7 +255,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		DBConnection.initTeam(conn,teamName.getText());
-		
+		cp.remove(title);
+		initDraft();
+		cp.add(initialDraft);
 	}
 
 }

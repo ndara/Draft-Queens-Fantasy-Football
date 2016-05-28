@@ -67,10 +67,53 @@ public class DBConnection {
    }
 
 
-   public static void getAllPlayers(Connection conn) {
+   public static ArrayList<String> getAllPlayers(Connection conn) {
       Statement statement = null;
       ResultSet results = null;
+      ArrayList<String> allPlayers = new ArrayList<String>();
       String query = "SELECT player, fname, lname FROM Player";
+      try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         results = statement.executeQuery(query);
+
+         while (results.next()) {
+            String playerID = results.getString(1);
+            String first = results.getString(2);
+            String last = results.getString(3);
+            //String first = results.getString("first");
+            //int room = results.getInt(3);
+
+            allPlayers.add(String.format("%s %s %s", playerID, first, last));
+         }
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+      return allPlayers;
+   }
+
+   public static void getAllTeamPlayers(Connection conn, int teamId) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "SELECT player, fname, lname FROM Player WHERE teamOn = " + teamId;
       try {
          // Get a statement from the connection
          statement = conn.createStatement();
@@ -140,7 +183,77 @@ public class DBConnection {
          }     
       }
    }
+
+   public static void updateTeam(Connection conn, String position, String playerId, int teamId) {
+      Statement statement = null;
+      ResultSet results = null;
+      
+      String query = "UPDATE Team SET " + position + " = " + "'" + playerId + "'" + " WHERE id = " + teamId;
+         try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         statement.executeUpdate(query);
+
+         
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+   }
+
+   public static void initTeam(Connection conn, String playerName) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "UPDATE Team SET name = " + "'" + playerName + "'" + " WHERE id = 1";
+
+         try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         statement.executeUpdate(query);
+
+         
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+   }
   
+
+
 
   public static void resetPlayer(Connection conn) {
       Statement statement = null;

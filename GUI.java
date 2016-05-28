@@ -133,7 +133,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
       
       
      
-     ArrayList<String> temp=DBConnection.getAllPlayers();
+     ArrayList<String> temp=DBConnection.getAllPlayers(conn);
      String[] allPlayers =temp.toArray(new String[temp.size()]);
      JList<String> JallPlayers=new JList<String>(allPlayers);
      JScrollPane JscrollPlayers=new JScrollPane(JallPlayers);

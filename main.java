@@ -32,9 +32,10 @@ public class main {
       //DB TESTING
 
       //DBConnection.getAllPlayers(conn);
-      //DBConnection.updatePlayer(conn, "AA-1300", 42);
+      DBConnection.updatePlayer(conn, "AA-1300", 42);
       //DBConnection.resetPlayer(conn);
       //DBConnection.getAllPlayers(conn);
+      DBConnection.getAllTeamPlayers(conn, 42);
       
       //DBConnection.getPosPlayers(conn, false, false, false, true, 1);
 

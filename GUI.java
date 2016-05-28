@@ -15,18 +15,62 @@ import javax.swing.*;
 public class GUI extends JFrame implements ActionListener, WindowListener, MouseListener {
 	private JTextField teamName =new JTextField("", 20);// 20 is variable
 	private JTextField playerAdd=new JTextField("", 20);
+	public String teamN="test";
 	
+	
+	
+	
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+	         @Override
+	         public void run() 
+	         {
+					new GUI();
+	         }}
+		);
+
+	}
+
 	public GUI()
 	{
-		//making player name not eitable
-		teamName.setEditable(true);
 		
 		
-		
-		
-		
-		 Container cp = getContentPane();
-	      cp.setLayout(new GridLayout(1,1,1,1));
+	Container cp = getContentPane();
+	 cp.setLayout(new GridLayout(1,1,1,1));
+	 
+	 
+	 
+	 
+	 //Title screen
+	 JPanel title =new JPanel();
+	 title.setLayout(new GridLayout(3,1));
+	 //first item in grid
+	 title.add(new JLabel("Draft Queens"));
+	 //second item in grid
+	 JPanel teamNamer=new JPanel();
+	 teamNamer.setLayout(new FlowLayout());
+	 teamNamer.add(new JLabel("Team Name:"));
+	 teamName.setEditable(true);
+	 teamNamer.add(teamName);
+	 JButton teamConfirm=new JButton("Confirm");
+	 teamNamer.add(teamConfirm);
+	 teamConfirm.addActionListener(this);
+	 teamName.addActionListener(this);
+	 title.add(teamNamer);
+	 //third item in the grid
+	 JPanel leader=new JPanel();
+	 leader.setLayout(new FlowLayout());
+	 JButton leaderboardButton=new JButton("LeaderBoard");
+	 leader.add(leaderboardButton);
+	 title.add(leader);
+	 leaderboardButton.addActionListener(this);
+	 cp.add(title);
+	 //this is how to get team name
+	 //teamName.getText()
+	 
+	 
+	 
+	 /*this is initial draft
      JPanel initialDraft=new JPanel();
      initialDraft.setLayout(new GridLayout(2,2));
      JTabbedPane tabs =new JTabbedPane();
@@ -102,6 +146,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      adder.add(playerAdd);
      adder.add(titleButton);
      adder.add(new JLabel("Turn:"));
+     teamName.setEditable(false);
      adder.add(teamName);
      adder.add(new JLabel("Round"));
      
@@ -112,7 +157,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      initialDraft.add(new JLabel("remaining player positions"));
      cp.add(initialDraft);
         
-        
+        */
 	   //set main setting of CP
 	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
 	   setTitle("Draft Queens"); // "this" JFrame sets title

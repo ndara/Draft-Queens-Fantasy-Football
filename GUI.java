@@ -39,7 +39,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	
 	conn = DBConnection.getConnection();
 	 cp = getContentPane();
-	 cp.setLayout(new GridLayout(2,1,1,1));
+	 cp.setLayout(new GridLayout(1,1,1,1));
 	 initDraft();
 	 
 	 
@@ -253,9 +253,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		DBConnection.initTeam(conn,teamName.getText());
-		//cp.remove(title);
-		cp.add(initialDraft);
-		cp.repaint();
+		title.setUI(initialDraft);
+		title.updateUI();
 	}
 
 }

@@ -42,14 +42,20 @@ public class main {
       //END DB TESTS
 
       //DO GUI STUFF HERE
-         SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() 
-            {
-               new GUI();
-            }}
-         );
-
+     /*
+		SwingUtilities.invokeLater(new Runnable() {
+	         @Override
+	         public void run() 
+	         {
+					try {
+						new GUI();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	         }}
+		);
+*/
          //close connection to DB 
          DBConnection.close(conn);
    }

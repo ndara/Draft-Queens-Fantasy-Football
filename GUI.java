@@ -14,88 +14,110 @@ import javax.swing.*;
 
 public class GUI extends JFrame implements ActionListener, WindowListener, MouseListener {
 	private JTextField teamName =new JTextField("", 20);// 20 is variable
+	private JTextField playerAdd=new JTextField("", 20);
 	
-	
-	
-	
-	
-
 	public GUI()
 	{
-      // TITLE CONTAINER PANE
-      /*
-		Container cp = getContentPane();
+		//making player name not eitable
+		teamName.setEditable(true);
+		
+		
+		
+		
+		
+		 Container cp = getContentPane();
 	      cp.setLayout(new GridLayout(1,1,1,1));
-	      //this is where main GUI Goes
-	      JPanel title=new JPanel();
-	      title.setLayout(new FlowLayout());
-	      title.add(new JLabel("Team Name"));
-	      teamName.setEditable(true);
-	      JButton titleButton= new JButton("Continue");
-	      title.add(teamName);
-	      title.add(titleButton);
-	      cp.add(title);
-	      titleButton.addActionListener(this);
-	      teamName.addActionListener(this);
-	      
-	      
-        */ 
-      // We need to test loading screen idea
-      //OTHER Possibilities include CardLayout
-	// GRIDBagLayout is porbably way to go 
-      // STARTING Pane for INTIAL DRAFT
-      // this is an example for how it could be done
+     JPanel initialDraft=new JPanel();
+     initialDraft.setLayout(new GridLayout(2,2));
+     JTabbedPane tabs =new JTabbedPane();
+     
+     //tab1
+     
+     JPanel hTab=new JPanel();
+     hTab.setLayout(new GridLayout(1,1));
+     //this nextpart is for testing
+     String[] input={"Positions","QB","RB","RB","WR","WR","WR","TE"};
+     JList<String> cTeam=new JList<String>(input);
+     hTab.add(cTeam);
+     
+     
+     tabs.addTab("HUMAN TEAM", hTab);
+     //AI one
+     JPanel a1Tab=new JPanel();
+     a1Tab.setLayout(new GridLayout(1,1));
+    JList<String> a1Team=new JList<String>(input);
+     a1Tab.add(a1Team);
+      tabs.addTab("Ai1", a1Tab);
       
-      Container cp = getContentPane();
-	      cp.setLayout(new GridLayout(1,1,1,1));
-      JPanel initialDraft=new JPanel();
-      initialDraft.setLayout(new GridLayout(2,2));
-      JTabbedPane tabs =new JTabbedPane();
+     //AI two
+      JPanel a2Tab=new JPanel();
+      a2Tab.setLayout(new GridLayout(1,1));
+     JList<String> a2Team=new JList<String>(input);
+      a2Tab.add(a2Team);
+       tabs.addTab("Ai2", a2Tab);
+     //AI three
+       JPanel a3Tab=new JPanel();
+       a3Tab.setLayout(new GridLayout(1,1));
+      JList<String> a3Team=new JList<String>(input);
+       a3Tab.add(a3Team);
+        tabs.addTab("Ai3", a3Tab);
+      //AI four
+        JPanel a4Tab=new JPanel();
+        a4Tab.setLayout(new GridLayout(1,1));
+       JList<String> a4Team=new JList<String>(input);
+        a4Tab.add(a4Team);
+         tabs.addTab("Ai4", a4Tab);
+       //AI five
+         JPanel a5Tab=new JPanel();
+         a5Tab.setLayout(new GridLayout(1,1));
+        JList<String> a5Team=new JList<String>(input);
+         a5Tab.add(a5Team);
+          tabs.addTab("Ai5", a5Tab);
+        //AI six
+          JPanel a6Tab=new JPanel();
+          a6Tab.setLayout(new GridLayout(1,1));
+         JList<String> a6Team=new JList<String>(input);
+          a6Tab.add(a6Team);
+           tabs.addTab("Ai6", a6Tab);
+         //AI seven
+           JPanel a7Tab=new JPanel();
+           a7Tab.setLayout(new GridLayout(1,1));
+          JList<String> a7Team=new JList<String>(input);
+           a7Tab.add(a7Team);
+            tabs.addTab("Ai7", a7Tab);
       
-      //tab1
-      
-      JPanel hTab=new JPanel();
-      hTab.setLayout(new GridLayout(1,1));
-      //this nextpart is for testing
-      String[] input={"Positions","QB","RB","RB","WR","WR","WR","TE"};
-      JList<String> cTeam=new JList<String>(input);
-      hTab.add(cTeam);
       
       
-      tabs.addTab("HUMAN TEAM", hTab);
-      JPanel aTab=new JPanel();
-      aTab.setLayout(new GridLayout(1,1));
-      JList<String> aTeam=new JList<String>(input);
-      for(int x=1;x<8;x++)
-      {
-  	aTab.add(aTeam);
-         tabs.addTab("Ai"+x, aTab);
-      }
-      tabs.addTab("Players", new JPanel());
-      
-      initialDraft.add(tabs);
-      initialDraft.add(new JLabel("grid 2"));
-      
-      
-      JPanel adder=new JPanel();
-      adder.setLayout(new FlowLayout());
-      adder.add(new JLabel("Add"));
-      teamName.setEditable(true);
-      JButton titleButton= new JButton("Confirm");
-      adder.add(teamName);
-      adder.add(titleButton);
-      
-      initialDraft.add(adder);
+     tabs.addTab("Players", new JPanel());
+     
+     initialDraft.add(tabs);
+     initialDraft.add(new JLabel("grid 2"));
+     
+     
+     JPanel adder=new JPanel();
+     adder.setLayout(new FlowLayout());
+     adder.add(new JLabel("Add"));
+     playerAdd.setEditable(false);
+     JButton titleButton= new JButton("Confirm");
+     adder.add(playerAdd);
+     adder.add(titleButton);
+     adder.add(new JLabel("Turn:"));
+     adder.add(teamName);
+     adder.add(new JLabel("Round"));
+     
+     
+     
+     initialDraft.add(adder);
 
-      initialDraft.add(new JLabel("remaining player positions"));
-      cp.add(initialDraft);
-         
-         
+     initialDraft.add(new JLabel("remaining player positions"));
+     cp.add(initialDraft);
+        
+        
 	   //set main setting of CP
 	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
 	   setTitle("Draft Queens"); // "this" JFrame sets title
 	   setSize(1000, 500);         // "this" JFrame sets initial size
-	   setVisible(true);  
+	   setVisible(true);    
 	}
 	
 	

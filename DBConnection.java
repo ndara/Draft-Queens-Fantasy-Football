@@ -122,9 +122,10 @@ public class DBConnection {
       return allPlayers;
    }
 
-   public static void getAllTeamPlayers(Connection conn, int teamId) {
+   public static ArrayList<String> getAllTeamPlayers(Connection conn, int teamId) {
       Statement statement = null;
       ResultSet results = null;
+      ArrayList<String> allPlayers = new ArrayList();
       String query = "SELECT player, fname, lname FROM Player WHERE teamOn = " + teamId;
       try {
          // Get a statement from the connection
@@ -140,7 +141,7 @@ public class DBConnection {
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            System.out.println(String.format("%s, %s, %s", playerID, first, last));
+            allPlayers.add(String.format("%s %s %s", playerID, first, last));
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);
@@ -161,6 +162,7 @@ public class DBConnection {
             ex.printStackTrace(System.err);
          }     
       }
+      return allPlayers;
    }
 
    public static void updatePlayer(Connection conn, String playerId, int teamId) {
@@ -299,9 +301,10 @@ public class DBConnection {
       }
    }
 
-   public static void getPosPlayers(Connection conn, boolean QB, boolean RB, boolean WR, boolean TE, int numTrue) {
+   public static ArrayList<String> getPosPlayers(Connection conn, boolean QB, boolean RB, boolean WR, boolean TE, int numTrue) {
       Statement statement = null;
       ResultSet results = null;
+      ArrayList<String> allPlayers = new ArrayList<String>();
       int count = 0;
       if (numTrue == 0) {
          return;
@@ -365,7 +368,7 @@ public class DBConnection {
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            System.out.println(String.format("%s, %s, %s, %s", playerID, pos1, first, last));
+            allPlayers.add(String.format("%s %s %s %s", playerID, pos1, first, last));
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);
@@ -387,5 +390,6 @@ public class DBConnection {
          }     
       }
    }
+   return allPlayers;
 
 }

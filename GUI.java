@@ -9,7 +9,17 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.awt.*;
+
 import javax.swing.*;
+
+import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
 
 
 public class GUI extends JFrame implements ActionListener, WindowListener, MouseListener {
@@ -18,29 +28,19 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	public String teamN="test";
 	
 	
-	
-	
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-	         @Override
-	         public void run() 
-	         {
-					new GUI();
-	         }}
-		);
 
-	}
-
-	public GUI()
+	public GUI() throws Exception
 	{
-		
-		
+	Connection conn = DBConnection.getConnection();
+	Statement statement = null;
+	ResultSet results = null;
+	
 	Container cp = getContentPane();
 	 cp.setLayout(new GridLayout(1,1,1,1));
 	 
 	 
 	 
-	 
+	 /*
 	 //Title screen
 	 JPanel title =new JPanel();
 	 title.setLayout(new GridLayout(3,1));
@@ -69,8 +69,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 //teamName.getText()
 	 
 	 
-	 
-	 /*this is initial draft
+	 */
+	 //this is initial draft
      JPanel initialDraft=new JPanel();
      initialDraft.setLayout(new GridLayout(2,2));
      JTabbedPane tabs =new JTabbedPane();
@@ -132,8 +132,16 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
       
       
       
-     tabs.addTab("Players", new JPanel());
      
+     ArrayList<String> temp=DBConnection.getAllPlayers();
+     String[] allPlayers =temp.toArray(new String[temp.size()]);
+     JList<String> JallPlayers=new JList<String>(allPlayers);
+     JScrollPane JscrollPlayers=new JScrollPane(JallPlayers);
+     JPanel aPlayers= new JPanel();
+     aPlayers.setLayout(new GridLayout());
+     aPlayers.add(JscrollPlayers);
+     
+     tabs.addTab("Players", new JPanel());
      initialDraft.add(tabs);
      initialDraft.add(new JLabel("grid 2"));
      
@@ -157,7 +165,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      initialDraft.add(new JLabel("remaining player positions"));
      cp.add(initialDraft);
         
-        */
+        
 	   //set main setting of CP
 	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
 	   setTitle("Draft Queens"); // "this" JFrame sets title

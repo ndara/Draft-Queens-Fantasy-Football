@@ -173,7 +173,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      
      initialDraft.add(adder);
 
-     initialDraft.add(new JLabel("remaining player positions"));s
+     initialDraft.add(new JLabel("remaining player positions"));
         
 		
 	}

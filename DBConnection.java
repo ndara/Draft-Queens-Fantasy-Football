@@ -24,27 +24,39 @@ public class DBConnection {
       String dbName = "eaugusti";
       */
 
-      Scanner input = new Scanner(System.in);
-      System.out.println("Please enter your username:");
-
-      String dbUser = input.next();
-
-      System.out.println("Please enter your password:");
-      String dbPass = input.next();
-
-      System.out.println("Is the the database on a Cal Poly UNIX Server? (y/n) If n, host will default to 'localhost' ");
-      String test = input.next();
+      String dbUser = "";
+      String dbPass = "";
       String host = "";
-      if (test.equals("y")) {
-         host += "csc-db0.csc.calpoly.edu";
+      String dbName = "";
+
+      System.out.println("Is this Charnpreet?  (y/n)");
+      Scanner input = new Scanner(System.in);
+      if ((input.next()).equals("y")) {
+         dbUser += "root";
+         dbPass += "pass";
+         host += "localhost";
+         dbName += "NFL";
       }
       else {
-         host += "localhost";
+         System.out.println("Please enter your username:");
+
+         dbUser = input.next();
+
+         System.out.println("Please enter your password:");
+         dbPass = input.next();
+
+         System.out.println("Is the the database on a Cal Poly UNIX Server? (y/n) If n, host will default to 'localhost' ");
+         String test = input.next();
+
+         if (test.equals("y")) {
+            host += "csc-db0.csc.calpoly.edu";
+         }
+         else {
+            host += "localhost";
+         }
+         System.out.println("Please enter the database name:");
+         dbName = input.next();
       }
-
-
-      System.out.println("Please enter the database name:");
-      String dbName = input.next();
 
       String dbUrl = String.format("jdbc:mysql://%s/%s?autoReconnect=true", host, dbName);
 

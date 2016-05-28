@@ -26,21 +26,22 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JTextField teamName =new JTextField("", 20);// 20 is variable
 	private JTextField playerAdd=new JTextField("", 20);
 	public String teamN="test";
+	public Connection conn;
+	public Statement statement = null;
+	public ResultSet results = null;
 	
 	
 
 	public GUI() throws Exception
 	{
-	Connection conn = DBConnection.getConnection();
-	Statement statement = null;
-	ResultSet results = null;
 	
+	conn = DBConnection.getConnection();
 	Container cp = getContentPane();
 	 cp.setLayout(new GridLayout(1,1,1,1));
 	 
 	 
 	 
-	 /*
+	 
 	 //Title screen
 	 JPanel title =new JPanel();
 	 title.setLayout(new GridLayout(3,1));
@@ -55,7 +56,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 JButton teamConfirm=new JButton("Confirm");
 	 teamNamer.add(teamConfirm);
 	 teamConfirm.addActionListener(this);
-	 teamName.addActionListener(this);
+	 //teamName.addActionListener(this);
 	 title.add(teamNamer);
 	 //third item in the grid
 	 JPanel leader=new JPanel();
@@ -69,7 +70,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 //teamName.getText()
 	 
 	 
-	 */
+	 
+	 /*
 	 //this is initial draft
      JPanel initialDraft=new JPanel();
      initialDraft.setLayout(new GridLayout(2,2));
@@ -164,7 +166,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 
      initialDraft.add(new JLabel("remaining player positions"));
      cp.add(initialDraft);
-        
+        */
         
 	   //set main setting of CP
 	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
@@ -212,7 +214,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 
 	@Override
 	public void windowClosed(WindowEvent arg0) {
-		// TODO Auto-generated method stub
+		DBConnection.close(conn);
 		
 	}
 
@@ -248,7 +250,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		DBConnection.initTeam(conn,teamName.getText());
 		
 	}
 

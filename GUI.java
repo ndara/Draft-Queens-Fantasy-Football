@@ -141,7 +141,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      aPlayers.setLayout(new GridLayout());
      aPlayers.add(JscrollPlayers);
      
-     tabs.addTab("Players", new JPanel());
+     tabs.addTab("Players", aPlayers);
      initialDraft.add(tabs);
      initialDraft.add(new JLabel("grid 2"));
      

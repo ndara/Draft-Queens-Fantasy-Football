@@ -28,9 +28,18 @@ public class main {
       Statement statement = null;
       ResultSet results = null;
 
-      DBConnection.getAllPlayers(conn);
 
+      //DB TESTING
+
+      //DBConnection.getAllPlayers(conn);
+      //DBConnection.updatePlayer(conn, "AA-1300", 42);
+      //DBConnection.resetPlayer(conn);
+      //DBConnection.getAllPlayers(conn);
       
+      //DBConnection.getPosPlayers(conn, false, false, false, true, 1);
+
+      //END DB TESTS
+
       //DO GUI STUFF HERE
          SwingUtilities.invokeLater(new Runnable() {
             @Override

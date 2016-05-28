@@ -108,15 +108,37 @@ public class DBConnection {
       }
    }
 
-   public static void updatePlayer(Connection conn, String playerId, String teamId) {
+   public static void updatePlayer(Connection conn, String playerId, int teamId) {
       Statement statement = null;
       ResultSet results = null;
-      String query = "UPDATE Player SET teamOn = "+ teamId + " WHERE player =  " +  playerId;
+      String query = "UPDATE Player SET teamOn = "+ teamId + " WHERE player =  " + "'" + playerId+ "'";
+         try {
          // Get a statement from the connection
          statement = conn.createStatement();
 
          // Execute the query
-         results = statement.executeQuery(query);
+         statement.executeUpdate(query);
+
+         
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
    }
   
 
@@ -124,66 +146,85 @@ public class DBConnection {
       Statement statement = null;
       ResultSet results = null;
       String query = "UPDATE Player SET teamOn = 0";
+        try {
          // Get a statement from the connection
          statement = conn.createStatement();
 
          // Execute the query
-         results = statement.executeQuery(query);
+         statement.executeUpdate(query);
+
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
    }
 
    public static void getPosPlayers(Connection conn, boolean QB, boolean RB, boolean WR, boolean TE, int numTrue) {
       Statement statement = null;
       ResultSet results = null;
       int count = 0;
+      if (numTrue == 0) {
+         return;
+      }
 
 
       String query = "SELECT player, pos1, fname, lname FROM Player";
-      if (numTrue) {
-         query += "WHERE ";
+      if (numTrue > 0) {
+         query += " WHERE ";
          if (QB) {
-            if (count) {
-               query += " OR pos1 = QB";
-            }
-            else {
-               query += " pos1 = QB";
-            }
+            query += " pos1 = 'QB'";
             count++;
 
          }
          if (RB) {
-            if (count) {
-               query += " OR pos1 = RB";
+            if (count > 0) {
+               query += " OR pos1 = 'RB'";
             }
             else {
-               query += " pos1 = RB";
+               query += " pos1 = 'RB'";
             }
             count++;
 
          }
          if (WR) {
-            if (count) {
-               query += " OR pos1 = WR";
+            if (count > 0) {
+               query += " OR pos1 = 'WR'";
             }
             else {
-               query += " pos1 = WR";
+               query += " pos1 = 'WR'";
             }
             count++;
 
          }
          if (TE) {
-            if (count) {
-               query += " OR pos1 = TE";
+            if (count > 0) {
+               query += " OR pos1 = 'TE'";
             }
             else {
-               query += " pos1 = TE";
+               query += " pos1 = 'TE'";
             }
             count++;
 
          }
 
       }
-      System.out.println("QUERY MADE:");
-      System.out.println(query);
+      //System.out.println("QUERY MADE:");
+      //System.out.println(query);
       try {
          // Get a statement from the connection
          statement = conn.createStatement();

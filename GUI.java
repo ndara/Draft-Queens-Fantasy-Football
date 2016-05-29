@@ -96,7 +96,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      hTab.add(cTeam);
      
      
-     tabs.addTab("HUMAN TEAM", hTab);
+     tabs.addTab(teamName.getText(), hTab);
      //AI one
      JPanel a1Tab=new JPanel();
      a1Tab.setLayout(new GridLayout(1,1));

@@ -156,7 +156,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      initialDraft.add(tabs);
      initialDraft.add(new JLabel("grid 2"));
      
-     
+     JPanel bot=new JPanel();
+     bot.setLayout(new GridLayout());
      JPanel adder=new JPanel();
      adder.setLayout(new FlowLayout());
      adder.add(new JLabel("Add"));
@@ -164,14 +165,16 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      JButton titleButton= new JButton("Confirm");
      adder.add(playerAdd);
      adder.add(titleButton);
-     adder.add(new JLabel("Turn:"));
+     bot.add(adder)
+     JPanel turn =new JPanel();
+     turn.setLayout(new FlowLayout());
+     turn.add(new JLabel("Turn:"));
      teamName.setEditable(false);
-     adder.add(teamName);
-     adder.add(new JLabel("Round"));
+     turn.add(teamName);
+     turn.add(new JLabel("Round"));
+     bot.add(turn);
      
-     
-     
-     initialDraft.add(adder);
+     initialDraft.add(bot);
 
      initialDraft.add(new JLabel("remaining player positions"));
         cpid.add(initialDraft);

@@ -254,7 +254,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	public void actionPerformed(ActionEvent arg0) {
 		DBConnection.initTeam(conn,teamName.getText());
 		cpid=getContentPane();
-		initialDraft();
+		initDraft();
 		this.setContentPane(cpid);
 		this.repaint();
 	}

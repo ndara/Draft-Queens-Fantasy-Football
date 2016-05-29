@@ -26,6 +26,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JTextField teamName =new JTextField("", 20);// 20 is variable
 	private JTextField playerAdd=new JTextField("", 20);
 	private Container cp;
+	private Container cpid=new Container();
 	private JPanel title;
 	private JPanel initialDraft;
 	public Connection conn;
@@ -174,7 +175,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      initialDraft.add(adder);
 
      initialDraft.add(new JLabel("remaining player positions"));
-        
+        cpid.add(initialDraft);
 		
 	}
 	
@@ -253,8 +254,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		DBConnection.initTeam(conn,teamName.getText());
-		title.setUI(initialDraft);
-		title.updateUI();
+		this.setContentPane(cpid);
+		this.repaint();
 	}
 
 }

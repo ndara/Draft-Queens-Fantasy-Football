@@ -157,7 +157,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      initialDraft.add(new JLabel("grid 2"));
      
      JPanel bot=new JPanel();
-     bot.setLayout(new GridLayout());
+     bot.setLayout(new GridLayout(2,1));
      JPanel adder=new JPanel();
      adder.setLayout(new FlowLayout());
      adder.add(new JLabel("Add"));

@@ -165,7 +165,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      JButton titleButton= new JButton("Confirm");
      adder.add(playerAdd);
      adder.add(titleButton);
-     bot.add(adder)
+     bot.add(adder);
      JPanel turn =new JPanel();
      turn.setLayout(new FlowLayout());
      turn.add(new JLabel("Turn:"));

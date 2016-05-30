@@ -42,8 +42,10 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JTabbedPane tabs;
 	private ButtonActionListener ButtonListener = new ButtonActionListener();
 	private JList<String> cTeam;
+	private int qbleft=1;
 	private int rbleft=2;
 	private int wrleft=3;
+	private int teleft=1;
 	
 	
 
@@ -227,8 +229,20 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      bot.add(turn);
      
      initialDraft.add(bot);
-
-     initialDraft.add(new JLabel("remaining player positions"));
+	//remaining players
+	JPanel remainpos=new JPanel();
+	remainpos.setLayout(new GridLayout(5,2));
+	remainpos.add(new JLabel("Remaining"));
+	remainpos.add(new JLabel("Players"));
+	remainpos.add(new JLabel("QB"));
+	remainpos.add(new JTextField(""+qbleft,1));
+	remainpos.add(new JLabel("RB"));
+	remainpos.add(new JTextField(""+rbleft,1));
+	remainpos.add(new JLabel("WR"));
+	remainpos.add(new JTextField(""+wrleft,1));
+	remainpos.add(new JLabel("TE"));
+	remainpos.add(new JTextField(""+teleft,1));
+     initialDraft.add(remainpos);
         cpid.add(initialDraft);
 		
 	}
@@ -355,7 +369,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				DBConnection.updateTeam(conn,pos,playerId,1);
 				wrleft--;
 				}
-				else
+				else if(pos!="WR" &&pos!="RB")
 				{
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);	

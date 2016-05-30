@@ -29,6 +29,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private Container cpid;
 	private JPanel title;
 	private JPanel initialDraft;
+	private JButton ConfirmButton
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
@@ -38,6 +39,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JList<String> JTEPlayers;
 	private JList<String> JAllPlayers;
 	private JTabbedPane posTabs;
+	private ButtonListener = new ButtonActionListener();
 	
 	
 
@@ -47,6 +49,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	conn = DBConnection.getConnection();
 	 cp = getContentPane();
 	 cp.setLayout(new GridLayout(1,1,1,1));
+	 
 	 
 	 
 	 //Title screen
@@ -97,7 +100,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      JPanel hTab=new JPanel();
      hTab.setLayout(new GridLayout(1,1));
      //this nextpart is for testing
-     String[] input={"Positions","QB","RB","RB","WR","WR","WR","TE"};
+     ArrayList<String> tempp=DBConnection.getAllTeamPlayers(conn,1);
+     
+     String[] input=tempp.toArray(new String[tempp.size()]);
      JList<String> cTeam=new JList<String>(input);
      hTab.add(cTeam);
      
@@ -202,9 +207,11 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      adder.setLayout(new FlowLayout());
      adder.add(new JLabel("Add"));
      playerAdd.setEditable(false);
-     JButton titleButton= new JButton("Confirm");
+     //Confirm Button
+     ConfirmButton= new JButton("Confirm");
+     ConfirmButton.addActionListener(ButtonListener);
      adder.add(playerAdd);
-     adder.add(titleButton);
+     adder.add(ConfirmButton);
      bot.add(adder);
      JPanel turn =new JPanel();
      turn.setLayout(new FlowLayout());
@@ -311,5 +318,19 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		this.setContentPane(cpid);
 		this.repaint();
 	}
-
+	private class ButtonActionListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			Object source=arg0.getSource();
+			if(source=ConfirmButton)
+			{
+				String temp=playerAdd.getText();
+				String playerId=temp.subString(0,6);
+				String pos=temp.subString(8,10);
+				DBConnection.updatePlayer(conn,playerId,1);
+				DBConnection.updateTeam(conn,pos,playerId,1);
+			}
+		}
+	}
 }

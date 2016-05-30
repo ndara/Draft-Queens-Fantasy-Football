@@ -350,6 +350,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		ArrayList<String> tempp=DBConnection.getAllTeamPlayers(conn,1);
 		String[] input=tempp.toArray(new String[tempp.size()]);
 		cTeam=new JList<String>(input);
+		this.setContentPane(cpid);
 		this.repaint();
 	}
 	private class ButtonActionListener implements ActionListener

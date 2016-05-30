@@ -36,6 +36,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JList<String> JRBPlayers;
 	private JList<String> JWRPlayers;
 	private JList<String> JTEPlayers;
+	private JTabbedPane posTabs;
 	
 	
 
@@ -153,7 +154,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      JQBPlayers=new JList<String>(QBPlayers);
      JQBPlayers.addMouseListener(this);
      JScrollPane JscrollQBPlayers=new JScrollPane(JQBPlayers);
-     JTabbedPane posTabs=new JTabbedPane();
+     posTabs=new JTabbedPane();
      posTabs.add("QB",JscrollQBPlayers);
      //tab 2
      temp=DBConnection.getPosPlayers(conn,false,true,false,false,1);
@@ -200,7 +201,10 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
+		if(posTabs.getSelectedIndex()=0)
 		playerAdd.setText((String)JQBPlayers.getSelectedValue());
+		else if(posTabs.getSelectedIndex()=1)
+		playerAdd.setText((String)JRBPlayers.getSelectedValue());
 		
 	}
 

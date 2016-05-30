@@ -266,7 +266,69 @@ public class DBConnection {
       }
    }
   
+   public static void dropPlayerFromTeam(Connection conn, int teamId, String position) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "UPDATE Team SET " + position " = '' WHERE id = " + teamId;
+        try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
 
+         // Execute the query
+         statement.executeUpdate(query);
+
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+   }
+
+   public static void resetPlayer(Connection conn, String playerId) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "UPDATE Player SET teamOn = 0 WHERE player = " + playerId;
+        try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         statement.executeUpdate(query);
+
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+   }
 
 
   public static void resetPlayers(Connection conn) {

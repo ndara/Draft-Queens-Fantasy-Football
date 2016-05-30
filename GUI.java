@@ -42,6 +42,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JTabbedPane tabs;
 	private ButtonActionListener ButtonListener = new ButtonActionListener();
 	private JList<String> cTeam;
+	private rbleft=2;
+	private wrleft=3;
 	
 	
 
@@ -339,8 +341,24 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				String temp=playerAdd.getText();
 				String playerId=temp.substring(0,7);
 				String pos=temp.substring(8,10);
+				if(pos.equal("RB") && rbleft>0)
+				{
 				DBConnection.updatePlayer(conn,playerId,1);
-				DBConnection.updateTeam(conn,pos,playerId,1);
+				DBConnection.updateTeam(conn,pos+rbleft,playerId,1);
+				rbleft--;
+				}
+				if(pos.equals("WR") && wrleft>0)
+				{
+				DBConnection.updatePlayer(conn,playerId,1);
+				DBConnection.updateTeam(conn,pos+wrleft,playerId,1);
+				wrleft--;
+				}
+				else
+				{
+				DBConnection.updatePlayer(conn,playerId,1);
+				DBConnection.updateTeam(conn,pos+wrleft,playerId,1);	
+				}
+				
 			}
 		}
 	}

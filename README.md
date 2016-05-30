@@ -6,6 +6,9 @@ CLASSPATH info (make sure .jar is in same directory as java files)
 
 export CLASSPATH=$CLASSPATH:mysql-connector-java-5.1.15-bin.jar
 
+POPUP CODE
+-   JOptionPane.showMessageDialog(new JFrame(), helpStr, "Help", JOptionPane.PLAIN_MESSAGE);
+
 NOTE2: Rush table bc col should reference player(player)??
 
 

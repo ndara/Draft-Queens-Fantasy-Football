@@ -370,7 +370,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	{
 		cpid.removeAll();
 		cpid=getContentPane();
-		tabs=.removeAll();
+		tabs.removeAll();
 		initDraft();
 		tabs.setSelectedIndex(8);
 		this.setContentPane(cpid);

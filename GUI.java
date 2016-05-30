@@ -32,7 +32,10 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
-	private JList<String> JallPlayers;
+	private JList<String> JQBPlayers;
+	private JList<String> JRBPlayers;
+	private JList<String> JWRPlayers;
+	private JList<String> JTEPlayers;
 	
 	
 
@@ -143,16 +146,28 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
             tabs.addTab("Ai7", a7Tab);
       
       
-      
+      //PLayer tab
+     //tab 1 of Players Tab
+     ArrayList<String> temp=DBConnection.getPosPlayers(conn,true,false,false,false,1);
+     String[] QBPlayers =temp.toArray(new String[temp.size()]);
+     JQBPlayers=new JList<String>(QBPlayers);
+     JQBPlayers.addMouseListener(this);
+     JScrollPane JscrollQBPlayers=new JScrollPane(JQBPlayers);
+     JTabbedPane posTabs=new JTabbedPane();
+     posTabs.add("QB",JscrollQBPlayers);
+     //tab 2
+     temp=DBConnection.getPosPlayers(conn,false,true,false,false,1);
+     String[] RBPlayers =temp.toArray(new String[temp.size()]);
+     JRBPlayers=new JList<String>(RBPlayers);
+     JRBPlayers.addMouseListener(this);
+     JScrollPane JscrollRBPlayers=new JScrollPane(JRBPlayers);
+     posTabs.add("RB",JscrollRBPlayers);
      
-     ArrayList<String> temp=DBConnection.getAllPlayers(conn);
-     String[] allPlayers =temp.toArray(new String[temp.size()]);
-     JallPlayers=new JList<String>(allPlayers);
-     JallPlayers.addMouseListener(this);
-     JScrollPane JscrollPlayers=new JScrollPane(JallPlayers);
+     
+     
      JPanel aPlayers= new JPanel();
      aPlayers.setLayout(new GridLayout());
-     aPlayers.add(JscrollPlayers);
+     aPlayers.add(JTabbedPane);
      
      tabs.addTab("Players", aPlayers);
      initialDraft.add(tabs);

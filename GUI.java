@@ -162,7 +162,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
       
       //PLayer tab
      //tab 1 of Players Tab
-     ArrayList<String> temp
+     ArrayList<String> temp;
      if(qbleft==1)
      {
      temp=DBConnection.getPosPlayers(conn,true,false,false,false,1);

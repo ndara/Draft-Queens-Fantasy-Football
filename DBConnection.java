@@ -453,4 +453,142 @@ public class DBConnection {
    }
 
 
+   public static ArrayList<String> getAllAvailablePlayers(Connection conn) {
+      Statement statement = null;
+      ResultSet results = null;
+      ArrayList<String> allPlayers = new ArrayList<String>();
+      String query = "SELECT player, fname, lname FROM Player WHERE teamOn = 0";
+      try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         results = statement.executeQuery(query);
+
+         while (results.next()) {
+            String playerID = results.getString(1);
+            String first = results.getString(2);
+            String last = results.getString(3);
+            //String first = results.getString("first");
+            //int room = results.getInt(3);
+
+            allPlayers.add(String.format("%s %s %s", playerID, first, last));
+         }
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+      return allPlayers;
+   }
+
+   public static ArrayList<String> getAvailablePosPlayers(Connection conn, boolean QB, boolean RB, boolean WR, boolean TE, int numTrue) {
+      Statement statement = null;
+      ResultSet results = null;
+      ArrayList<String> allPlayers = new ArrayList<String>();
+      int count = 0;
+      if (numTrue == 0) {
+         allPlayers.add("EMPTY");
+         return allPlayers;
+      }
+
+
+      String query = "SELECT player, pos1, fname, lname FROM Player";
+      query += " WHERE teamOn = 0 ";
+      if (numTrue > 0) {
+         query += " AND ( ";
+         if (QB) {
+            query += " pos1 = 'QB'";
+            count++;
+
+         }
+         if (RB) {
+            if (count > 0) {
+               query += " OR pos1 = 'RB'";
+            }
+            else {
+               query += " pos1 = 'RB'";
+            }
+            count++;
+
+         }
+         if (WR) {
+            if (count > 0) {
+               query += " OR pos1 = 'WR'";
+            }
+            else {
+               query += " pos1 = 'WR'";
+            }
+            count++;
+
+         }
+         if (TE) {
+            if (count > 0) {
+               query += " OR pos1 = 'TE'";
+            }
+            else {
+               query += " pos1 = 'TE'";
+            }
+            count++;
+
+         }
+         query += ")";
+
+      }
+      //System.out.println("QUERY MADE:");
+      //System.out.println(query);
+      try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         results = statement.executeQuery(query);
+
+         while (results.next()) {
+            String playerID = results.getString(1);
+            String pos1 = results.getString(2);
+            String first = results.getString(3);
+            String last = results.getString(4);
+            //String first = results.getString("first");
+            //int room = results.getInt(3);
+
+            allPlayers.add(String.format("%s %s %s %s", playerID, pos1, first, last));
+         }
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+      return allPlayers;
+   }
+
+
 }

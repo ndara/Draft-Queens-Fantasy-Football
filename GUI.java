@@ -32,6 +32,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
+	private JList<String> JallPlayers
 	
 	
 
@@ -146,7 +147,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      
      ArrayList<String> temp=DBConnection.getAllPlayers(conn);
      String[] allPlayers =temp.toArray(new String[temp.size()]);
-     JList<String> JallPlayers=new JList<String>(allPlayers);
+     JallPlayers=new JList<String>(allPlayers);
+     JallPlayers.addMouseListener(this);
      JScrollPane JscrollPlayers=new JScrollPane(JallPlayers);
      JPanel aPlayers= new JPanel();
      aPlayers.setLayout(new GridLayout());
@@ -183,7 +185,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		playerAdd.setText((String)JallPlayers.getSelectedValue());
 		
 	}
 

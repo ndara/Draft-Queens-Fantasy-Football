@@ -301,12 +301,9 @@ public class DBConnection {
    public static void resetPlayer(Connection conn, String playerId) {
       Statement statement = null;
       ResultSet results = null;
-      String query = "UPDATE Player SET teamOn = 0 WHERE player = " + playerId;
+      String query = "UPDATE Player SET teamOn = 0 WHERE player = '" + playerId + "'";
         try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          statement.executeUpdate(query);
 
       } catch (SQLException sqlEx) {

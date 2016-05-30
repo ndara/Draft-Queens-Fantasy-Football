@@ -13,7 +13,7 @@ public class Scoring {
 
       //DO ALL DB STUFF HERE
       Connection conn = DBConnection.getConnection();
-
+      
       //DB TESTING
       //getPlayerScore(conn,1 , "DW-4300");
       DBConnection.initTeam(conn, "bitchnigga");
@@ -26,6 +26,11 @@ public class Scoring {
       DBConnection.updateTeam(conn, "TE", "RG-2200", 1);
       System.out.println("here is the total team score : " + getTeamScore(conn, 3, 1));
 
+      RandomAI.swapPlayerRandom(conn, 2);
+      RandomAI.swapPlayerRandom(conn, 2);
+      RandomAI.swapPlayerRandom(conn, 2);
+      RandomAI.swapPlayerRandom(conn, 2);
+      
       DBConnection.close(conn);
    }
    */

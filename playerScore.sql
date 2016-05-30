@@ -19,12 +19,12 @@ FROM
       WHERE
          wk = 1
          AND P.type = 'RUSH'
-         AND L.player = 'CI-0300'
+         AND L.player = 'CN-0500'
    ) X ON X.player = L.player
 WHERE
    wk = 1
    AND P.type = 'RUSH'
-   AND L.player = 'CI-0300';
+   AND L.player = 'CN-0500';
 
 
 -- Returns point total for WR or TE GIVEN a variable week and variable playerID

@@ -233,7 +233,12 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
 		if(tabs.getSelectedIndex()==0)
-			this.repaint();
+		{
+			ArrayList<String> tempp=DBConnection.getAllTeamPlayers(conn,1);
+			 String[] input=tempp.toArray(new String[tempp.size()]);
+			 cTeam=new JList<String>(input);
+			 this.repaint();
+		}	
 		else if(tabs.getSelectedIndex()==8)
 		{
 			if(posTabs.getSelectedIndex()==0)

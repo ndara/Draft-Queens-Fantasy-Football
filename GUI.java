@@ -327,11 +327,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 			if(source==ConfirmButton)
 			{
 				String temp=playerAdd.getText();
-				System.out.println(":"+temp+":");
-				String playerId=temp.substring(0,6);
-				System.out.println(":"+playerId+":");
+				String playerId=temp.substring(0,7);
 				String pos=temp.substring(8,10);
-				System.out.println(":"+pos+":");
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);
 			}

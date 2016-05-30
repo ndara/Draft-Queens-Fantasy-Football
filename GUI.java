@@ -175,7 +175,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      //tab 2
      if(rbleft>0)
      {
-     temp=DBConnection.getPosPlayers(conn,false,true,false,false,1);
+     temp=DBConnection.getAvailablePosPlayers(conn,false,true,false,false,1);
      String[] RBPlayers =temp.toArray(new String[temp.size()]);
      JRBPlayers=new JList<String>(RBPlayers);
      JRBPlayers.addMouseListener(this);
@@ -185,7 +185,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      //tab 3
      if(wrleft>0)
      {
-     temp=DBConnection.getPosPlayers(conn,false,false,true,false,1);
+     temp=DBConnection.getAvailablePosPlayers(conn,false,false,true,false,1);
      String[] WRPlayers =temp.toArray(new String[temp.size()]);
      JWRPlayers=new JList<String>(WRPlayers);
      JWRPlayers.addMouseListener(this);

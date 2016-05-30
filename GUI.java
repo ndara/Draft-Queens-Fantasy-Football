@@ -345,6 +345,13 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		this.setContentPane(cpid);
 		this.repaint();
 	}
+	public void humanTeamUpdate()
+	{
+		ArrayList<String> tempp=DBConnection.getAllTeamPlayers(conn,1);
+		String[] input=tempp.toArray(new String[tempp.size()]);
+		cTeam=new JList<String>(input);
+		this.repaint();
+	}
 	private class ButtonActionListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -381,6 +388,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				DBConnection.updateTeam(conn,pos,playerId,1);	
 				teleft--;
 				}
+				Outer.this.humanTeamUpdate();
 			}
 		}
 	}

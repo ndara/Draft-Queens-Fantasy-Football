@@ -269,7 +269,7 @@ public class DBConnection {
    public static void dropPlayerFromTeam(Connection conn, int teamId, String position) {
       Statement statement = null;
       ResultSet results = null;
-      String query = "UPDATE Team SET " + position " = '' WHERE id = " + teamId;
+      String query = "UPDATE Team SET " + position + " = '' WHERE id = " + teamId;
         try {
          // Get a statement from the connection
          statement = conn.createStatement();

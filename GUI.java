@@ -388,7 +388,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				DBConnection.updateTeam(conn,pos,playerId,1);	
 				teleft--;
 				}
-				Outer.this.humanTeamUpdate();
+				GUI.this.humanTeamUpdate();
 			}
 		}
 	}

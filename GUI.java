@@ -36,6 +36,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JList<String> JRBPlayers;
 	private JList<String> JWRPlayers;
 	private JList<String> JTEPlayers;
+	private JList<String> JAllPlayers;
 	private JTabbedPane posTabs;
 	
 	
@@ -170,13 +171,20 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      JWRPlayers.addMouseListener(this);
      JScrollPane JscrollWRPlayers=new JScrollPane(JWRPlayers);
      posTabs.add("WR",JscrollWRPlayers);
-     //tab 2
+     //tab 4
      temp=DBConnection.getPosPlayers(conn,false,false,false,true,1);
      String[] TEPlayers =temp.toArray(new String[temp.size()]);
      JTEPlayers=new JList<String>(TEPlayers);
      JTEPlayers.addMouseListener(this);
      JScrollPane JscrollTEPlayers=new JScrollPane(JTEPlayers);
      posTabs.add("TE",JscrollTEPlayers);
+     //tab 5
+     temp=DBConnection.getPosPlayers(conn,false,false,false,true,1);
+     String[] AllPlayers =temp.toArray(new String[temp.size()]);
+     JAllPlayers=new JList<String>(AllPlayers);
+     JAllPlayers.addMouseListener(this);
+     JScrollPane JscrollAllPlayers=new JScrollPane(JAllPlayers);
+     posTabs.add("ALL",JscrollAllPlayers);
      
      
      

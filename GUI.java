@@ -348,7 +348,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	public void humanTeamUpdate()
 	{
 		cpid.removeAll();
-		cpid.getContentPane();
+		cpid=getContentPane();
 		initDraft();
 		this.setContentPane(cpid);
 		this.repaint();

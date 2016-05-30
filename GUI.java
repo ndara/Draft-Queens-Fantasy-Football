@@ -39,7 +39,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JList<String> JTEPlayers;
 	private JList<String> JAllPlayers;
 	private JTabbedPane posTabs;
-	private JTabbedPane tabs
+	private JTabbedPane tabs;
 	private ButtonActionListener ButtonListener = new ButtonActionListener();
 	private JList<String> cTeam;
 	
@@ -233,7 +233,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
 		if(tabs.getSelectedIndex()==0)
-			this.repaint
+			this.repaint();
 		else if(tabs.getSelectedIndex()==8)
 		{
 			if(posTabs.getSelectedIndex()==0)

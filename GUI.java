@@ -201,9 +201,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
-		if(posTabs.getSelectedIndex()=0)
+		if(posTabs.getSelectedIndex()==0)
 		playerAdd.setText((String)JQBPlayers.getSelectedValue());
-		else if(posTabs.getSelectedIndex()=1)
+		else if(posTabs.getSelectedIndex()==1)
 		playerAdd.setText((String)JRBPlayers.getSelectedValue());
 		
 	}

@@ -73,7 +73,7 @@ CREATE TABLE Team
 (
 id INT,
 name VARCHAR(32),
-score INT,
+score FLOAT,
 QB CHAR(7) REFERENCES Player(player),
 RB1 CHAR(7) REFERENCES Player(player),
 RB2 CHAR(7) REFERENCES	Player(player),
@@ -85,7 +85,7 @@ TE CHAR(7) REFERENCES Player(player)
 
 CREATE TABLE Leaderboard (
 name VARCHAR(32),
-score INT,
+score FLOAT,
 QB CHAR(7) REFERENCES Player(player),
 RB1 CHAR(7) REFERENCES Player(player),
 RB2 CHAR(7) REFERENCES	Player(player),

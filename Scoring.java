@@ -28,6 +28,36 @@ public class Scoring {
       DBConnection.close(conn);
    }
 
+   public static void editTeamScore(Connection conn, int id, double score) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "UPDATE Team SET score = score + " + score + " WHERE id = " + id;
+
+      try {
+         statement = conn.createStatement();
+         statement.executeUpdate(query);
+
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+   }
+
    public static double getTeamScore(Connection conn, int week, int id) {
       Statement statement = null;
       ResultSet results = null;
@@ -49,7 +79,6 @@ public class Scoring {
       String teStr = "";
 
       double teamScore = 0;
-
       try {
          statement = conn.createStatement();
          results = statement.executeQuery(qbQuery);
@@ -92,7 +121,7 @@ public class Scoring {
                      + getPlayerScore(conn, week, wr2Str) + getPlayerScore(conn, week, wr3Str)
                      + getPlayerScore(conn, week, teStr);
 
-
+         editTeamScore(conn, id, teamScore);
 
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);

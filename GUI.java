@@ -379,7 +379,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				{
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);	
-				teleft--
+				teleft--;
 				}
 			}
 		}

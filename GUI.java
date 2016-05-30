@@ -341,10 +341,6 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				String pos=temp.substring(8,10);
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);
-				//delete if not work
-				ArrayList<String> tempp=DBConnection.getAllTeamPlayers(conn,1);
-			 	String[] input=tempp.toArray(new String[tempp.size()]);
-			 	cTeam=new JList<String>(input);
 			}
 		}
 	}

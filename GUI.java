@@ -39,6 +39,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JList<String> JTEPlayers;
 	private JList<String> JAllPlayers;
 	private JTabbedPane posTabs;
+	private JTabbedPane tabs
 	private ButtonActionListener ButtonListener = new ButtonActionListener();
 	private JList<String> cTeam;
 	
@@ -94,7 +95,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 //this is initial draft
     initialDraft=new JPanel();
      initialDraft.setLayout(new GridLayout(2,2));
-     JTabbedPane tabs =new JTabbedPane();
+     tabs =new JTabbedPane();
      
      //tab1
      
@@ -231,17 +232,21 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
-		if(posTabs.getSelectedIndex()==0)
-			playerAdd.setText((String)JQBPlayers.getSelectedValue());
-		else if(posTabs.getSelectedIndex()==1)
-			playerAdd.setText((String)JRBPlayers.getSelectedValue());
-		else if(posTabs.getSelectedIndex()==2)
-			playerAdd.setText((String)JWRPlayers.getSelectedValue());
-		else if(posTabs.getSelectedIndex()==3)
-			playerAdd.setText((String)JTEPlayers.getSelectedValue());
-		else if(posTabs.getSelectedIndex()==4)
-			playerAdd.setText((String)JAllPlayers.getSelectedValue());
-		
+		if(tabs.getSelectedIndex()==0)
+			this.repaint
+		else if(tabs.getSelectedIndex()==8)
+		{
+			if(posTabs.getSelectedIndex()==0)
+				playerAdd.setText((String)JQBPlayers.getSelectedValue());
+			else if(posTabs.getSelectedIndex()==1)
+				playerAdd.setText((String)JRBPlayers.getSelectedValue());
+			else if(posTabs.getSelectedIndex()==2)
+				playerAdd.setText((String)JWRPlayers.getSelectedValue());
+			else if(posTabs.getSelectedIndex()==3)
+				playerAdd.setText((String)JTEPlayers.getSelectedValue());
+			else if(posTabs.getSelectedIndex()==4)
+				playerAdd.setText((String)JAllPlayers.getSelectedValue());
+		}
 	}
 
 	@Override
@@ -331,7 +336,6 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				String pos=temp.substring(8,10);
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);
-				this.repaint();
 			}
 		}
 	}

@@ -40,6 +40,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JList<String> JAllPlayers;
 	private JTabbedPane posTabs;
 	private ButtonActionListener ButtonListener = new ButtonActionListener();
+	private JList<String> cTeam;
 	
 	
 
@@ -103,7 +104,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      ArrayList<String> tempp=DBConnection.getAllTeamPlayers(conn,1);
      
      String[] input=tempp.toArray(new String[tempp.size()]);
-     JList<String> cTeam=new JList<String>(input);
+     cTeam=new JList<String>(input);
      hTab.add(cTeam);
      
      

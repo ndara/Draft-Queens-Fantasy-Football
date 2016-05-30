@@ -7,7 +7,8 @@ import java.sql.Statement;
 import java.lang.*;
 
 public class Scoring {
-
+   
+   /*
 	public static void main(String[] args) throws Exception {
 
       //DO ALL DB STUFF HERE
@@ -27,6 +28,7 @@ public class Scoring {
 
       DBConnection.close(conn);
    }
+   */
 
    public static void editTeamScore(Connection conn, int id, double score) {
       Statement statement = null;

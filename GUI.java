@@ -52,7 +52,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 cp = getContentPane();
 	 cp.setLayout(new GridLayout(1,1,1,1));
 	 
-	 
+	 //resets players
+	 DBConnection.resetPlayer(conn);
 	 
 	 //Title screen
 	 title =new JPanel();
@@ -287,7 +288,6 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	@Override
 	public void windowClosed(WindowEvent arg0) {
 		DBConnection.close(conn);
-		
 	}
 
 	@Override

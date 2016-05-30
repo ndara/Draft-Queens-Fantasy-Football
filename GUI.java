@@ -369,10 +369,17 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				DBConnection.updateTeam(conn,pos,playerId,1);
 				wrleft--;
 				}
-				else if(pos.equals("QB") || pos.equals("TE"))
+				else if(pos.equals("QB") && qbleft=1)
+				{
+				DBConnection.updatePlayer(conn,playerId,1);
+				DBConnection.updateTeam(conn,pos,playerId,1);
+				qbleft--;
+				}
+				else if(pos.equals("TE") && teleft=1)
 				{
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);	
+				teleft--
 				}
 			}
 		}

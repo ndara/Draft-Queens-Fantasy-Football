@@ -57,7 +57,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 cp.setLayout(new GridLayout(1,1,1,1));
 	 
 	 //resets players
-	 DBConnection.resetPlayer(conn);
+	 DBConnection.resetPlayers(conn);
 	 
 	 //Title screen
 	 title =new JPanel();

@@ -42,8 +42,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JTabbedPane tabs;
 	private ButtonActionListener ButtonListener = new ButtonActionListener();
 	private JList<String> cTeam;
-	private rbleft=2;
-	private wrleft=3;
+	private int rbleft=2;
+	private int wrleft=3;
 	
 	
 

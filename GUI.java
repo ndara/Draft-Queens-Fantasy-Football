@@ -235,13 +235,21 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	remainpos.add(new JLabel("Remaining"));
 	remainpos.add(new JLabel("Players"));
 	remainpos.add(new JLabel("QB"));
-	remainpos.add(new JTextField(""+qbleft,1));
+	JTextField qbn=new JTextField(""+qbleft,1);
+	qbn.setEditable(false);
+	remainpos.add(qbn);
 	remainpos.add(new JLabel("RB"));
-	remainpos.add(new JTextField(""+rbleft,1));
+	JTextField rbn=new JTextField(""+rbleft,1);
+	rbn.setEditable(false);
+	remainpos.add(rbn);
 	remainpos.add(new JLabel("WR"));
-	remainpos.add(new JTextField(""+wrleft,1));
+	JTextField wrn=new JTextField(""+wrleft,1);
+	wrn.setEditable(false);
+	remainpos.add(wrn);
 	remainpos.add(new JLabel("TE"));
-	remainpos.add(new JTextField(""+teleft,1));
+	JTextField ten=new JTextField(""+teleft,1);
+	ten.setEditable(false);
+	remainpos.add(ten);
      initialDraft.add(remainpos);
         cpid.add(initialDraft);
 		

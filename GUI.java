@@ -163,6 +163,20 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      JRBPlayers.addMouseListener(this);
      JScrollPane JscrollRBPlayers=new JScrollPane(JRBPlayers);
      posTabs.add("RB",JscrollRBPlayers);
+     //tab 3
+     temp=DBConnection.getPosPlayers(conn,false,false,true,false,1);
+     String[] WRPlayers =temp.toArray(new String[temp.size()]);
+     JWRPlayers=new JList<String>(RBPlayers);
+     JWRPlayers.addMouseListener(this);
+     JScrollPane JscrollWRPlayers=new JScrollPane(JWRPlayers);
+     posTabs.add("WR",JscrollWRPlayers);
+     //tab 2
+     temp=DBConnection.getPosPlayers(conn,false,false,false,true,1);
+     String[] TEPlayers =temp.toArray(new String[temp.size()]);
+     JTEPlayers=new JList<String>(RBPlayers);
+     JTEPlayers.addMouseListener(this);
+     JScrollPane JscrollTEPlayers=new JScrollPane(JTEPlayers);
+     posTabs.add("TE",JscrollTEPlayers);
      
      
      
@@ -202,9 +216,13 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
 		if(posTabs.getSelectedIndex()==0)
-		playerAdd.setText((String)JQBPlayers.getSelectedValue());
+			playerAdd.setText((String)JQBPlayers.getSelectedValue());
 		else if(posTabs.getSelectedIndex()==1)
-		playerAdd.setText((String)JRBPlayers.getSelectedValue());
+			playerAdd.setText((String)JRBPlayers.getSelectedValue());
+		else if(posTabs.getSelectedIndex()==2)
+			playerAdd.setText((String)JWRPlayers.getSelectedValue());
+		else if(posTabs.getSelectedIndex()==3)
+			playerAdd.setText((String)JTEPlayers.getSelectedValue());
 		
 	}
 

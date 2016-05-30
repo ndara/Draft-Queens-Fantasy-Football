@@ -350,9 +350,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		cpid.removeAll();
 		cpid=getContentPane();
 		initDraft();
+		tabs.setSelectedIndex(0);
 		this.setContentPane(cpid);
 		this.repaint();
-		System.out.println("it ran");
 	}
 	private class ButtonActionListener implements ActionListener
 	{

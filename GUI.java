@@ -162,6 +162,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
       
       //PLayer tab
      //tab 1 of Players Tab
+     if(qbleft==1)
+     {
      ArrayList<String> temp=DBConnection.getPosPlayers(conn,true,false,false,false,1);
      String[] QBPlayers =temp.toArray(new String[temp.size()]);
      JQBPlayers=new JList<String>(QBPlayers);
@@ -169,27 +171,37 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      JScrollPane JscrollQBPlayers=new JScrollPane(JQBPlayers);
      posTabs=new JTabbedPane();
      posTabs.add("QB",JscrollQBPlayers);
+     }
      //tab 2
+     if(rbleft>0)
+     {
      temp=DBConnection.getPosPlayers(conn,false,true,false,false,1);
      String[] RBPlayers =temp.toArray(new String[temp.size()]);
      JRBPlayers=new JList<String>(RBPlayers);
      JRBPlayers.addMouseListener(this);
      JScrollPane JscrollRBPlayers=new JScrollPane(JRBPlayers);
      posTabs.add("RB",JscrollRBPlayers);
+     }
      //tab 3
+     if(wrleft>0)
+     {
      temp=DBConnection.getPosPlayers(conn,false,false,true,false,1);
      String[] WRPlayers =temp.toArray(new String[temp.size()]);
      JWRPlayers=new JList<String>(WRPlayers);
      JWRPlayers.addMouseListener(this);
      JScrollPane JscrollWRPlayers=new JScrollPane(JWRPlayers);
      posTabs.add("WR",JscrollWRPlayers);
+     }
      //tab 4
+     if(teleft>0)
+     {
      temp=DBConnection.getPosPlayers(conn,false,false,false,true,1);
      String[] TEPlayers =temp.toArray(new String[temp.size()]);
      JTEPlayers=new JList<String>(TEPlayers);
      JTEPlayers.addMouseListener(this);
      JScrollPane JscrollTEPlayers=new JScrollPane(JTEPlayers);
      posTabs.add("TE",JscrollTEPlayers);
+     }
      //tab 5
      temp=DBConnection.getPosPlayers(conn,true,true,true,true,4);
      String[] AllPlayers =temp.toArray(new String[temp.size()]);

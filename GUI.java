@@ -179,7 +179,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      JScrollPane JscrollTEPlayers=new JScrollPane(JTEPlayers);
      posTabs.add("TE",JscrollTEPlayers);
      //tab 5
-     temp=DBConnection.getPosPlayers(conn,false,false,false,true,1);
+     temp=DBConnection.getAllPlayers();
      String[] AllPlayers =temp.toArray(new String[temp.size()]);
      JAllPlayers=new JList<String>(AllPlayers);
      JAllPlayers.addMouseListener(this);

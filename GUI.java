@@ -167,7 +167,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      
      JPanel aPlayers= new JPanel();
      aPlayers.setLayout(new GridLayout());
-     aPlayers.add(JTabbedPane);
+     aPlayers.add(posTabs);
      
      tabs.addTab("Players", aPlayers);
      initialDraft.add(tabs);
@@ -200,7 +200,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
-		playerAdd.setText((String)JallPlayers.getSelectedValue());
+		playerAdd.setText((String)JQBPlayers.getSelectedValue());
 		
 	}
 

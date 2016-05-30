@@ -29,7 +29,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private Container cpid;
 	private JPanel title;
 	private JPanel initialDraft;
-	private JButton ConfirmButton
+	private JButton ConfirmButton;
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
@@ -39,7 +39,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JList<String> JTEPlayers;
 	private JList<String> JAllPlayers;
 	private JTabbedPane posTabs;
-	private ButtonListener = new ButtonActionListener();
+	private ButtonActionListener ButtonListener = new ButtonActionListener();
 	
 	
 

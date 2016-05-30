@@ -32,7 +32,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
-	private JList<String> JallPlayers
+	private JList<String> JallPlayers;
 	
 	
 

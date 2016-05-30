@@ -331,6 +331,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				String pos=temp.substring(8,10);
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);
+				GUI.repaint();
 			}
 		}
 	}

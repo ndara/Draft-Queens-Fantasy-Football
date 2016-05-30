@@ -345,6 +345,15 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		this.setContentPane(cpid);
 		this.repaint();
 	}
+	public void humanTeamUpdate()
+	{
+		cpid.removeAll();
+		cpid=getContentPane();
+		initDraft();
+		this.setContentPane(cpid);
+		this.repaint();
+		System.out.println("it ran");
+	}
 	private class ButtonActionListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -369,18 +378,19 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				DBConnection.updateTeam(conn,pos,playerId,1);
 				wrleft--;
 				}
-				else if(pos.equals("QB") && qbleft==1))
+				else if(pos.equals("QB") && qbleft>0)
 				{
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);
 				qbleft--;
 				}
-				else if(pos.equals("TE") && teleft==1))
+				else if(pos.equals("TE") && teleft>0)
 				{
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);	
 				teleft--;
 				}
+				GUI.this.humanTeamUpdate();
 			}
 		}
 	}

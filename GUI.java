@@ -347,11 +347,12 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	}
 	public void humanTeamUpdate()
 	{
-		ArrayList<String> tempp=DBConnection.getAllTeamPlayers(conn,1);
-		String[] input=tempp.toArray(new String[tempp.size()]);
-		cTeam=new JList<String>(input);
+		cpid.removeAll();
+		cpid.getContentPane();
+		initDraft();
 		this.setContentPane(cpid);
 		this.repaint();
+		System.out.println("it ran");
 	}
 	private class ButtonActionListener implements ActionListener
 	{

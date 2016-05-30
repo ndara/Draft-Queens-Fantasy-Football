@@ -323,11 +323,11 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		public void actionPerformed(ActionEvent arg0)
 		{
 			Object source=arg0.getSource();
-			if(source=ConfirmButton)
+			if(source==ConfirmButton)
 			{
 				String temp=playerAdd.getText();
-				String playerId=temp.subString(0,6);
-				String pos=temp.subString(8,10);
+				String playerId=temp.substring(0,6);
+				String pos=temp.substring(8,10);
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);
 			}

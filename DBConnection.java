@@ -269,7 +269,7 @@ public class DBConnection {
 
 
 
-  public static void resetPlayer(Connection conn) {
+  public static void resetPlayers(Connection conn) {
       Statement statement = null;
       ResultSet results = null;
       String query = "UPDATE Player SET teamOn = 0";

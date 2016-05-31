@@ -469,6 +469,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 			{
 				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
 				//need to have a checker
+				if(playerAdd.getText().length>0)
+				{
 				String temp=playerAdd.getText();
 				String playerId=temp.substring(0,7);
 				String pos=temp.substring(8,10);
@@ -507,6 +509,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				}
 				//updates the screen
 				GUI.this.humanTeamUpdate();
+				playerAdd.setText("");
+				}
 			}
 			if(source==doWeek)
 			{

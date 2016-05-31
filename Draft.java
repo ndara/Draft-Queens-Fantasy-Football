@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class Draft {
-	public static void main(String[] args) throws Exception {
-		getDraftOrder(8);
-	}
+	//public static void main(String[] args) throws Exception {
+	//	getDraftOrder(8);
+	//}
 
 
 

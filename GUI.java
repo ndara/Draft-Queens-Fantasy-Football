@@ -453,13 +453,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		next.addActionListener(ButtonListener);
 		JPanel but=new JPanel();
 		but.setLayout(new FlowLayout());
-		tempp=Scoring.getRoundStats(conn);
-		input=tempp.toArray(new String[tempp.size()]);
-		JList<String> elip=new JList<String>(input);
-		JPanel eli=new JPanel();
-		eli.setLayout(new FlowLayout());
-		eli.add(elip);
-		but.add(eli);
+		String loser=Scoring.getLoserTeam(conn);
+		but.add(new JLabel("Eliminated: "+loser));
 		but.add(next);
 		roundPane.add(but);
 		temp.add(roundPane);

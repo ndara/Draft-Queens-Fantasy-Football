@@ -484,7 +484,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				Random num=new Random();
 				int week=num.nextInt(8);
 				//needs to have 8 changed maybe to a another fucking global
-				Scoring.runWeek(conn,week,8)
+				Scoring.runWeek(conn,week,8);
 				System.out.println("doWeek executed ");
 			}
 		}

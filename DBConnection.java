@@ -164,7 +164,49 @@ public class DBConnection {
       }
       return allPlayers;
    }
+public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId) {
+      Statement statement = null;
+      ResultSet results = null;
+      ArrayList<String> allPlayers = new ArrayList<String>();
+      String query = "SELECT player, pos,fname, lname FROM Player WHERE teamOn = " + teamId;
+      try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
 
+         // Execute the query
+         results = statement.executeQuery(query);
+
+         while (results.next()) {
+            String playerID = results.getString(1);
+            String pos = results.getString(2);
+            String first = results.getString(3);
+            String last = results.getString(4);
+            //String first = results.getString("first");
+            //int room = results.getInt(3);
+
+            allPlayers.add(String.format("%s %s %s %s", playerID, pos,first, last));
+         }
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+      return allPlayers;
+   }
    public static void updatePlayer(Connection conn, String playerId, int teamId) {
       Statement statement = null;
       ResultSet results = null;

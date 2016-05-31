@@ -30,6 +30,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JPanel title;
 	private JPanel initialDraft;
 	private JButton ConfirmButton;
+	private JButton doWeek;
+	private JButton next;
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
@@ -47,6 +49,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int wrleft=3;
 	private int teleft=1;
 	private int[] order=Draft.getDraftOrder(7);
+	private JTable teamOn;
 
 	public GUI() throws Exception
 	{
@@ -289,7 +292,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      initialDraft.add(bot);
 	//remaining players
 	JPanel remainpos=new JPanel();
-	remainpos.setLayout(new GridLayout(5,2));
+	remainpos.setLayout(new GridLayout(6,2));
 	remainpos.add(new JLabel("Remaining"));
 	remainpos.add(new JLabel("Players"));
 	remainpos.add(new JLabel("QB"));
@@ -308,6 +311,13 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	JTextField ten=new JTextField(""+teleft,1);
 	ten.setEditable(false);
 	remainpos.add(ten);
+	int remainingPlayers=qbleft+rbleft+wrleft+teleft;
+	if(remainingPlayers=0)
+	{
+		doWeek=new JButton("Do Week");
+		doWeek.addActionListener(ButtonListener);
+		ramainpos.add(doWeek);
+	}
      initialDraft.add(remainpos);
         cpid.add(initialDraft);
 		
@@ -468,6 +478,10 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				}
 				//updates the screen
 				GUI.this.humanTeamUpdate();
+			}
+			if(source==doWeek)
+			{
+				System.out.println("doWeek");
 			}
 		}
 	}

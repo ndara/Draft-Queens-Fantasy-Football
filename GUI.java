@@ -50,6 +50,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int teleft=1;
 	private int[] order=Draft.getDraftOrder(7);
 	private JTable teamOn;
+	private int round=1;
 
 	public GUI() throws Exception
 	{
@@ -431,6 +432,22 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		this.setContentPane(cpid);
 		this.repaint();
 	}
+	public void roundUpdater()
+	{
+		Container temp=getContentPane();
+		temp.removeAll();
+		JPanel roundPane=new JPanel();
+		roundPane.setLayout(new GridLayout(3,1));
+		roundPane.add(new JLabel("Round: "+round));
+		round++;
+		roundPane.add(new JLabel("Stats go here"));
+		next=new JButton("next");
+		next.addActionListener(ButtonListener);
+		roundPane.add(next);
+		this.setContentPane(temp);
+		this.repaint();
+		
+	}
 	private class ButtonActionListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
@@ -486,6 +503,10 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				//needs to have 8 changed maybe to a another fucking global
 				Scoring.runWeek(conn,week,8);
 				System.out.println("doWeek executed ");
+			}
+			if(source==next)
+			{
+				System.out.println("Woo you reacher next");
 			}
 		}
 	}

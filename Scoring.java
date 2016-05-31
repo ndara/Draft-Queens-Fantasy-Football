@@ -73,10 +73,10 @@ public class Scoring {
       }
    }
 
-   public static ArrayList<String> getLoserTeam(Connection conn) {
+   public static String getLoserTeam(Connection conn) {
       Statement statement = null;
       ResultSet results = null;
-      ArrayList<String> allTeams = new ArrayList<String>();
+      String str = "";
       String query = "SELECT name, score FROM Team ORDER BY score LIMIT 1" ;
       try {
          // Get a statement from the connection
@@ -91,7 +91,7 @@ public class Scoring {
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            allTeams.add(String.format("%s %s", teamName, teamScore));
+            str += String.format("%s %s", teamName, teamScore);
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);
@@ -112,7 +112,7 @@ public class Scoring {
             ex.printStackTrace(System.err);
          }     
       }
-      return allTeams;
+      return str;
    }
 
    public static ArrayList<String> getRoundStats(Connection conn) {

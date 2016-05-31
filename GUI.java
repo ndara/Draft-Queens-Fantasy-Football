@@ -312,11 +312,11 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	ten.setEditable(false);
 	remainpos.add(ten);
 	int remainingPlayers=qbleft+rbleft+wrleft+teleft;
-	if(remainingPlayers=0)
+	if(remainingPlayers==0)
 	{
 		doWeek=new JButton("Do Week");
 		doWeek.addActionListener(ButtonListener);
-		ramainpos.add(doWeek);
+		remainpos.add(doWeek);
 	}
      initialDraft.add(remainpos);
         cpid.add(initialDraft);

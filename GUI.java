@@ -453,6 +453,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		next.addActionListener(ButtonListener);
 		JPanel but=new JPanel();
 		but.setLayout(new FlowLayout());
+		but.add(next);
 		roundPane.add(but);
 		temp.add(roundPane);
 		this.setContentPane(temp);

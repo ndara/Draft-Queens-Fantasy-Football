@@ -445,7 +445,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		roundPane.setLayout(new GridLayout(3,1));
 		roundPane.add(new JLabel("Round: "+round));
 		round++;
-		ArrayList<String> tempp=DBConnection.getRoundStats(conn);
+		ArrayList<String> tempp=Scoring.getRoundStats(conn);
 		String[] input=tempp.toArray(new String[tempp.size()]);
 		JList<String> stats=new JList<String>(input);
 		roundPane.add(stats);

@@ -279,15 +279,15 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		}	
 		else if(tabs.getSelectedIndex()==8)
 		{
-			if(posTabs.getSelectedIndex()==0)
+			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
 				playerAdd.setText((String)JQBPlayers.getSelectedValue());
-			else if(posTabs.getSelectedIndex()==1)
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("RB"))
 				playerAdd.setText((String)JRBPlayers.getSelectedValue());
-			else if(posTabs.getSelectedIndex()==2)
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("WR"))
 				playerAdd.setText((String)JWRPlayers.getSelectedValue());
-			else if(posTabs.getSelectedIndex()==3)
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("TE"))
 				playerAdd.setText((String)JTEPlayers.getSelectedValue());
-			else if(posTabs.getSelectedIndex()==4)
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("All"))
 				playerAdd.setText((String)JAllPlayers.getSelectedValue());
 		}
 	}
@@ -383,6 +383,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 			Object source=arg0.getSource();
 			if(source==ConfirmButton)
 			{
+				//need to have a checker
 				String temp=playerAdd.getText();
 				String playerId=temp.substring(0,7);
 				String pos=temp.substring(8,10);

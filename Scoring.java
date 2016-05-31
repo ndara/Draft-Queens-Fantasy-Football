@@ -91,7 +91,7 @@ public class Scoring {
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            allPlayers.add(String.format("%s %s", teamName, teamScore));
+            allTeams.add(String.format("%s %s", teamName, teamScore));
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);

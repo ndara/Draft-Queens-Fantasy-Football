@@ -105,7 +105,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      
      JPanel hTab=new JPanel();
      hTab.setLayout(new GridLayout(1,1));
-     ArrayList<String> tempp=DBConnection.getAllTeamPlayers(conn,1);
+     ArrayList<String> tempp=DBConnection.getAllTeamPosPlayers(conn,1);
      
      String[] input=tempp.toArray(new String[tempp.size()]);
      cTeam=new JList<String>(input);
@@ -118,7 +118,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      JPanel a1Tab=new JPanel();
      a1Tab.setLayout(new GridLayout(1,1));
      
-      tempp=DBConnection.getAllTeamPlayers(conn,2);
+      tempp=DBConnection.getAllTeamPosPlayers(conn,2);
      input=tempp.toArray(new String[tempp.size()]);
     JList<String> a1Team=new JList<String>(input);
      a1Tab.add(a1Team);
@@ -127,7 +127,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      //AI two
       JPanel a2Tab=new JPanel();
       a2Tab.setLayout(new GridLayout(1,1));
-      tempp=DBConnection.getAllTeamPlayers(conn,3);
+      tempp=DBConnection.getAllTeamPosPlayers(conn,3);
      input=tempp.toArray(new String[tempp.size()]);
      JList<String> a2Team=new JList<String>(input);
       a2Tab.add(a2Team);
@@ -135,7 +135,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      //AI three
        JPanel a3Tab=new JPanel();
        a3Tab.setLayout(new GridLayout(1,1));
-       tempp=DBConnection.getAllTeamPlayers(conn,4);
+       tempp=DBConnection.getAllTeamPosPlayers(conn,4);
      input=tempp.toArray(new String[tempp.size()]);
       JList<String> a3Team=new JList<String>(input);
        a3Tab.add(a3Team);
@@ -143,7 +143,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
       //AI four
         JPanel a4Tab=new JPanel();
         a4Tab.setLayout(new GridLayout(1,1));
-        tempp=DBConnection.getAllTeamPlayers(conn,5);
+        tempp=DBConnection.getAllTeamPosPlayers(conn,5);
      input=tempp.toArray(new String[tempp.size()]);
        JList<String> a4Team=new JList<String>(input);
         a4Tab.add(a4Team);
@@ -151,7 +151,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
        //AI five
          JPanel a5Tab=new JPanel();
          a5Tab.setLayout(new GridLayout(1,1));
-         tempp=DBConnection.getAllTeamPlayers(conn,6);
+         tempp=DBConnection.getAllTeamPosPlayers(conn,6);
      input=tempp.toArray(new String[tempp.size()]);
         JList<String> a5Team=new JList<String>(input);
          a5Tab.add(a5Team);
@@ -159,7 +159,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
         //AI six
           JPanel a6Tab=new JPanel();
           a6Tab.setLayout(new GridLayout(1,1));
-          tempp=DBConnection.getAllTeamPlayers(conn,7);
+          tempp=DBConnection.getAllTeamPosPlayers(conn,7);
      input=tempp.toArray(new String[tempp.size()]);
          JList<String> a6Team=new JList<String>(input);
           a6Tab.add(a6Team);
@@ -167,7 +167,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
          //AI seven
            JPanel a7Tab=new JPanel();
            a7Tab.setLayout(new GridLayout(1,1));
-           tempp=DBConnection.getAllTeamPlayers(conn,8);
+           tempp=DBConnection.getAllTeamPosPlayers(conn,8);
      input=tempp.toArray(new String[tempp.size()]);
           JList<String> a7Team=new JList<String>(input);
            a7Tab.add(a7Team);
@@ -317,7 +317,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	public void mouseClicked(MouseEvent arg0) {
 		if(tabs.getSelectedIndex()==0)
 		{
-			ArrayList<String> tempp=DBConnection.getAllTeamPlayers(conn,1);
+			ArrayList<String> tempp=DBConnection.getAllTeamPosPlayers(conn,1);
 			 String[] input=tempp.toArray(new String[tempp.size()]);
 			 cTeam=new JList<String>(input);
 			 this.repaint();

@@ -65,6 +65,12 @@ public class Scoring {
       }
    }
 
+   public static void runWeek(Connection conn, int week, int numPlayers) {
+      for (int i = 1; i < numPlayers + 1; i++) {
+         getTeamScore(conn, week, i);
+      }
+   }
+
    public static double getTeamScore(Connection conn, int week, int id) {
       Statement statement = null;
       ResultSet results = null;

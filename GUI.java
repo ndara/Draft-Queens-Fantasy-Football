@@ -106,7 +106,6 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      
      JPanel hTab=new JPanel();
      hTab.setLayout(new GridLayout(1,1));
-     //this nextpart is for testing
      ArrayList<String> tempp=DBConnection.getAllTeamPlayers(conn,1);
      
      String[] input=tempp.toArray(new String[tempp.size()]);
@@ -204,13 +203,44 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      posTabs.add("TE",JscrollTEPlayers);
      }
      //tab 5
-     temp=DBConnection.getPosPlayers(conn,true,true,true,true,4);
+     boolean qbl=true;
+     boolean rbl=true;
+     boolean wrl=true;
+     boolean tel=true;
+     int count=4;
+     if(qbl=0)
+     {
+     	qbl=false;
+     	count--;
+     }
+     if(rbl=0)
+     {
+     	rbl=false;
+     	count--;
+     }
+     if(wrl=0)
+     {
+     	wrl=false;
+     	count--;
+     }
+     if(tel=0)
+     {
+     	tel=false;
+     	count--;
+     }
+     if(count!=0)
+     {
+     temp=DBConnection.getPosPlayers(conn,qbl,rbl,wrl,tel,count);
      String[] AllPlayers =temp.toArray(new String[temp.size()]);
      JAllPlayers=new JList<String>(AllPlayers);
      JAllPlayers.addMouseListener(this);
      JScrollPane JscrollAllPlayers=new JScrollPane(JAllPlayers);
      posTabs.add("ALL",JscrollAllPlayers);
-     
+     }
+     else
+     {
+     	posTabs.add("Players",new JLabel("no more players fit on your team");
+     }
      
      
      JPanel aPlayers= new JPanel();

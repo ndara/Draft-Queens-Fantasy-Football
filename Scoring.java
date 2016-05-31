@@ -16,24 +16,26 @@ public class Scoring {
       
       //DB TESTING
       //getPlayerScore(conn,1 , "DW-4300");
-      DBConnection.initTeam(conn, "bitchnigga");
-      DBConnection.updateTeam(conn, "QB", "CN-0500", 1);
-      DBConnection.updateTeam(conn, "RB1", "DM-0450", 1);
-      DBConnection.updateTeam(conn, "RB2", "LB-0250", 1);
-      DBConnection.updateTeam(conn, "WR1", "WS-0925", 1);
-      DBConnection.updateTeam(conn, "WR2", "BM-0300", 1);
-      DBConnection.updateTeam(conn, "WR3", "JJ-4700", 1);
-      DBConnection.updateTeam(conn, "TE", "RG-2200", 1);
-      System.out.println("here is the total team score : " + getTeamScore(conn, 3, 1));
+      // DBConnection.initTeam(conn, "bitchnigga");
+      // DBConnection.updateTeam(conn, "QB", "CN-0500", 1);
+      // DBConnection.updateTeam(conn, "RB1", "DM-0450", 1);
+      // DBConnection.updateTeam(conn, "RB2", "LB-0250", 1);
+      // DBConnection.updateTeam(conn, "WR1", "WS-0925", 1);
+      // DBConnection.updateTeam(conn, "WR2", "BM-0300", 1);
+      // DBConnection.updateTeam(conn, "WR3", "JJ-4700", 1);
+      // DBConnection.updateTeam(conn, "TE", "RG-2200", 1);
+      // System.out.println("here is the total team score : " + getTeamScore(conn, 3, 1));
 
-      RandomAI.swapPlayerRandom(conn, 2);
-      RandomAI.swapPlayerRandom(conn, 2);
-      RandomAI.swapPlayerRandom(conn, 2);
-      RandomAI.swapPlayerRandom(conn, 2);
+      // RandomAI.swapPlayerRandom(conn, 2);
+      // RandomAI.swapPlayerRandom(conn, 2);
+      // RandomAI.swapPlayerRandom(conn, 2);
+      // RandomAI.swapPlayerRandom(conn, 2);
+      resetTeams(conn);
       
       DBConnection.close(conn);
    }
    */
+   
 
    public static void editTeamScore(Connection conn, int id, double score) {
       Statement statement = null;
@@ -169,8 +171,8 @@ public class Scoring {
    public static void resetTeams(Connection conn) {
       Statement statement = null;
       ResultSet results = null;
-      String query = "UPDATE Team SET score = 0, SET name = '', SET QB = '', SET RB1 = '', SET RB2 = '', SET WR1 = '', SET WR2 = '', SET WR3 = '', SET TE = ''";
-
+      String query = "UPDATE Team SET score = 0, QB = '', RB1 = '', RB2 = '', WR1 = '', WR2 = '', WR3 = '', TE = ''";
+      //System.out.println(query);
         try {
          // Get a statement from the connection
          statement = conn.createStatement();

@@ -332,7 +332,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				playerAdd.setText((String)JWRPlayers.getSelectedValue());
 			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("TE"))
 				playerAdd.setText((String)JTEPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("All"))
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("ALL"))
 				playerAdd.setText((String)JAllPlayers.getSelectedValue());
 		}
 	}

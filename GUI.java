@@ -208,22 +208,22 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      boolean wrl=true;
      boolean tel=true;
      int count=4;
-     if(qbl=0)
+     if(qbl == false)
      {
      	qbl=false;
      	count--;
      }
-     if(rbl=0)
+     if(rbl == false)
      {
      	rbl=false;
      	count--;
      }
-     if(wrl=0)
+     if(wrl == false)
      {
      	wrl=false;
      	count--;
      }
-     if(tel=0)
+     if(tel == false)
      {
      	tel=false;
      	count--;
@@ -239,7 +239,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      }
      else
      {
-     	posTabs.add("Players",new JLabel("no more players fit on your team");
+     	posTabs.add("Players",new JLabel("no more players fit on your team"));
      }
      
      

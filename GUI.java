@@ -445,6 +445,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		next=new JButton("next");
 		next.addActionListener(ButtonListener);
 		roundPane.add(next);
+		temp.add(roundPane);
 		this.setContentPane(temp);
 		this.repaint();
 		
@@ -499,10 +500,12 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 			}
 			if(source==doWeek)
 			{
+				//we can move this to last time confirm button is hit
 				Random num=new Random();
 				int week=num.nextInt(8);
 				//needs to have 8 changed maybe to a another fucking global
 				Scoring.runWeek(conn,week,8);
+				//up to here
 				System.out.println("doWeek executed ");
 				GUI.this.roundUpdater();
 			}

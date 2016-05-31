@@ -61,6 +61,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 
 	 //resets players
 	 DBConnection.resetPlayers(conn);
+	 Scoring.resetTeams(conn);
 	 
 	 //Title screen
 	 title =new JPanel();
@@ -503,6 +504,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				//needs to have 8 changed maybe to a another fucking global
 				Scoring.runWeek(conn,week,8);
 				System.out.println("doWeek executed ");
+				GUI.this.roundUpdater();
 			}
 			if(source==next)
 			{

@@ -73,6 +73,48 @@ public class Scoring {
       }
    }
 
+   public static ArrayList<String> getLoserTeam(Connection conn) {
+      Statement statement = null;
+      ResultSet results = null;
+      ArrayList<String> allTeams = new ArrayList<String>();
+      String query = "SELECT name, score FROM Team ORDER BY score LIMIT 1" ;
+      try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         results = statement.executeQuery(query);
+
+         while (results.next()) {
+            String teamName = results.getString(1);
+            String teamScore = results.getString(2);
+            //String first = results.getString("first");
+            //int room = results.getInt(3);
+
+            allTeams.add(String.format("%s %s", teamName, teamScore));
+         }
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+      return allTeams;
+   }
+
    public static ArrayList<String> getRoundStats(Connection conn) {
       Statement statement = null;
       ResultSet results = null;

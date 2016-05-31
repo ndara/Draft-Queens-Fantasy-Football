@@ -168,7 +168,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       Statement statement = null;
       ResultSet results = null;
       ArrayList<String> allPlayers = new ArrayList<String>();
-      String query = "SELECT player, pos,fname, lname FROM Player WHERE teamOn = " + teamId;
+      String query = "SELECT player, pos1,fname, lname FROM Player WHERE teamOn = " + teamId;
       try {
          // Get a statement from the connection
          statement = conn.createStatement();

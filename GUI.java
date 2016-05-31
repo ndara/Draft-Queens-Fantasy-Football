@@ -458,13 +458,15 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				DBConnection.updateTeam(conn,pos,playerId,1);	
 				teleft--;
 				}
-				GUI.this.humanTeamUpdate();
+				
 				//AI drafting
 				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
 				for(int x=2;x<9;x++)
 				{
 					RandomAI.draftPlayer(conn,remainingPlayers,x);
 				}
+				//updates the screen
+				GUI.this.humanTeamUpdate();
 			}
 		}
 	}

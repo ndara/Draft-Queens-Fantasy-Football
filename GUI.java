@@ -461,10 +461,10 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				}
 				
 				//AI drafting
-				int[] order=Draft.getDraftOrder(8);
+				int[] order=Draft.getDraftOrder(7);
 				for(int x=0;x<order.length;x++)
 				{
-					RandomAI.draftPlayer(conn,remainingPlayers,order[x]);
+					RandomAI.draftPlayer(conn,remainingPlayers,order[x]+1);
 					System.out.println(order[x]+"turn");
 				}
 				//updates the screen

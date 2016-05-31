@@ -165,6 +165,40 @@ public class Scoring {
 		return score;      
    }
 
+
+   public static void resetTeams(Connection conn) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "UPDATE Team SET score = 0, SET name = '', SET QB = '', SET RB1 = '', SET RB2 = '', SET WR1 = '', SET WR2 = '', SET WR3 = '', SET TE = ''";
+
+        try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         statement.executeUpdate(query);
+
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+   }
+
    public static double qbScore(Connection conn, int week, String player) {
    	Statement statement = null;
       ResultSet results = null;

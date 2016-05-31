@@ -103,7 +103,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	
 	 //this is initial draft
     initialDraft=new JPanel();
-     initialDraft.setLayout(new GridLayout(2,2));
+     initialDraft.setLayout(new GridLayout(2,1));
      tabs =new JTabbedPane();
      
      //tab1
@@ -262,17 +262,21 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      	posTabs.add("Players",new JLabel("no more players fit on your team"));
      }
      
-     
      JPanel aPlayers= new JPanel();
      aPlayers.setLayout(new GridLayout());
      aPlayers.add(posTabs);
      
      tabs.addTab("Players", aPlayers);
      initialDraft.add(tabs);
-     initialDraft.add(new JLabel("grid 2"));
      
+     
+     
+     
+     JPanel botScreen=new JPanel();
+     botScreen.setLayout(new GridLayout(1,2));
      JPanel bot=new JPanel();
      bot.setLayout(new GridLayout(2,1));
+     
      JPanel adder=new JPanel();
      adder.setLayout(new FlowLayout());
      adder.add(new JLabel("Add"));
@@ -290,8 +294,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      turn.add(teamName);
      turn.add(new JLabel("Round"));
      bot.add(turn);
-     
-     initialDraft.add(bot);
+     botScreen.add(bot);
 	//remaining players
 	JPanel remainpos=new JPanel();
 	remainpos.setLayout(new GridLayout(6,2));
@@ -320,7 +323,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		doWeek.addActionListener(ButtonListener);
 		remainpos.add(doWeek);
 	}
-     initialDraft.add(remainpos);
+	botScreen.add(remainpos);
+     initialDraft.add(botScreen);
         cpid.add(initialDraft);
 		
 	}
@@ -447,7 +451,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		roundPane.add(stats);
 		next=new JButton("next");
 		next.addActionListener(ButtonListener);
-		roundPane.add(next);
+		JPanel but=new JPanel();
+		but.setLayout(new FlowLayout());
+		roundPane.add(but);
 		temp.add(roundPane);
 		this.setContentPane(temp);
 		this.repaint();

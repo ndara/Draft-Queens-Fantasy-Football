@@ -428,6 +428,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 			Object source=arg0.getSource();
 			if(source==ConfirmButton)
 			{
+				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
 				//need to have a checker
 				String temp=playerAdd.getText();
 				String playerId=temp.substring(0,7);
@@ -460,7 +461,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				}
 				
 				//AI drafting
-				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
+				
 				for(int x=2;x<9;x++)
 				{
 					RandomAI.draftPlayer(conn,remainingPlayers,x);

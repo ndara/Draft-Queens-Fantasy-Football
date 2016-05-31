@@ -47,7 +47,6 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int wrleft=3;
 	private int teleft=1;
 	
-	
 
 	public GUI() throws Exception
 	{
@@ -460,6 +459,12 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				teleft--;
 				}
 				GUI.this.humanTeamUpdate();
+				//AI drafting
+				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
+				for(int x=2;x<9;x++)
+				{
+					RandomAI.draftPlayer(conn,remainingPlayers,x);
+				}
 			}
 		}
 	}

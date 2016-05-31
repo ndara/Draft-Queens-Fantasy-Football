@@ -481,7 +481,11 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 			}
 			if(source==doWeek)
 			{
-				System.out.println("doWeek");
+				Random num=new Random();
+				int week=num.nextInt(8);
+				//needs to have 8 changed maybe to a another fucking global
+				Scoring.runWeek(conn,week,8)
+				System.out.println("doWeek executed ");
 			}
 		}
 	}

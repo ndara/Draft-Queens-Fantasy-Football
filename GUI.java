@@ -208,22 +208,22 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
      boolean wrl=true;
      boolean tel=true;
      int count=4;
-     if(qbl == false)
+     if(qbleft== 0)
      {
      	qbl=false;
      	count--;
      }
-     if(rbl == false)
+     if(rbleft == 0)
      {
      	rbl=false;
      	count--;
      }
-     if(wrl == false)
+     if(wrleft== 0)
      {
      	wrl=false;
      	count--;
      }
-     if(tel == false)
+     if(teleft== 0)
      {
      	tel=false;
      	count--;

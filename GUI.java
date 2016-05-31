@@ -46,7 +46,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int rbleft=2;
 	private int wrleft=3;
 	private int teleft=1;
-	
+	private int[] order=Draft.getDraftOrder(7);
 
 	public GUI() throws Exception
 	{
@@ -461,7 +461,6 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 				}
 				
 				//AI drafting
-				int[] order=Draft.getDraftOrder(7);
 				for(int x=0;x<order.length;x++)
 				{
 					RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);

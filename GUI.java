@@ -25,6 +25,7 @@ import java.sql.Statement;
 public class GUI extends JFrame implements ActionListener, WindowListener, MouseListener {
 	private JTextField teamName =new JTextField("", 20);// 20 is variable
 	private JTextField playerAdd=new JTextField("", 20);
+	private JTextField playerDrop=new JTextField("",20);
 	private Container cp;
 	private Container cpid;
 	private JPanel title;
@@ -32,6 +33,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JButton ConfirmButton;
 	private JButton doWeek;
 	private JButton next;
+	private JButton swap;
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
@@ -410,8 +412,6 @@ public void swapDraft()
       //PLayer tab
      //tab 1 of Players Tab
      ArrayList<String> temp;
-     if(qbleft==1)
-     {
      temp=DBConnection.getPosPlayers(conn,true,false,false,false,1);
      String[] QBPlayers =temp.toArray(new String[temp.size()]);
      JQBPlayers=new JList<String>(QBPlayers);
@@ -419,76 +419,40 @@ public void swapDraft()
      JScrollPane JscrollQBPlayers=new JScrollPane(JQBPlayers);
      posTabs=new JTabbedPane();
      posTabs.add("QB",JscrollQBPlayers);
-     }
      //tab 2
-     if(rbleft>0)
-     {
+   
      temp=DBConnection.getAvailablePosPlayers(conn,false,true,false,false,1);
      String[] RBPlayers =temp.toArray(new String[temp.size()]);
      JRBPlayers=new JList<String>(RBPlayers);
      JRBPlayers.addMouseListener(this);
      JScrollPane JscrollRBPlayers=new JScrollPane(JRBPlayers);
      posTabs.add("RB",JscrollRBPlayers);
-     }
      //tab 3
-     if(wrleft>0)
-     {
      temp=DBConnection.getAvailablePosPlayers(conn,false,false,true,false,1);
      String[] WRPlayers =temp.toArray(new String[temp.size()]);
      JWRPlayers=new JList<String>(WRPlayers);
      JWRPlayers.addMouseListener(this);
      JScrollPane JscrollWRPlayers=new JScrollPane(JWRPlayers);
      posTabs.add("WR",JscrollWRPlayers);
-     }
      //tab 4
-     if(teleft>0)
-     {
      temp=DBConnection.getPosPlayers(conn,false,false,false,true,1);
      String[] TEPlayers =temp.toArray(new String[temp.size()]);
      JTEPlayers=new JList<String>(TEPlayers);
      JTEPlayers.addMouseListener(this);
      JScrollPane JscrollTEPlayers=new JScrollPane(JTEPlayers);
      posTabs.add("TE",JscrollTEPlayers);
-     }
      //tab 5
      boolean qbl=true;
      boolean rbl=true;
      boolean wrl=true;
      boolean tel=true;
-     int count=4;
-     if(qbleft== 0)
-     {
-     	qbl=false;
-     	count--;
-     }
-     if(rbleft == 0)
-     {
-     	rbl=false;
-     	count--;
-     }
-     if(wrleft== 0)
-     {
-     	wrl=false;
-     	count--;
-     }
-     if(teleft== 0)
-     {
-     	tel=false;
-     	count--;
-     }
-     if(count!=0)
-     {
      temp=DBConnection.getPosPlayers(conn,qbl,rbl,wrl,tel,count);
      String[] AllPlayers =temp.toArray(new String[temp.size()]);
      JAllPlayers=new JList<String>(AllPlayers);
      JAllPlayers.addMouseListener(this);
      JScrollPane JscrollAllPlayers=new JScrollPane(JAllPlayers);
      posTabs.add("ALL",JscrollAllPlayers);
-     }
-     else
-     {
-     	posTabs.add("Players",new JLabel("no more players fit on your team"));
-     }
+     
      
      JPanel aPlayers= new JPanel();
      aPlayers.setLayout(new GridLayout());
@@ -496,9 +460,32 @@ public void swapDraft()
      
      tabs.addTab("Players", aPlayers);
      initialDraft.add(tabs);
+     //bottom screen
+     JPanel swapBot=new JPanel();
+     swapBot.setLayout(new GridLayout(3,1));
+     JPanel dropEntry=new JPanel();
+     dropEntry.setLayout(new FlowLayout());
+     //drop thing
+     dropEntry.add(new JLabel("Drop: "));
+     dropEntry.add(playerDrop);
+     playerDrop.setEditable(false);
      
-     
-     
+     swapBot.add(dropEntry);
+     JPanel addEntry=new JPanel();
+     addEntry.setLayout(new FlowLayout());
+     //swap thing
+     addEntry.add(new JLabel("Add: "));
+     addEntry.add(playerAdd);
+     swap=new JButton("Swap");
+     swap.addActionListener(ButtonListener);
+     addEntry.add(swap);
+     swapBot.add(addEntry);
+     JPanel turnEntry=new JPanel();
+     turnEntry.setLayout(new FlowLayout());
+     //turn thing
+     turnEntry.add(new JLabel("Turn: "+ teamName.getText()+"Round: "+round));
+     swapBot.add(turnEntry);
+     initialDraft.add(swapBot);
      
     
         cpid.add(initialDraft);

@@ -500,39 +500,7 @@ public void swapDraft()
      
      
      
-     JPanel botScreen=new JPanel();
-     botScreen.setLayout(new GridLayout(1,2));
-     JPanel bot=new JPanel();
-     bot.setLayout(new GridLayout(2,1));
-     
-     JPanel adder=new JPanel();
-     adder.setLayout(new FlowLayout());
-     adder.add(new JLabel("Add"));
-     playerAdd.setEditable(false);
-     //Confirm Button
-     ConfirmButton= new JButton("Confirm");
-     ConfirmButton.addActionListener(ButtonListener);
-     adder.add(playerAdd);
-     adder.add(ConfirmButton);
-     bot.add(adder);
-     JPanel turn =new JPanel();
-     turn.setLayout(new FlowLayout());
-     turn.add(new JLabel("Turn:"));
-     teamName.setEditable(false);
-     turn.add(teamName);
-     turn.add(new JLabel("Round"));
-     bot.add(turn);
-     botScreen.add(bot);
-	//remaining players
-	int remainingPlayers=qbleft+rbleft+wrleft+teleft;
-	if(remainingPlayers==0)
-	{
-		doWeek=new JButton("Do Week");
-		doWeek.addActionListener(ButtonListener);
-		remainpos.add(doWeek);
-	}
-	botScreen.add(remainpos);
-     initialDraft.add(botScreen);
+    
         cpid.add(initialDraft);
 		
 	}

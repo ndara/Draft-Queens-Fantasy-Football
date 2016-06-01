@@ -34,6 +34,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JButton doWeek;
 	private JButton next;
 	private JButton swap;
+	private JButton dropButton;
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
@@ -53,6 +54,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int[] order=Draft.getDraftOrder(7);
 	private JTable teamOn;
 	private int round=1;
+	private boolean dropPhase=false;
 
 	public GUI() throws Exception
 	{
@@ -468,24 +470,32 @@ public void swapDraft()
      initialDraft.add(tabs);
      //bottom screen
      JPanel swapBot=new JPanel();
-     swapBot.setLayout(new GridLayout(3,1));
+     swapBot.setLayout(new GridLayout(2,1));
      JPanel dropEntry=new JPanel();
      dropEntry.setLayout(new FlowLayout());
      //drop thing
-     dropEntry.add(new JLabel("Drop: "));
-     dropEntry.add(playerDrop);
-     playerDrop.setEditable(false);
-     
-     swapBot.add(dropEntry);
-     JPanel addEntry=new JPanel();
-     addEntry.setLayout(new FlowLayout());
-     //swap thing
-     addEntry.add(new JLabel("Add: "));
-     addEntry.add(playerAdd);
-     swap=new JButton("Swap");
-     swap.addActionListener(ButtonListener);
-     addEntry.add(swap);
-     swapBot.add(addEntry);
+     if(dropPhase)
+     {
+	     dropEntry.add(new JLabel("Drop: "));
+	     dropEntry.add(playerDrop);
+	     playerDrop.setEditable(false);
+	     dropButton=new JButton("drop");
+	     dropButton.addActionListener(ButtonListener);
+	     dropEntry.add(dropButton);
+	     swapBot.add(dropEntry);
+     }
+     else
+     {
+	     JPanel addEntry=new JPanel();
+	     addEntry.setLayout(new FlowLayout());
+	     //swap thing
+	     addEntry.add(new JLabel("Add: "));
+	     addEntry.add(playerAdd);
+	     swap=new JButton("Swap");
+	     swap.addActionListener(ButtonListener);
+	     addEntry.add(swap);
+	     swapBot.add(addEntry);
+     }
      JPanel turnEntry=new JPanel();
      turnEntry.setLayout(new FlowLayout());
      //turn thing
@@ -507,7 +517,7 @@ public void swapDraft()
 			 cTeam=new JList<String>(input);
 			 this.repaint();
 		}	
-		else if(tabs.getSelectedIndex()==8)
+		else if(tabs.getSelectedIndex()==8 && dropPhase)
 		{
 			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
 				playerAdd.setText((String)JQBPlayers.getSelectedValue());
@@ -519,6 +529,19 @@ public void swapDraft()
 				playerAdd.setText((String)JTEPlayers.getSelectedValue());
 			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("ALL"))
 				playerAdd.setText((String)JAllPlayers.getSelectedValue());
+		}
+		else if(tabs.getSelectedIndex()==8 && dropPhase==false)
+		{
+			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
+				playerDrop.setText((String)JQBPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("RB"))
+				playerDrop.setText((String)JRBPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("WR"))
+				playerDrop.setText((String)JWRPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("TE"))
+				playerDrop.setText((String)JTEPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("ALL"))
+				playerDrop.setText((String)JAllPlayers.getSelectedValue());
 		}
 	}
 
@@ -708,6 +731,13 @@ public void swapDraft()
 			if(source==next)
 			{
 				System.out.println("Woo you reacher next");
+				dropPhase=true;
+				GUI.this.swapUpdate();
+			}
+			if(source==dropButton)
+			{
+				dropPhase=false;
+				// drop player
 				GUI.this.swapUpdate();
 			}
 		}

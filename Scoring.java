@@ -292,7 +292,7 @@ public class Scoring {
       double score = 0;
       String scoreStr = "";
 
-      String query = "SELECT SUM(yds) / 25 + X.tds AS pts FROM Play P JOIN Game G ON G.gid = P.gid JOIN " + 
+      String query = "SELECT COALESCE(SUM(yds) / 25 + X.tds, 0) AS pts FROM Play P JOIN Game G ON G.gid = P.gid JOIN " + 
                      "Pass S ON P.pid = S.pid JOIN Player L ON L.player = S.psr JOIN (SELECT COUNT(*) * " + 
                      "4 AS tds, L.player FROM Play P JOIN Game G ON G.gid = P.gid JOIN Pass S ON S.pid = " + 
                      "P.pid JOIN Player L ON S.psr = L.player JOIN Td T ON P.pid = T.pid WHERE wk = " + week + 
@@ -339,7 +339,7 @@ public class Scoring {
       double score = 0;
       String scoreStr = "";
 
-      String query = "SELECT (SUM(R.yds) / 10) + X.tds AS pts FROM Play P JOIN Game G ON G.gid = P.gid " + 
+      String query = "SELECT COALESCE((SUM(R.yds) / 10) + X.tds, 0) AS pts FROM Play P JOIN Game G ON G.gid = P.gid " + 
    						"JOIN Rush R ON R.pid = P.pid JOIN Player L ON R.bc = L.player JOIN (SELECT COUNT(*) * 6 AS tds, " +
          				"L.player AS player FROM Play P JOIN Game G ON G.gid = P.gid JOIN Rush R ON R.pid = P.pid JOIN Player L ON R.bc = L.player " +
       	   			"JOIN Td T ON P.pid = T.pid WHERE wk = " + week + " AND P.type = 'RUSH' AND L.player = '" + player + "') X ON X.player = L.player " +
@@ -383,7 +383,7 @@ public class Scoring {
       double score = 0;
       String scoreStr = "";
 
-      String query = "SELECT (SUM(S.yds) / 10) + X.tds AS pts FROM Play P JOIN Game G ON G.gid = P.gid " +
+      String query = "SELECT COALESCE((SUM(S.yds) / 10) + X.tds, 0) AS pts FROM Play P JOIN Game G ON G.gid = P.gid " +
    						"JOIN Pass S ON P.pid = S.pid JOIN Player L ON S.trg = L.player JOIN (SELECT COUNT(*) * 6 AS tds, " +
          				"L.player FROM Play P JOIN Game G ON G.gid = P.gid JOIN Pass S ON S.pid = P.pid JOIN Player L ON S.trg = L.player " +
          				"JOIN Td T ON P.pid = T.pid WHERE wk = " + week + " AND P.type = 'PASS' AND L.player = '" + player + "') X ON X.player = L.player " + 

@@ -153,5 +153,9 @@ public class MediumAI {
       DBConnection.updatePlayer(conn, playerStr, teamId);
       DBConnection.updateTeam(conn, pos, playerStr, teamId);
    }
+
+   private static String bestSelection(Connection conn, String pos, int teamId) {
+
+   }
 }
 

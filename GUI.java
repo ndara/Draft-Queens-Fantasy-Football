@@ -98,9 +98,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	}
 	
 	
-	public void initDraft()
+public void initDraft()
 	{
-	
 	 //this is initial draft
     initialDraft=new JPanel();
      initialDraft.setLayout(new GridLayout(2,1));
@@ -328,6 +327,215 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
         cpid.add(initialDraft);
 		
 	}
+public void swapDraft()
+	{
+	 //this is initial draft
+    initialDraft=new JPanel();
+     initialDraft.setLayout(new GridLayout(2,1));
+     tabs =new JTabbedPane();
+     
+     //tab1
+     
+     JPanel hTab=new JPanel();
+     hTab.setLayout(new GridLayout(1,1));
+     ArrayList<String> tempp=DBConnection.getAllTeamPosPlayers(conn,1);
+     
+     String[] input=tempp.toArray(new String[tempp.size()]);
+     cTeam=new JList<String>(input);
+     hTab.add(cTeam);
+     
+     
+     tabs.addTab(teamName.getText(), hTab);
+     //AI starts at 2
+     //AI one
+     JPanel a1Tab=new JPanel();
+     a1Tab.setLayout(new GridLayout(1,1));
+     
+      tempp=DBConnection.getAllTeamPosPlayers(conn,2);
+     input=tempp.toArray(new String[tempp.size()]);
+    JList<String> a1Team=new JList<String>(input);
+     a1Tab.add(a1Team);
+      tabs.addTab("Ai1", a1Tab);
+      
+     //AI two
+      JPanel a2Tab=new JPanel();
+      a2Tab.setLayout(new GridLayout(1,1));
+      tempp=DBConnection.getAllTeamPosPlayers(conn,3);
+     input=tempp.toArray(new String[tempp.size()]);
+     JList<String> a2Team=new JList<String>(input);
+      a2Tab.add(a2Team);
+       tabs.addTab("Ai2", a2Tab);
+     //AI three
+       JPanel a3Tab=new JPanel();
+       a3Tab.setLayout(new GridLayout(1,1));
+       tempp=DBConnection.getAllTeamPosPlayers(conn,4);
+     input=tempp.toArray(new String[tempp.size()]);
+      JList<String> a3Team=new JList<String>(input);
+       a3Tab.add(a3Team);
+        tabs.addTab("Ai3", a3Tab);
+      //AI four
+        JPanel a4Tab=new JPanel();
+        a4Tab.setLayout(new GridLayout(1,1));
+        tempp=DBConnection.getAllTeamPosPlayers(conn,5);
+     input=tempp.toArray(new String[tempp.size()]);
+       JList<String> a4Team=new JList<String>(input);
+        a4Tab.add(a4Team);
+         tabs.addTab("Ai4", a4Tab);
+       //AI five
+         JPanel a5Tab=new JPanel();
+         a5Tab.setLayout(new GridLayout(1,1));
+         tempp=DBConnection.getAllTeamPosPlayers(conn,6);
+     input=tempp.toArray(new String[tempp.size()]);
+        JList<String> a5Team=new JList<String>(input);
+         a5Tab.add(a5Team);
+          tabs.addTab("Ai5", a5Tab);
+        //AI six
+          JPanel a6Tab=new JPanel();
+          a6Tab.setLayout(new GridLayout(1,1));
+          tempp=DBConnection.getAllTeamPosPlayers(conn,7);
+     input=tempp.toArray(new String[tempp.size()]);
+         JList<String> a6Team=new JList<String>(input);
+          a6Tab.add(a6Team);
+           tabs.addTab("Ai6", a6Tab);
+         //AI seven
+           JPanel a7Tab=new JPanel();
+           a7Tab.setLayout(new GridLayout(1,1));
+           tempp=DBConnection.getAllTeamPosPlayers(conn,8);
+     input=tempp.toArray(new String[tempp.size()]);
+          JList<String> a7Team=new JList<String>(input);
+           a7Tab.add(a7Team);
+            tabs.addTab("Ai7", a7Tab);
+      
+      
+      //PLayer tab
+     //tab 1 of Players Tab
+     ArrayList<String> temp;
+     if(qbleft==1)
+     {
+     temp=DBConnection.getPosPlayers(conn,true,false,false,false,1);
+     String[] QBPlayers =temp.toArray(new String[temp.size()]);
+     JQBPlayers=new JList<String>(QBPlayers);
+     JQBPlayers.addMouseListener(this);
+     JScrollPane JscrollQBPlayers=new JScrollPane(JQBPlayers);
+     posTabs=new JTabbedPane();
+     posTabs.add("QB",JscrollQBPlayers);
+     }
+     //tab 2
+     if(rbleft>0)
+     {
+     temp=DBConnection.getAvailablePosPlayers(conn,false,true,false,false,1);
+     String[] RBPlayers =temp.toArray(new String[temp.size()]);
+     JRBPlayers=new JList<String>(RBPlayers);
+     JRBPlayers.addMouseListener(this);
+     JScrollPane JscrollRBPlayers=new JScrollPane(JRBPlayers);
+     posTabs.add("RB",JscrollRBPlayers);
+     }
+     //tab 3
+     if(wrleft>0)
+     {
+     temp=DBConnection.getAvailablePosPlayers(conn,false,false,true,false,1);
+     String[] WRPlayers =temp.toArray(new String[temp.size()]);
+     JWRPlayers=new JList<String>(WRPlayers);
+     JWRPlayers.addMouseListener(this);
+     JScrollPane JscrollWRPlayers=new JScrollPane(JWRPlayers);
+     posTabs.add("WR",JscrollWRPlayers);
+     }
+     //tab 4
+     if(teleft>0)
+     {
+     temp=DBConnection.getPosPlayers(conn,false,false,false,true,1);
+     String[] TEPlayers =temp.toArray(new String[temp.size()]);
+     JTEPlayers=new JList<String>(TEPlayers);
+     JTEPlayers.addMouseListener(this);
+     JScrollPane JscrollTEPlayers=new JScrollPane(JTEPlayers);
+     posTabs.add("TE",JscrollTEPlayers);
+     }
+     //tab 5
+     boolean qbl=true;
+     boolean rbl=true;
+     boolean wrl=true;
+     boolean tel=true;
+     int count=4;
+     if(qbleft== 0)
+     {
+     	qbl=false;
+     	count--;
+     }
+     if(rbleft == 0)
+     {
+     	rbl=false;
+     	count--;
+     }
+     if(wrleft== 0)
+     {
+     	wrl=false;
+     	count--;
+     }
+     if(teleft== 0)
+     {
+     	tel=false;
+     	count--;
+     }
+     if(count!=0)
+     {
+     temp=DBConnection.getPosPlayers(conn,qbl,rbl,wrl,tel,count);
+     String[] AllPlayers =temp.toArray(new String[temp.size()]);
+     JAllPlayers=new JList<String>(AllPlayers);
+     JAllPlayers.addMouseListener(this);
+     JScrollPane JscrollAllPlayers=new JScrollPane(JAllPlayers);
+     posTabs.add("ALL",JscrollAllPlayers);
+     }
+     else
+     {
+     	posTabs.add("Players",new JLabel("no more players fit on your team"));
+     }
+     
+     JPanel aPlayers= new JPanel();
+     aPlayers.setLayout(new GridLayout());
+     aPlayers.add(posTabs);
+     
+     tabs.addTab("Players", aPlayers);
+     initialDraft.add(tabs);
+     
+     
+     
+     
+     JPanel botScreen=new JPanel();
+     botScreen.setLayout(new GridLayout(1,2));
+     JPanel bot=new JPanel();
+     bot.setLayout(new GridLayout(2,1));
+     
+     JPanel adder=new JPanel();
+     adder.setLayout(new FlowLayout());
+     adder.add(new JLabel("Add"));
+     playerAdd.setEditable(false);
+     //Confirm Button
+     ConfirmButton= new JButton("Confirm");
+     ConfirmButton.addActionListener(ButtonListener);
+     adder.add(playerAdd);
+     adder.add(ConfirmButton);
+     bot.add(adder);
+     JPanel turn =new JPanel();
+     turn.setLayout(new FlowLayout());
+     turn.add(new JLabel("Turn:"));
+     teamName.setEditable(false);
+     turn.add(teamName);
+     turn.add(new JLabel("Round"));
+     bot.add(turn);
+     botScreen.add(bot);
+	//remaining players
+	int remainingPlayers=qbleft+rbleft+wrleft+teleft;
+	if(remainingPlayers==0)
+	{
+		doWeek=new JButton("Do Week");
+		doWeek.addActionListener(ButtonListener);
+		remainpos.add(doWeek);
+	}
+	botScreen.add(remainpos);
+     initialDraft.add(botScreen);
+        cpid.add(initialDraft);
+		
+	}
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
@@ -437,6 +645,15 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 		this.setContentPane(cpid);
 		this.repaint();
 	}
+	public void swapUpdate()
+	{
+		cpid.removeAll();
+		cpid=getContentPane();
+		posTabs.removeAll();
+		swapDraft();
+		this.setContentPane(cpid);
+		this.repaint();
+	}
 	public void roundUpdater()
 	{
 		Container temp=getContentPane();
@@ -529,6 +746,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 			if(source==next)
 			{
 				System.out.println("Woo you reacher next");
+				GUI.this.swapUpdate();
 			}
 		}
 	}

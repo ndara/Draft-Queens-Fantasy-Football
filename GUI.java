@@ -185,7 +185,8 @@ public void initDraft()
      ArrayList<String> temp;
      if(qbleft==1)
      {
-     temp=DBConnection.getPosPlayers(conn,true,false,false,false,1);
+        //getPosPlayers removed
+     temp=DBConnection.getAvailablePosPlayers(conn,true,false,false,false,1);
      String[] QBPlayers =temp.toArray(new String[temp.size()]);
      JQBPlayers=new JList<String>(QBPlayers);
      JQBPlayers.addMouseListener(this);
@@ -216,7 +217,8 @@ public void initDraft()
      //tab 4
      if(teleft>0)
      {
-     temp=DBConnection.getPosPlayers(conn,false,false,false,true,1);
+        //getPosPlayers removed below
+     temp=DBConnection.getAvailablePosPlayers(conn,false,false,false,true,1);
      String[] TEPlayers =temp.toArray(new String[temp.size()]);
      JTEPlayers=new JList<String>(TEPlayers);
      JTEPlayers.addMouseListener(this);
@@ -251,7 +253,8 @@ public void initDraft()
      }
      if(count!=0)
      {
-     temp=DBConnection.getPosPlayers(conn,qbl,rbl,wrl,tel,count);
+        //getPosPlayers() updates below
+     temp=DBConnection.getAvailablePosPlayers(conn,qbl,rbl,wrl,tel,count);
      String[] AllPlayers =temp.toArray(new String[temp.size()]);
      JAllPlayers=new JList<String>(AllPlayers);
      JAllPlayers.addMouseListener(this);
@@ -412,7 +415,8 @@ public void swapDraft()
       //PLayer tab
      //tab 1 of Players Tab
      ArrayList<String> temp;
-     temp=DBConnection.getPosPlayers(conn,true,false,false,false,1);
+     //getPosPlayers() removed below
+     temp=DBConnection.getAvailablePosPlayers(conn,true,false,false,false,1);
      String[] QBPlayers =temp.toArray(new String[temp.size()]);
      JQBPlayers=new JList<String>(QBPlayers);
      JQBPlayers.addMouseListener(this);
@@ -435,7 +439,8 @@ public void swapDraft()
      JScrollPane JscrollWRPlayers=new JScrollPane(JWRPlayers);
      posTabs.add("WR",JscrollWRPlayers);
      //tab 4
-     temp=DBConnection.getPosPlayers(conn,false,false,false,true,1);
+     //getPosPlayers removed
+     temp=DBConnection.getAvailablePosPlayers(conn,false,false,false,true,1);
      String[] TEPlayers =temp.toArray(new String[temp.size()]);
      JTEPlayers=new JList<String>(TEPlayers);
      JTEPlayers.addMouseListener(this);
@@ -446,7 +451,8 @@ public void swapDraft()
      boolean rbl=true;
      boolean wrl=true;
      boolean tel=true;
-     temp=DBConnection.getPosPlayers(conn,qbl,rbl,wrl,tel,4);
+     //getPosPlayers removed
+     temp=DBConnection.getAvailablePosPlayers(conn,qbl,rbl,wrl,tel,4);
      String[] AllPlayers =temp.toArray(new String[temp.size()]);
      JAllPlayers=new JList<String>(AllPlayers);
      JAllPlayers.addMouseListener(this);

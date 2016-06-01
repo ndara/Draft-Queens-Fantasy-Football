@@ -648,6 +648,7 @@ public void swapDraft()
 			if(source==ConfirmButton)
 			{
 				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
+				remainingPlayers=8-remainingPlayers;
 				//need to have a checker
 				String temp=playerAdd.getText();
 				if(temp.length()>0)

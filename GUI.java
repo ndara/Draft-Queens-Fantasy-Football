@@ -446,7 +446,7 @@ public void swapDraft()
      boolean rbl=true;
      boolean wrl=true;
      boolean tel=true;
-     temp=DBConnection.getPosPlayers(conn,qbl,rbl,wrl,tel,count);
+     temp=DBConnection.getPosPlayers(conn,qbl,rbl,wrl,tel,4);
      String[] AllPlayers =temp.toArray(new String[temp.size()]);
      JAllPlayers=new JList<String>(AllPlayers);
      JAllPlayers.addMouseListener(this);

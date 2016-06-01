@@ -156,7 +156,7 @@ public class HardAI {
 
 
    private static String bestSelection(Connection conn, String pos, int teamId) {
-
+   return"";
    }
 }
 

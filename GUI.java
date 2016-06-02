@@ -688,7 +688,7 @@ public void winner()
 		String loser=Scoring.getLoserTeam(conn);
 		int loserAI=Integer.parseInt(loser.substring(3,4))-1;
 		losers[loserAI]=true;
-		Scoring.eliminateTeam(conn,loserAI+1);
+		Scoring.eliminateTeam(conn,loserAI+2);
 		ArrayList<String> tempp=Scoring.getRoundStats(conn);
 		String[] input=tempp.toArray(new String[tempp.size()]);
 		JList<String> stats=new JList<String>(input);

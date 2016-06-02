@@ -774,7 +774,7 @@ public void winner()
 			if(source==doWeek)
 			{
 				//we can move this to last time confirm button is hit
-				if(round<8)
+				if(round<7)
 				{
 				Random num=new Random();
 				int week=num.nextInt(8);

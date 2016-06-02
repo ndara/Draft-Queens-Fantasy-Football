@@ -55,6 +55,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JTable teamOn;
 	private int round=1;
 	private boolean dropPhase=false;
+	private boolean iniD=true;
 
 	public GUI() throws Exception
 	{
@@ -548,6 +549,19 @@ public void swapDraft()
 			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("ALL"))
 				playerAdd.setText((String)JAllPlayers.getSelectedValue());
 		}
+		else if(tabs.getSelectedIndex()==8 && iniD)
+		{
+			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
+				playerAdd.setText((String)JQBPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("RB"))
+				playerAdd.setText((String)JRBPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("WR"))
+				playerAdd.setText((String)JWRPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("TE"))
+				playerAdd.setText((String)JTEPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("ALL"))
+				playerAdd.setText((String)JAllPlayers.getSelectedValue());
+		}
 		else if(tabs.getSelectedIndex()==8 && dropPhase==false)
 		{
 			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
@@ -744,6 +758,7 @@ public void swapDraft()
 				Scoring.runWeek(conn,week,8);
 				//up to here
 				System.out.println("doWeek executed ");
+				iniD=false;
 				GUI.this.roundUpdater();
 			}
 			if(source==next)

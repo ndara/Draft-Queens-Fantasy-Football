@@ -844,6 +844,7 @@ public void winner()
 				teleft++;
 				}
 				//end logic
+				playerDrop.setText("");
 				GUI.this.swapUpdate();
 			}
 			}
@@ -886,6 +887,7 @@ public void winner()
 				}
 				dropPhase=true;
 				droppedPos="";
+				playerAdd.setText("");
 				GUI.this.swapUpdate();
 				}
 			}

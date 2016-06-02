@@ -308,6 +308,23 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       }
    }
   
+   public static int getTeamId(Connection conn, String playerId, int numPlayers) {
+      int num = 0;
+      for (num = 1; num < numPlayers + 1; num++) {
+         ArrayList<String> teamMembers = getAllTeamPlayers(conn, num);
+         for (int i = 0; i< teamMembers.size(); i++) {
+            String temp = teamMembers.get(i);
+            String compare = temp.substring(1, 8);
+            if (compare.equals(playerId)) {
+               System.out.println("Deleting player from team " + num);
+               return num;
+            }
+         }
+      }
+      //bad if it reaches here
+      return -1; 
+   }
+
    public static void dropPlayerFromTeam(Connection conn, int teamId, String position) {
       Statement statement = null;
       ResultSet results = null;

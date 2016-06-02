@@ -806,7 +806,7 @@ public void winner()
 			}
 			if(source==dropButton)
 			{
-				dropPhase=false;
+				
 				// drop player
 				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
 				remainingPlayers=8-remainingPlayers;
@@ -815,7 +815,7 @@ public void winner()
 				
 				if(temp.length()>0)
 				{
-				
+				dropPhase=false;
 				String playerId=temp.substring(0,7);
 				String pos=temp.substring(8,10);
 				droppedPos=DBConnection.getPosColName(conn,playerId,pos,1);

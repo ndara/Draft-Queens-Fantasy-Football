@@ -887,6 +887,7 @@ public void winner()
 				dropPhase=true;
 				droppedPos="";
 				GUI.this.swapUpdate();
+				}
 			}
 		}
 	}

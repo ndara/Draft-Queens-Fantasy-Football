@@ -686,9 +686,12 @@ public void winner()
 		roundPane.add(new JLabel("Round: "+round));
 		round++;
 		String loser=Scoring.getLoserTeam(conn);
-		int loserAI=Integer.parseInt(loser.substring(3,4))-1;
-		losers[loserAI]=true;
-		Scoring.eliminateTeam(conn,loserAI+2);
+		Scanner sscan=new Scanner(loser);
+		int loserAI=Integer.parseInt(sscan.nextInt());
+		if(loserAI >1)
+		{
+		losers[loserAI-2]=true;
+		Scoring.eliminateTeam(conn,loserAI);
 		ArrayList<String> tempp=Scoring.getRoundStats(conn);
 		String[] input=tempp.toArray(new String[tempp.size()]);
 		JList<String> stats=new JList<String>(input);
@@ -703,9 +706,14 @@ public void winner()
 		but.add(next);
 		roundPane.add(but);
 		temp.add(roundPane);
+		
 		this.setContentPane(temp);
 		this.repaint();
-		
+		}
+		else
+		{
+			this.winnerUpdate();
+		}
 	}
 	private class ButtonActionListener implements ActionListener
 	{

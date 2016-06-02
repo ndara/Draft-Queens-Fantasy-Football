@@ -57,6 +57,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private boolean dropPhase=false;
 	private boolean iniD=true;
 	private String droppedPos="";
+	private Boolean[] losers=[false,false,false,false,false,false,false]
 
 	public GUI() throws Exception
 	{
@@ -356,7 +357,10 @@ public void swapDraft()
      
      
      tabs.addTab(teamName.getText(), hTab);
+     
      //AI starts at 2
+     if(!losers[0])
+     {
      //AI one
      JPanel a1Tab=new JPanel();
      a1Tab.setLayout(new GridLayout(1,1));
@@ -366,8 +370,10 @@ public void swapDraft()
     JList<String> a1Team=new JList<String>(input);
      a1Tab.add(a1Team);
       tabs.addTab("Ai1", a1Tab);
-      
+     }
      //AI two
+     if(!losers[1])
+     {
       JPanel a2Tab=new JPanel();
       a2Tab.setLayout(new GridLayout(1,1));
       tempp=DBConnection.getAllTeamPosPlayers(conn,3);
@@ -375,7 +381,10 @@ public void swapDraft()
      JList<String> a2Team=new JList<String>(input);
       a2Tab.add(a2Team);
        tabs.addTab("Ai2", a2Tab);
+     }
      //AI three
+     if(!losers[2])
+     {
        JPanel a3Tab=new JPanel();
        a3Tab.setLayout(new GridLayout(1,1));
        tempp=DBConnection.getAllTeamPosPlayers(conn,4);
@@ -383,7 +392,10 @@ public void swapDraft()
       JList<String> a3Team=new JList<String>(input);
        a3Tab.add(a3Team);
         tabs.addTab("Ai3", a3Tab);
+     }
       //AI four
+      if(!losers[3])
+      {
         JPanel a4Tab=new JPanel();
         a4Tab.setLayout(new GridLayout(1,1));
         tempp=DBConnection.getAllTeamPosPlayers(conn,5);
@@ -391,7 +403,10 @@ public void swapDraft()
        JList<String> a4Team=new JList<String>(input);
         a4Tab.add(a4Team);
          tabs.addTab("Ai4", a4Tab);
+      }
        //AI five
+       if(!losers[4])
+       {
          JPanel a5Tab=new JPanel();
          a5Tab.setLayout(new GridLayout(1,1));
          tempp=DBConnection.getAllTeamPosPlayers(conn,6);
@@ -399,7 +414,10 @@ public void swapDraft()
         JList<String> a5Team=new JList<String>(input);
          a5Tab.add(a5Team);
           tabs.addTab("Ai5", a5Tab);
+       }
         //AI six
+        if(!losers[5])
+        {
           JPanel a6Tab=new JPanel();
           a6Tab.setLayout(new GridLayout(1,1));
           tempp=DBConnection.getAllTeamPosPlayers(conn,7);
@@ -407,7 +425,10 @@ public void swapDraft()
          JList<String> a6Team=new JList<String>(input);
           a6Tab.add(a6Team);
            tabs.addTab("Ai6", a6Tab);
+        }
          //AI seven
+         if(!losers[6])
+         {
            JPanel a7Tab=new JPanel();
            a7Tab.setLayout(new GridLayout(1,1));
            tempp=DBConnection.getAllTeamPosPlayers(conn,8);
@@ -415,7 +436,7 @@ public void swapDraft()
           JList<String> a7Team=new JList<String>(input);
            a7Tab.add(a7Team);
             tabs.addTab("Ai7", a7Tab);
-      
+         }
       
       //PLayer tab
      //tab 1 of Players Tab
@@ -665,6 +686,9 @@ public void winner()
 		but.setLayout(new FlowLayout());
 		String loser=Scoring.getLoserTeam(conn);
 		but.add(new JLabel("Eliminated: "+loser));
+		//adds proper boolean to screen
+		losers[(loser.substring(2,3)-1)]=true;
+		
 		but.add(next);
 		roundPane.add(but);
 		temp.add(roundPane);

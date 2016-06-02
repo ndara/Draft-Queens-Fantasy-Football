@@ -402,6 +402,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             ex.printStackTrace(System.err);
          }     
       }
+      System.out.println("Empty string....this is BAD");
       return realPos;
    }
 

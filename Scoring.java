@@ -256,6 +256,7 @@ public class Scoring {
       Statement statement = null;
       ResultSet results = null;
       String query = "UPDATE Team SET elim = true where id = " + teamId;
+      System.out.println(query);
       //System.out.println(query);
         try {
          // Get a statement from the connection

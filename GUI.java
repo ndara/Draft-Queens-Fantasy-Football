@@ -57,7 +57,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private boolean dropPhase=false;
 	private boolean iniD=true;
 	private String droppedPos="";
-	private Boolean[] losers=[false,false,false,false,false,false,false]
+	private Boolean[] losers = new Boolean[7];
+
 
 	public GUI() throws Exception
 	{
@@ -65,6 +66,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	conn = DBConnection.getConnection();
 	 cp = getContentPane();
 	 cp.setLayout(new GridLayout(1,1,1,1));
+	 //make all booleans false
+	 Arrays.fill(array, Boolean.FALSE);
 	 
 	 //resets players
 	 DBConnection.resetPlayers(conn);

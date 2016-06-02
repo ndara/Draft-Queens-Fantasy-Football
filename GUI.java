@@ -484,8 +484,10 @@ public void swapDraft()
      JPanel aPlayers= new JPanel();
      aPlayers.setLayout(new GridLayout());
      aPlayers.add(posTabs);
-     
-     tabs.addTab("Players", aPlayers);
+     if(dropPhase==false)
+     {
+     	tabs.addTab("Players", aPlayers);
+     }
      initialDraft.add(tabs);
      //bottom screen
      JPanel swapBot=new JPanel();

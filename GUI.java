@@ -463,20 +463,6 @@ public void swapDraft()
      }
      //tab 5
 
-     boolean qbl=true;
-     boolean rbl=true;
-     boolean wrl=true;
-     boolean tel=true;
-     //getPosPlayers removed
-     if(dropPhase==false)
-     {
-     temp=DBConnection.getAvailablePosPlayers(conn,qbl,rbl,wrl,tel,4);
-     String[] AllPlayers =temp.toArray(new String[temp.size()]);
-     JAllPlayers=new JList<String>(AllPlayers);
-     JAllPlayers.addMouseListener(this);
-     JScrollPane JscrollAllPlayers=new JScrollPane(JAllPlayers);
-     posTabs.add("ALL",JscrollAllPlayers);
-     }
      
      
      JPanel aPlayers= new JPanel();

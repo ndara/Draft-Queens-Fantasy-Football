@@ -690,7 +690,7 @@ public void winner()
 		String loser=Scoring.getLoserTeam(conn);
 		but.add(new JLabel("Eliminated: "+loser));
 		//adds proper boolean to screen
-		losers[INTEGER.parseInt((loser.substring(2,3))-1)]=true;
+		losers[Integer.parseInt((loser.substring(2,3))-1)]=true;
 		
 		but.add(next);
 		roundPane.add(but);

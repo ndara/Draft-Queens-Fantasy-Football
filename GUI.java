@@ -707,7 +707,7 @@ public void winner()
 		next.addActionListener(ButtonListener);
 		JPanel but=new JPanel();
 		but.setLayout(new FlowLayout());
-		but.add(new JLabel("Eliminated: "+loser.substring(1));
+		but.add(new JLabel("Eliminated: "+loser.substring(1)));
 		//adds proper boolean to screen
 		
 		but.add(next);
@@ -891,4 +891,11 @@ public void winner()
 			}
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
 }

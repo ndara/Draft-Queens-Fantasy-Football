@@ -86,12 +86,13 @@ public class Scoring {
          results = statement.executeQuery(query);
 
          while (results.next()) {
-            String teamName = results.getString(1);
-            String teamScore = results.getString(2);
+            String teamID = results.getString(1);
+            String teamName = results.getString(2);
+            String teamScore = results.getString(3);
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            str += String.format("%s %s %s", id, teamName, teamScore);
+            str += String.format("%s %s %s", teamID, teamName, teamScore);
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);

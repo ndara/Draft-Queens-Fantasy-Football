@@ -350,6 +350,7 @@ public void swapDraft()
      
      String[] input=tempp.toArray(new String[tempp.size()]);
      cTeam=new JList<String>(input);
+     cTeam.addMouseListener(this);
      hTab.add(cTeam);
      
      

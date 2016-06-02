@@ -513,10 +513,16 @@ public void swapDraft()
      swapBot.add(turnEntry);
      initialDraft.add(swapBot);
      
-    System.out.println("dropPhase: "+dropPhase);
         cpid.add(initialDraft);
-		
-	}
+	}    
+	
+public void winner()
+{
+	JPanel win=new JPanel();
+	win.setLayout(new GridLayout(1,1));
+	win.add(new JLabel("Winner Screen"));
+	cpid.add(win);
+}
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
@@ -632,6 +638,15 @@ public void swapDraft()
 		this.setContentPane(cpid);
 		this.repaint();
 	}
+	public void winnerUpdate()
+	{
+		cpid.removeAll();
+		cpid=getContentPane();
+		posTabs.removeAll();
+		winner();
+		this.setContentPane(cpid);
+		this.repaint();
+	}
 	public void roundUpdater()
 	{
 		Container temp=getContentPane();
@@ -724,6 +739,10 @@ public void swapDraft()
 				System.out.println("doWeek executed ");
 				iniD=false;
 				GUI.this.roundUpdater();
+				}
+				else
+				{
+					GUI.this.winnerUpdate();
 				}
 				//we add the thing here
 			}

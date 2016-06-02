@@ -418,49 +418,67 @@ public void swapDraft()
      //tab 1 of Players Tab
      ArrayList<String> temp;
      //getPosPlayers() removed below
-     temp=DBConnection.getAvailablePosPlayers(conn,true,false,false,false,1);
-     String[] QBPlayers =temp.toArray(new String[temp.size()]);
-     JQBPlayers=new JList<String>(QBPlayers);
-     JQBPlayers.addMouseListener(this);
-     JScrollPane JscrollQBPlayers=new JScrollPane(JQBPlayers);
-     posTabs=new JTabbedPane();
-     posTabs.add("QB",JscrollQBPlayers);
+     if(dropPhase||qbleft>0)
+     {
+	     temp=DBConnection.getAvailablePosPlayers(conn,true,false,false,false,1);
+	     String[] QBPlayers =temp.toArray(new String[temp.size()]);
+	     JQBPlayers=new JList<String>(QBPlayers);
+	     JQBPlayers.addMouseListener(this);
+	     JScrollPane JscrollQBPlayers=new JScrollPane(JQBPlayers);
+	     posTabs=new JTabbedPane();
+	     posTabs.add("QB",JscrollQBPlayers);
+     }
      //tab 2
-   
-     temp=DBConnection.getAvailablePosPlayers(conn,false,true,false,false,1);
-     String[] RBPlayers =temp.toArray(new String[temp.size()]);
-     JRBPlayers=new JList<String>(RBPlayers);
-     JRBPlayers.addMouseListener(this);
-     JScrollPane JscrollRBPlayers=new JScrollPane(JRBPlayers);
-     posTabs.add("RB",JscrollRBPlayers);
+   if(dropPhase||rbleft>0)
+     {
+	     temp=DBConnection.getAvailablePosPlayers(conn,false,true,false,false,1);
+	     String[] RBPlayers =temp.toArray(new String[temp.size()]);
+	     JRBPlayers=new JList<String>(RBPlayers);
+	     JRBPlayers.addMouseListener(this);
+	     JScrollPane JscrollRBPlayers=new JScrollPane(JRBPlayers);
+	     posTabs.add("RB",JscrollRBPlayers);
+     }
      //tab 3
-     temp=DBConnection.getAvailablePosPlayers(conn,false,false,true,false,1);
-     String[] WRPlayers =temp.toArray(new String[temp.size()]);
-     JWRPlayers=new JList<String>(WRPlayers);
-     JWRPlayers.addMouseListener(this);
-     JScrollPane JscrollWRPlayers=new JScrollPane(JWRPlayers);
-     posTabs.add("WR",JscrollWRPlayers);
+     if(dropPhase||wrleft>0)
+     {
+	     temp=DBConnection.getAvailablePosPlayers(conn,false,false,true,false,1);
+	     String[] WRPlayers =temp.toArray(new String[temp.size()]);
+	     JWRPlayers=new JList<String>(WRPlayers);
+	     JWRPlayers.addMouseListener(this);
+	     JScrollPane JscrollWRPlayers=new JScrollPane(JWRPlayers);
+	     posTabs.add("WR",JscrollWRPlayers);
+     }
      //tab 4
      //getPosPlayers removed
-     temp=DBConnection.getAvailablePosPlayers(conn,false,false,false,true,1);
-     String[] TEPlayers =temp.toArray(new String[temp.size()]);
-     JTEPlayers=new JList<String>(TEPlayers);
-     JTEPlayers.addMouseListener(this);
-     JScrollPane JscrollTEPlayers=new JScrollPane(JTEPlayers);
-     posTabs.add("TE",JscrollTEPlayers);
+     if(dropPhase||teleft>0)
+     {
+	     temp=DBConnection.getAvailablePosPlayers(conn,false,false,false,true,1);
+	     String[] TEPlayers =temp.toArray(new String[temp.size()]);
+	     JTEPlayers=new JList<String>(TEPlayers);
+	     JTEPlayers.addMouseListener(this);
+	     JScrollPane JscrollTEPlayers=new JScrollPane(JTEPlayers);
+	     posTabs.add("TE",JscrollTEPlayers);
+     }
      //tab 5
+
      boolean qbl=true;
      boolean rbl=true;
      boolean wrl=true;
      boolean tel=true;
      //getPosPlayers removed
+     if(dropPhase)
+     {
      temp=DBConnection.getAvailablePosPlayers(conn,qbl,rbl,wrl,tel,4);
      String[] AllPlayers =temp.toArray(new String[temp.size()]);
      JAllPlayers=new JList<String>(AllPlayers);
      JAllPlayers.addMouseListener(this);
      JScrollPane JscrollAllPlayers=new JScrollPane(JAllPlayers);
      posTabs.add("ALL",JscrollAllPlayers);
-     
+     }
+     else
+     {
+     	
+     }
      
      JPanel aPlayers= new JPanel();
      aPlayers.setLayout(new GridLayout());
@@ -738,6 +756,82 @@ public void swapDraft()
 			{
 				dropPhase=false;
 				// drop player
+				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
+				remainingPlayers=8-remainingPlayers;
+				//need to have a checker
+				String temp=playerDrop.getText();
+				if(temp.length()>0)
+				{
+				
+				String playerId=temp.substring(0,7);
+				String pos=temp.substring(8,10);
+				if(pos.equals("RB") && rbleft>0)
+				{
+				pos=pos+rbleft;
+				DBConnection.updatePlayer(conn,playerId,0);
+				DBConnection.dropPlayerFromTeam(conn,1,pos);
+				rbleft++;
+				}
+				if(pos.equals("WR") && wrleft>0)
+				{
+				pos=pos+wrleft;
+				DBConnection.updatePlayer(conn,playerId,0);
+				DBConnection.dropPlayerFromTeam(conn,1,pos);
+				wrleft++;
+				}
+				else if(pos.equals("QB") && qbleft>0)
+				{
+				DBConnection.updatePlayer(conn,playerId,0);
+				DBConnection.dropPlayerFromTeam(conn,1,pos);
+				qbleft++;
+				}
+				else if(pos.equals("TE") && teleft>0)
+				{
+				DBConnection.updatePlayer(conn,playerId,0);
+				DBConnection.dropPlayerFromTeam(conn,1,pos);	
+				teleft++;
+				}
+				//end logic
+				GUI.this.swapUpdate();
+			}
+			if(source==swap)
+			{
+				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
+				remainingPlayers=8-remainingPlayers;
+				//need to have a checker
+				String temp=playerAdd.getText();
+				if(temp.length()>0)
+				{
+				
+				String playerId=temp.substring(0,7);
+				String pos=temp.substring(8,10);
+				if(pos.equals("RB") && rbleft>0)
+				{
+				pos=pos+rbleft;
+				DBConnection.updatePlayer(conn,playerId,1);
+				DBConnection.updateTeam(conn,pos,playerId,1);
+				rbleft--;
+				}
+				if(pos.equals("WR") && wrleft>0)
+				{
+				pos=pos+wrleft;
+				DBConnection.updatePlayer(conn,playerId,1);
+				DBConnection.updateTeam(conn,pos,playerId,1);
+				wrleft--;
+				}
+				else if(pos.equals("QB") && qbleft>0)
+				{
+				DBConnection.updatePlayer(conn,playerId,1);
+				DBConnection.updateTeam(conn,pos,playerId,1);
+				qbleft--;
+				}
+				else if(pos.equals("TE") && teleft>0)
+				{
+				DBConnection.updatePlayer(conn,playerId,1);
+				DBConnection.updateTeam(conn,pos,playerId,1);	
+				teleft--;
+				}
+				dropPhase=true;
 				GUI.this.swapUpdate();
 			}
 		}

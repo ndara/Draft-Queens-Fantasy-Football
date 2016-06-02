@@ -543,8 +543,14 @@ public void swapDraft()
 public void winner()
 {
 	JPanel win=new JPanel();
-	win.setLayout(new GridLayout(1,1));
+	win.setLayout(new GridLayout(2,1));
 	win.add(new JLabel("Winner Screen"));
+	JPanel statsScreen=new JPanel();
+	statsScreen.setLayout(new FlowLayout());
+	ArrayList<String> tempp=Scoring.getRoundStats(conn);
+	String[] input=tempp.toArray(new String[tempp.size()]);
+	JList<String> stats=new JList<String>(input);
+	statsScreen.add(stats);
 	cpid.add(win);
 }
 	
@@ -679,6 +685,10 @@ public void winner()
 		roundPane.setLayout(new GridLayout(3,1));
 		roundPane.add(new JLabel("Round: "+round));
 		round++;
+		String loser=Scoring.getLoserTeam(conn);
+		int loserAI=Integer.parseInt(loser.substring(3,4))-1;
+		losers[loserAI]=true;
+		Scoring.eliminateTeam(conn,loserAI+1);
 		ArrayList<String> tempp=Scoring.getRoundStats(conn);
 		String[] input=tempp.toArray(new String[tempp.size()]);
 		JList<String> stats=new JList<String>(input);
@@ -687,10 +697,8 @@ public void winner()
 		next.addActionListener(ButtonListener);
 		JPanel but=new JPanel();
 		but.setLayout(new FlowLayout());
-		String loser=Scoring.getLoserTeam(conn);
 		but.add(new JLabel("Eliminated: "+loser));
 		//adds proper boolean to screen
-		losers[Integer.parseInt(loser.substring(3,4))-1]=true;
 		
 		but.add(next);
 		roundPane.add(but);

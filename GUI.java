@@ -760,14 +760,14 @@ public void swapDraft()
 				{
 				pos=pos+rbleft;
 				DBConnection.updatePlayer(conn,playerId,0);
-				DBConnection.dropPlayerFromTeam(conn,1,pos);
+				DBConnection.dropPlayerFromTeam(conn,1,DBConnection.getPosColName(conn,playerId,pos,1));
 				rbleft++;
 				}
 				if(pos.equals("WR") && wrleft>0)
 				{
 				pos=pos+wrleft;
 				DBConnection.updatePlayer(conn,playerId,0);
-				DBConnection.dropPlayerFromTeam(conn,1,pos);
+				DBConnection.dropPlayerFromTeam(conn,1,DBConnection.getPosColName(conn,playerId,pos,1));
 				wrleft++;
 				}
 				else if(pos.equals("QB") && qbleft>0)

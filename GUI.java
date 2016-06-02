@@ -756,27 +756,27 @@ public void swapDraft()
 				
 				String playerId=temp.substring(0,7);
 				String pos=temp.substring(8,10);
-				if(pos.equals("RB") && rbleft>0)
+				if(pos.equals("RB"))
 				{
 				pos=pos+rbleft;
 				DBConnection.updatePlayer(conn,playerId,0);
 				DBConnection.dropPlayerFromTeam(conn,1,DBConnection.getPosColName(conn,playerId,pos,1));
 				rbleft++;
 				}
-				if(pos.equals("WR") && wrleft>0)
+				if(pos.equals("WR"))
 				{
 				pos=pos+wrleft;
 				DBConnection.updatePlayer(conn,playerId,0);
 				DBConnection.dropPlayerFromTeam(conn,1,DBConnection.getPosColName(conn,playerId,pos,1));
 				wrleft++;
 				}
-				else if(pos.equals("QB") && qbleft>0)
+				else if(pos.equals("QB"))
 				{
 				DBConnection.updatePlayer(conn,playerId,0);
 				DBConnection.dropPlayerFromTeam(conn,1,pos);
 				qbleft++;
 				}
-				else if(pos.equals("TE") && teleft>0)
+				else if(pos.equals("TE"))
 				{
 				DBConnection.updatePlayer(conn,playerId,0);
 				DBConnection.dropPlayerFromTeam(conn,1,pos);	

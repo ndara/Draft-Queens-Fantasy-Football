@@ -792,7 +792,7 @@ public void winner()
 			}
 			if(source==next)
 			{
-				if(lost=true)
+				if(lost)
 				{
 					GUI.this.winnerUpdate();
 				}

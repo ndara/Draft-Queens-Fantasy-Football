@@ -744,14 +744,12 @@ public void swapDraft()
 				String pos=temp.substring(8,10);
 				if(pos.equals("RB"))
 				{
-				pos=pos+rbleft;
 				DBConnection.updatePlayer(conn,playerId,0);
 				DBConnection.dropPlayerFromTeam(conn,1,DBConnection.getPosColName(conn,playerId,pos,1));
 				rbleft++;
 				}
 				if(pos.equals("WR"))
 				{
-				pos=pos+wrleft;
 				DBConnection.updatePlayer(conn,playerId,0);
 				DBConnection.dropPlayerFromTeam(conn,1,DBConnection.getPosColName(conn,playerId,pos,1));
 				wrleft++;

@@ -179,7 +179,7 @@ public class HardAI {
              "JOIN Pass S ON S.pid = P.pid JOIN Player L ON S.psr = L.player JOIN Td T ON P.pid = T.pid WHERE " +
              "P.type = 'PASS' AND teamOn = 0 GROUP BY wk, L.player) X ON X.player = L.player AND X.wk = G.wk " +
              "WHERE P.type = 'PASS' AND teamOn = 0 GROUP BY G.wk, L.player ORDER BY L.player, G.wk) Y " +
-             "WHERE Y.pos1 = 'QB' AND Y.teamOn = 0 GROUP BY Y.player ORDER BY avgPts DESC LIMIT 10) Z " +
+             "WHERE Y.pos1 = 'QB' AND Y.teamOn = 0 GROUP BY Y.player ORDER BY avgPts DESC LIMIT 5) Z " +
              "ORDER BY RAND() LIMIT 1";
    }
 
@@ -191,7 +191,7 @@ public class HardAI {
              "JOIN Rush R ON R.pid = P.pid JOIN Player L ON R.bc = L.player JOIN Td T ON P.pid = T.pid " +
              "WHERE P.type = 'RUSH' AND teamOn = 0 GROUP BY wk, L.player) X ON X.player = L.player AND X.wk = G.wk " +
              "WHERE P.type = 'RUSH' AND teamOn = 0 GROUP BY G.wk, L.player ORDER BY L.player, G.wk) Y " +
-             "WHERE Y.pos1 = 'RB' AND Y.teamOn = 0 GROUP BY Y.player ORDER BY avgPts DESC LIMIT 10) Z " +
+             "WHERE Y.pos1 = 'RB' AND Y.teamOn = 0 GROUP BY Y.player ORDER BY avgPts DESC LIMIT 5) Z " +
              "ORDER BY RAND() LIMIT 1";
    }
    
@@ -203,7 +203,7 @@ public class HardAI {
              "JOIN Player L ON S.trg = L.player JOIN Td T ON P.pid = T.pid WHERE P.type = 'PASS' AND teamOn = 0 " +
              "GROUP BY wk, L.player) X ON X.player = L.player AND X.wk = G.wk WHERE P.type = 'PASS' AND teamOn = 0 " +
              "GROUP BY G.wk, L.player) Y WHERE Y.pos1 = 'WR' AND Y.teamOn = 0 GROUP BY Y.player ORDER BY avgPts DESC " +
-             "LIMIT 10) Z ORDER BY RAND() LIMIT 1";
+             "LIMIT 5) Z ORDER BY RAND() LIMIT 1";
    }
 
    private static String teReturn() {
@@ -214,7 +214,7 @@ public class HardAI {
              "JOIN Pass S ON S.pid = P.pid JOIN Player L ON S.trg = L.player JOIN Td T ON P.pid = T.pid WHERE " +
              "P.type = 'PASS' AND teamOn = 0 GROUP BY wk, L.player) X ON X.player = L.player AND X.wk = G.wk " +
              "WHERE P.type = 'PASS' AND teamOn = 0 GROUP BY G.wk, L.player) Y WHERE Y.pos1 = 'TE' AND Y.teamOn = 0 " +
-             "GROUP BY Y.player ORDER BY avgPts DESC LIMIT 10) Z ORDER BY RAND() LIMIT 1";
+             "GROUP BY Y.player ORDER BY avgPts DESC LIMIT 5) Z ORDER BY RAND() LIMIT 1";
    }
 
 

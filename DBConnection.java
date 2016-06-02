@@ -325,6 +325,83 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       return -1; 
    }
 
+   public static String getPosColName(Connection conn, String playerId, String rawPos, int teamId) {
+      Statement statement = null;
+      ResultSet results = null;
+      String realPos = "";
+      String query = "";
+      boolean wr = false;
+      boolean rb = false;
+      if (rawPos.equals("QB") || rawPos.equals("TE")) {
+         return rawPos;
+      }
+      else if (rawPos.equals("WR")) {
+         query += "Select WR1, WR2, WR3 from Team where id = " + teamId;
+         wr = true;
+      }
+      else {
+         query += "Select RB1, RB2 from Team where id = " + teamId;
+         rb = true;
+      }
+      try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         results = statement.executeQuery(query);
+
+         while (results.next()) {
+            if (wr) {
+               realPos += "WR";
+               ArrayList<String> cols = new ArrayList<String>();
+               cols.add(results.getString(1));
+               cols.add(results.getString(2));
+               cols.add(results.getString(3));
+               for (int i = 1; i < 4; i++) {
+                  if (cols.get(i).equals(playerId)) {
+                     realPos += i;
+                     return realPos;
+                  }
+               }
+
+            }
+            else if (rb) {
+               realPos += "RB";
+               ArrayList<String> cols = new ArrayList<String>();
+               cols.add(results.getString(1));
+               cols.add(results.getString(2));
+               for (int i = 1; i < 3; i++) {
+                  if (cols.get(i).equals(playerId)) {
+                     realPos += i;
+                     return realPos;
+                  }
+               }
+            }
+           
+
+         }
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+      return realPos;
+   }
+
    public static void dropPlayerFromTeam(Connection conn, int teamId, String position) {
       Statement statement = null;
       ResultSet results = null;

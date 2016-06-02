@@ -77,7 +77,7 @@ public class Scoring {
       Statement statement = null;
       ResultSet results = null;
       String str = "";
-      String query = "SELECT name, score FROM Team WHERE elim = false ORDER BY score LIMIT 1" ;
+      String query = "SELECT id, name, score FROM Team WHERE elim = false ORDER BY score LIMIT 1" ;
       try {
          // Get a statement from the connection
          statement = conn.createStatement();
@@ -91,7 +91,7 @@ public class Scoring {
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            str += String.format("%s %s", teamName, teamScore);
+            str += String.format("%s %s %s", id, teamName, teamScore);
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);

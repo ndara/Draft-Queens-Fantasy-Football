@@ -529,12 +529,9 @@ public void swapDraft()
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
-		if(dropPhase)
+		if(true)
 		{
 				playerDrop.setText((String)cTeam.getSelectedValue());
-		}
-		else
-		{
 			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
 				playerAdd.setText((String)JQBPlayers.getSelectedValue());
 			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("RB"))

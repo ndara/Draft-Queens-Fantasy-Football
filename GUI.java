@@ -522,49 +522,29 @@ public void swapDraft()
      swapBot.add(turnEntry);
      initialDraft.add(swapBot);
      
-    
+    System.out.println("dropPhase: "+dropPhase);
         cpid.add(initialDraft);
 		
 	}
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
-		if(tabs.getSelectedIndex()==0)
-		{
-			ArrayList<String> tempp=DBConnection.getAllTeamPosPlayers(conn,1);
-			 String[] input=tempp.toArray(new String[tempp.size()]);
-			 cTeam=new JList<String>(input);
-			 this.repaint();
-		}	
-		else if(tabs.getSelectedIndex()==8 && dropPhase==false)
-		{
-			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
-				playerAdd.setText((String)JQBPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("RB"))
-				playerAdd.setText((String)JRBPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("WR"))
-				playerAdd.setText((String)JWRPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("TE"))
-				playerAdd.setText((String)JTEPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("ALL"))
-				playerAdd.setText((String)JAllPlayers.getSelectedValue());
-		}
-		else if(tabs.getSelectedIndex()==8 && iniD)
-		{
-			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
-				playerAdd.setText((String)JQBPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("RB"))
-				playerAdd.setText((String)JRBPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("WR"))
-				playerAdd.setText((String)JWRPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("TE"))
-				playerAdd.setText((String)JTEPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("ALL"))
-				playerAdd.setText((String)JAllPlayers.getSelectedValue());
-		}
-		else if(tabs.getSelectedIndex()==8 && dropPhase)
+		if(dropPhase)
 		{
 				playerDrop.setText((String)cTeam.getSelectedValue());
+		}
+		else
+		{
+			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
+				playerAdd.setText((String)JQBPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("RB"))
+				playerAdd.setText((String)JRBPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("WR"))
+				playerAdd.setText((String)JWRPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("TE"))
+				playerAdd.setText((String)JTEPlayers.getSelectedValue());
+			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("ALL"))
+				playerAdd.setText((String)JAllPlayers.getSelectedValue());
 		}
 	}
 

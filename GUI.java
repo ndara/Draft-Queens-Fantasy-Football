@@ -104,7 +104,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	   //set main setting of CP
 	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
 	   setTitle("Draft Queens"); // "this" JFrame sets title
-	   setSize(1000, 500);         // "this" JFrame sets initial size
+	   setSize(1500, 800);         // "this" JFrame sets initial size
 	   setVisible(true);    
 	}
 	

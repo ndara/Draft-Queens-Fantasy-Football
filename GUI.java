@@ -67,7 +67,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 cp = getContentPane();
 	 cp.setLayout(new GridLayout(1,1,1,1));
 	 //make all booleans false
-	 Arrays.fill(array, Boolean.FALSE);
+	 Arrays.fill(losers, Boolean.FALSE);
 	 
 	 //resets players
 	 DBConnection.resetPlayers(conn);
@@ -690,7 +690,7 @@ public void winner()
 		String loser=Scoring.getLoserTeam(conn);
 		but.add(new JLabel("Eliminated: "+loser));
 		//adds proper boolean to screen
-		losers[(loser.substring(2,3)-1)]=true;
+		losers[INTEGER.parseInt((loser.substring(2,3))-1)]=true;
 		
 		but.add(next);
 		roundPane.add(but);

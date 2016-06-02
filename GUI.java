@@ -779,7 +779,14 @@ public void winner()
 				Random num=new Random();
 				int week=num.nextInt(8);
 				//needs to have 8 changed maybe to a another fucking global
+				if(week==0)
+				{
 				Scoring.runWeek(conn,week+1,8);
+				}
+				else
+				{
+					Scoring.runWeek(conn,week,8);
+				}
 				//up to here
 				System.out.println("doWeek executed ");
 				iniD=false;

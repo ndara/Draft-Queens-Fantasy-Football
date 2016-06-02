@@ -715,7 +715,6 @@ public void winner()
 		
 		this.setContentPane(temp);
 		this.repaint();
-		}
 	}
 	private class ButtonActionListener implements ActionListener
 	{
@@ -891,5 +890,4 @@ public void winner()
 			}
 		}
 	}
-}
 }

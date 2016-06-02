@@ -333,6 +333,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       boolean wr = false;
       boolean rb = false;
       if (rawPos.equals("QB") || rawPos.equals("TE")) {
+         System.out.println(rawPos);
          return rawPos;
       }
       else if (rawPos.equals("WR")) {
@@ -407,6 +408,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
    public static void dropPlayerFromTeam(Connection conn, int teamId, String position) {
       Statement statement = null;
       ResultSet results = null;
+      System.out.println("CURRENT POSITION PASSED:" + position);
       String query = "UPDATE Team SET " + position + " = '' WHERE id = " + teamId;
         try {
          // Get a statement from the connection

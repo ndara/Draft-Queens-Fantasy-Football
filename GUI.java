@@ -785,14 +785,14 @@ public void swapDraft()
 				String pos=temp.substring(8,10);
 				if(pos.equals("RB") && rbleft>0)
 				{
-				pos=droppedPos
+				pos=droppedPos;
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);
 				rbleft--;
 				}
 				if(pos.equals("WR") && wrleft>0)
 				{
-				pos=droppedPos
+				pos=droppedPos;
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);
 				wrleft--;

@@ -687,7 +687,7 @@ public void winner()
 		round++;
 		String loser=Scoring.getLoserTeam(conn);
 		Scanner sscan=new Scanner(loser);
-		int loserAI=Integer.parseInt(sscan.nextInt());
+		int loserAI=Integer.parseInt(sscan.next());
 		if(loserAI >1)
 		{
 		losers[loserAI-2]=true;

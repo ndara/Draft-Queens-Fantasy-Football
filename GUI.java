@@ -419,7 +419,7 @@ public void swapDraft()
      //tab 1 of Players Tab
      ArrayList<String> temp;
      //getPosPlayers() removed below
-     if(dropPhase||qbleft>0)
+     if(!dropPhase||qbleft>0)
      {
 	     temp=DBConnection.getAvailablePosPlayers(conn,true,false,false,false,1);
 	     String[] QBPlayers =temp.toArray(new String[temp.size()]);
@@ -430,7 +430,7 @@ public void swapDraft()
 	     posTabs.add("QB",JscrollQBPlayers);
      }
      //tab 2
-   if(dropPhase||rbleft>0)
+   if(!dropPhase||rbleft>0)
      {
 	     temp=DBConnection.getAvailablePosPlayers(conn,false,true,false,false,1);
 	     String[] RBPlayers =temp.toArray(new String[temp.size()]);
@@ -440,7 +440,7 @@ public void swapDraft()
 	     posTabs.add("RB",JscrollRBPlayers);
      }
      //tab 3
-     if(dropPhase||wrleft>0)
+     if(!dropPhase||wrleft>0)
      {
 	     temp=DBConnection.getAvailablePosPlayers(conn,false,false,true,false,1);
 	     String[] WRPlayers =temp.toArray(new String[temp.size()]);
@@ -451,7 +451,7 @@ public void swapDraft()
      }
      //tab 4
      //getPosPlayers removed
-     if(dropPhase||teleft>0)
+     if(!dropPhase||teleft>0)
      {
 	     temp=DBConnection.getAvailablePosPlayers(conn,false,false,false,true,1);
 	     String[] TEPlayers =temp.toArray(new String[temp.size()]);
@@ -467,7 +467,7 @@ public void swapDraft()
      boolean wrl=true;
      boolean tel=true;
      //getPosPlayers removed
-     if(dropPhase)
+     if(dropPhase==false)
      {
      temp=DBConnection.getAvailablePosPlayers(conn,qbl,rbl,wrl,tel,4);
      String[] AllPlayers =temp.toArray(new String[temp.size()]);
@@ -536,7 +536,7 @@ public void swapDraft()
 			 cTeam=new JList<String>(input);
 			 this.repaint();
 		}	
-		else if(tabs.getSelectedIndex()==8 && dropPhase)
+		else if(tabs.getSelectedIndex()==8 && dropPhase==false)
 		{
 			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
 				playerAdd.setText((String)JQBPlayers.getSelectedValue());
@@ -562,18 +562,9 @@ public void swapDraft()
 			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("ALL"))
 				playerAdd.setText((String)JAllPlayers.getSelectedValue());
 		}
-		else if(tabs.getSelectedIndex()==8 && dropPhase==false)
+		else if(tabs.getSelectedIndex()==8 && dropPhase)
 		{
-			if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("QB"))
-				playerDrop.setText((String)JQBPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("RB"))
-				playerDrop.setText((String)JRBPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("WR"))
-				playerDrop.setText((String)JWRPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("TE"))
-				playerDrop.setText((String)JTEPlayers.getSelectedValue());
-			else if(posTabs.getTitleAt(posTabs.getSelectedIndex()).equals("ALL"))
-				playerDrop.setText((String)JAllPlayers.getSelectedValue());
+				playerDrop.setText((String)cTeam.getSelectedValue());
 		}
 	}
 

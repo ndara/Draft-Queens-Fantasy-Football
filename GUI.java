@@ -419,7 +419,7 @@ public void swapDraft()
      //tab 1 of Players Tab
      ArrayList<String> temp;
      //getPosPlayers() removed below
-     if(!dropPhase||qbleft>0)
+     if(qbleft>0)
      {
 	     temp=DBConnection.getAvailablePosPlayers(conn,true,false,false,false,1);
 	     String[] QBPlayers =temp.toArray(new String[temp.size()]);
@@ -430,7 +430,7 @@ public void swapDraft()
 	     posTabs.add("QB",JscrollQBPlayers);
      }
      //tab 2
-   if(!dropPhase||rbleft>0)
+   if(rbleft>0)
      {
 	     temp=DBConnection.getAvailablePosPlayers(conn,false,true,false,false,1);
 	     String[] RBPlayers =temp.toArray(new String[temp.size()]);
@@ -440,7 +440,7 @@ public void swapDraft()
 	     posTabs.add("RB",JscrollRBPlayers);
      }
      //tab 3
-     if(!dropPhase||wrleft>0)
+     if(wrleft>0)
      {
 	     temp=DBConnection.getAvailablePosPlayers(conn,false,false,true,false,1);
 	     String[] WRPlayers =temp.toArray(new String[temp.size()]);
@@ -451,7 +451,7 @@ public void swapDraft()
      }
      //tab 4
      //getPosPlayers removed
-     if(!dropPhase||teleft>0)
+     if(teleft>0)
      {
 	     temp=DBConnection.getAvailablePosPlayers(conn,false,false,false,true,1);
 	     String[] TEPlayers =temp.toArray(new String[temp.size()]);
@@ -476,10 +476,7 @@ public void swapDraft()
      JScrollPane JscrollAllPlayers=new JScrollPane(JAllPlayers);
      posTabs.add("ALL",JscrollAllPlayers);
      }
-     else
-     {
-     	
-     }
+     
      
      JPanel aPlayers= new JPanel();
      aPlayers.setLayout(new GridLayout());

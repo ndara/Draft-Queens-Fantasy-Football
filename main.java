@@ -19,6 +19,8 @@ import java.io.FileNotFoundException;
 import java.awt.*;
 import javax.swing.*;
 
+import java.io.*;
+import javax.sound.sampled.*;
 
 public class main {
 	public static void main(String[] args) throws Exception {
@@ -44,6 +46,22 @@ public class main {
 
       //DO GUI STUFF HERE
      
+      Thread music = new Thread() {
+         public void run() {
+            try {
+               Clip clip = AudioSystem.getClip();
+               clip.open(AudioSystem.getAudioInputStream(new File("song.wav")));
+               clip.start();
+            }
+
+            catch (Exception ex) {
+               System.exit(0);
+            }
+         }
+      };
+
+      music.start();
+
 		SwingUtilities.invokeLater(new Runnable() {
 	         @Override
 	         public void run() 
@@ -60,4 +78,5 @@ public class main {
          //close connection to DB 
          //DBConnection.close(conn);
    }
+
 }

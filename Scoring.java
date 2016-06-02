@@ -256,6 +256,7 @@ public class Scoring {
    public static double getPlayerScore(Connection conn, int week, String player) {
       double score = qbScore(conn, week, player) + rbScore(conn, week, player) + recScore(conn, week, player);
       //System.out.println(player + " on week " + week + " scored " + score + " points.");
+      System.out.println("SCORE: " + score + " WEEK: " + week + " PLAYER: " + player);
 		return score;      
    }
 

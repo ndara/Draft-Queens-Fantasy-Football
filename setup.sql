@@ -80,7 +80,8 @@ RB2 CHAR(7) REFERENCES	Player(player),
 WR1 CHAR(7) REFERENCES Player(player),
 WR2 CHAR(7) REFERENCES Player(player),
 WR3 CHAR(7) REFERENCES Player(player),
-TE CHAR(7) REFERENCES Player(player)
+TE CHAR(7) REFERENCES Player(player),
+elim BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE Leaderboard (
@@ -93,7 +94,7 @@ WR1 CHAR(7) REFERENCES Player(player),
 WR2 CHAR(7) REFERENCES Player(player),
 WR3 CHAR(7) REFERENCES Player(player),
 TE CHAR(7) REFERENCES Player(player)
-)
+);
 
 
 

@@ -116,11 +116,17 @@ public class Scoring {
       return str;
    }
 
-   public static ArrayList<String> getRoundStats(Connection conn) {
+   public static ArrayList<String> getRoundStats(Connection conn, boolean getALL) {
       Statement statement = null;
       ResultSet results = null;
       ArrayList<String> allTeams = new ArrayList<String>();
-      String query = "SELECT name, score FROM Team WHERE elim = false ORDER BY score DESC" ;
+      String query = "";
+      if (getALL == false) {
+         query += "SELECT name, score FROM Team WHERE elim = false ORDER BY score DESC" ;
+      }
+      else {
+         query += "SELECT name, score FROM Team ORDER BY score DESC";
+      }
       try {
          // Get a statement from the connection
          statement = conn.createStatement();

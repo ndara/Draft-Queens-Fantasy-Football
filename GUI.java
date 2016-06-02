@@ -796,7 +796,6 @@ public void swapDraft()
 			}
 			if(source==swap)
 			{
-				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
 				remainingPlayers=8-remainingPlayers;
 				//need to have a checker
 				String temp=playerAdd.getText();

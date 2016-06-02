@@ -56,6 +56,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int round=1;
 	private boolean dropPhase=false;
 	private boolean iniD=true;
+	private String droppedPos="";
 
 	public GUI() throws Exception
 	{
@@ -737,6 +738,7 @@ public void swapDraft()
 				remainingPlayers=8-remainingPlayers;
 				//need to have a checker
 				String temp=playerDrop.getText();
+				droppedPos=DBConnection.getPosColName(conn,playerId,pos,1);
 				if(temp.length()>0)
 				{
 				
@@ -745,13 +747,13 @@ public void swapDraft()
 				if(pos.equals("RB"))
 				{
 				DBConnection.updatePlayer(conn,playerId,0);
-				DBConnection.dropPlayerFromTeam(conn,1,DBConnection.getPosColName(conn,playerId,pos,1));
+				DBConnection.dropPlayerFromTeam(conn,1,droppedPos);
 				rbleft++;
 				}
 				if(pos.equals("WR"))
 				{
 				DBConnection.updatePlayer(conn,playerId,0);
-				DBConnection.dropPlayerFromTeam(conn,1,DBConnection.getPosColName(conn,playerId,pos,1));
+				DBConnection.dropPlayerFromTeam(conn,1,droppedPos);
 				wrleft++;
 				}
 				else if(pos.equals("QB"))
@@ -783,14 +785,14 @@ public void swapDraft()
 				String pos=temp.substring(8,10);
 				if(pos.equals("RB") && rbleft>0)
 				{
-				pos=DBConnection.getPosColName(conn,playerId,pos,1);
+				pos=droppedPos
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);
 				rbleft--;
 				}
 				if(pos.equals("WR") && wrleft>0)
 				{
-				pos=DBConnection.getPosColName(conn,playerId,pos,1);
+				pos=droppedPos
 				DBConnection.updatePlayer(conn,playerId,1);
 				DBConnection.updateTeam(conn,pos,playerId,1);
 				wrleft--;
@@ -808,6 +810,7 @@ public void swapDraft()
 				teleft--;
 				}
 				dropPhase=true;
+				droppedPos="";
 				GUI.this.swapUpdate();
 			}
 		}

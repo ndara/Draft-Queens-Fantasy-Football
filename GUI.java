@@ -506,7 +506,10 @@ public void swapDraft()
      turnEntry.setLayout(new FlowLayout());
      //turn thing
      turnEntry.add(new JLabel("Turn: "+ teamName.getText()+"    Round: "+round));
+     if(dropPhase)
+     {
      turnEntry.add(doWeek);
+     }
      swapBot.add(turnEntry);
      initialDraft.add(swapBot);
      

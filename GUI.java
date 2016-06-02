@@ -738,12 +738,13 @@ public void swapDraft()
 				remainingPlayers=8-remainingPlayers;
 				//need to have a checker
 				String temp=playerDrop.getText();
-				droppedPos=DBConnection.getPosColName(conn,playerId,pos,1);
+				
 				if(temp.length()>0)
 				{
 				
 				String playerId=temp.substring(0,7);
 				String pos=temp.substring(8,10);
+				droppedPos=DBConnection.getPosColName(conn,playerId,pos,1);
 				if(pos.equals("RB"))
 				{
 				DBConnection.updatePlayer(conn,playerId,0);

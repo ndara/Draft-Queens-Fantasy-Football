@@ -58,6 +58,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private boolean iniD=true;
 	private String droppedPos="";
 	private Boolean[] losers = new Boolean[7];
+	private boolean lost=false;
 
 
 	public GUI() throws Exception
@@ -691,6 +692,11 @@ public void winner()
 		if(loserAI >1)
 		{
 		losers[loserAI-2]=true;
+		}
+		else
+		{
+			lost=true;
+		}
 		Scoring.eliminateTeam(conn,loserAI);
 		ArrayList<String> tempp=Scoring.getRoundStats(conn);
 		String[] input=tempp.toArray(new String[tempp.size()]);
@@ -709,10 +715,6 @@ public void winner()
 		
 		this.setContentPane(temp);
 		this.repaint();
-		}
-		else
-		{
-			this.winnerUpdate();
 		}
 	}
 	private class ButtonActionListener implements ActionListener
@@ -791,9 +793,16 @@ public void winner()
 			}
 			if(source==next)
 			{
+				if(lost=true)
+				{
+					GUI.this.winnerUpdate();
+				}
+				else
+				{
 				System.out.println("Woo you reacher next");
 				dropPhase=true;
 				GUI.this.swapUpdate();
+				}
 			}
 			if(source==dropButton)
 			{

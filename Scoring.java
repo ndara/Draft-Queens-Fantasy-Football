@@ -77,7 +77,7 @@ public class Scoring {
       Statement statement = null;
       ResultSet results = null;
       String str = "";
-      String query = "SELECT name, score FROM Team ORDER BY score LIMIT 1" ;
+      String query = "SELECT name, score FROM Team WHERE elim = false ORDER BY score LIMIT 1" ;
       try {
          // Get a statement from the connection
          statement = conn.createStatement();
@@ -255,7 +255,7 @@ public class Scoring {
    public static void eliminateTeam(Connection conn, int teamId) {
       Statement statement = null;
       ResultSet results = null;
-      String query = "UPDATE Team SET elim = true, where id = " + teamId;
+      String query = "UPDATE Team SET elim = true where id = " + teamId;
       //System.out.println(query);
         try {
          // Get a statement from the connection

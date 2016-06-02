@@ -763,7 +763,7 @@ public void winner()
 				//AI drafting
 				for(int x=0;x<order.length;x++)
 				{
-					RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+					HardAI.draftPlayer(conn,remainingPlayers,order[x]+2);
 					//System.out.println(order[x]+"turn");
 				}
 				//updates the screen

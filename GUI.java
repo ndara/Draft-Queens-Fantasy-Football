@@ -558,7 +558,7 @@ public void winner()
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
-		if(dropPhase and tabs.getSelectedIndex()==1)
+		if(dropPhase && tabs.getSelectedIndex()==1)
 		{
 				playerDrop.setText((String)cTeam.getSelectedValue());
 		}

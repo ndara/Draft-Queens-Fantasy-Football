@@ -548,10 +548,11 @@ public void winner()
 	win.add(new JLabel("Winner Screen"));
 	JPanel statsScreen=new JPanel();
 	statsScreen.setLayout(new FlowLayout());
-	ArrayList<String> tempp=Scoring.getRoundStats(conn);
+	ArrayList<String> tempp=Scoring.getRoundStats(conn,true);
 	String[] input=tempp.toArray(new String[tempp.size()]);
 	JList<String> stats=new JList<String>(input);
 	statsScreen.add(stats);
+	win.add(statsScreen);
 	cpid.add(win);
 }
 	
@@ -698,7 +699,7 @@ public void winner()
 			lost=true;
 		}
 		Scoring.eliminateTeam(conn,loserAI);
-		ArrayList<String> tempp=Scoring.getRoundStats(conn);
+		ArrayList<String> tempp=Scoring.getRoundStats(conn,false);
 		String[] input=tempp.toArray(new String[tempp.size()]);
 		JList<String> stats=new JList<String>(input);
 		roundPane.add(stats);

@@ -520,7 +520,8 @@ public void swapDraft()
      JPanel turnEntry=new JPanel();
      turnEntry.setLayout(new FlowLayout());
      //turn thing
-     turnEntry.add(new JLabel("Turn: "+ teamName.getText()+"Round: "+round));
+     turnEntry.add(new JLabel("Turn: "+ teamName.getText()+"    Round: "+round));
+     turnEntry.add(doWeek);
      swapBot.add(turnEntry);
      initialDraft.add(swapBot);
      

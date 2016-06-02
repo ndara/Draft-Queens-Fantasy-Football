@@ -743,6 +743,8 @@ public void swapDraft()
 			if(source==doWeek)
 			{
 				//we can move this to last time confirm button is hit
+				if(round<8)
+				{
 				Random num=new Random();
 				int week=num.nextInt(8);
 				//needs to have 8 changed maybe to a another fucking global
@@ -751,6 +753,8 @@ public void swapDraft()
 				System.out.println("doWeek executed ");
 				iniD=false;
 				GUI.this.roundUpdater();
+				}
+				//we add the thing here
 			}
 			if(source==next)
 			{

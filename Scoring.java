@@ -252,11 +252,44 @@ public class Scoring {
 		return score;      
    }
 
+   public static void eliminateTeam(Connection conn, int teamId) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "UPDATE Team SET elim = true, where id = " + teamId;
+      //System.out.println(query);
+        try {
+         // Get a statement from the connection
+         statement = conn.createStatement();
+
+         // Execute the query
+         statement.executeUpdate(query);
+
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+   }
+
 
    public static void resetTeams(Connection conn) {
       Statement statement = null;
       ResultSet results = null;
-      String query = "UPDATE Team SET score = 0, QB = '', RB1 = '', RB2 = '', WR1 = '', WR2 = '', WR3 = '', TE = ''";
+      String query = "UPDATE Team SET score = 0, elim = false ,QB = '', RB1 = '', RB2 = '', WR1 = '', WR2 = '', WR3 = '', TE = ''";
       //System.out.println(query);
         try {
          // Get a statement from the connection

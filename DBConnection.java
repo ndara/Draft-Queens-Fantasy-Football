@@ -358,8 +358,9 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
                cols.add(results.getString(2));
                cols.add(results.getString(3));
                for (int i = 1; i < 4; i++) {
-                  if (cols.get(i).equals(playerId)) {
+                  if (cols.get(i - 1).equals(playerId)) {
                      realPos += i;
+                     System.out.println(realPos);
                      return realPos;
                   }
                }
@@ -371,8 +372,9 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
                cols.add(results.getString(1));
                cols.add(results.getString(2));
                for (int i = 1; i < 3; i++) {
-                  if (cols.get(i).equals(playerId)) {
+                  if (cols.get(i - 1).equals(playerId)) {
                      realPos += i;
+                     System.out.println(realPos);
                      return realPos;
                   }
                }

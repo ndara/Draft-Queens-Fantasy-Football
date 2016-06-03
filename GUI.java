@@ -35,6 +35,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JButton next;
 	private JButton swap;
 	private JButton dropButton;
+   private JRadioButton easy;
+   private JRadioButton medium;
+   private JRadioButton hard;
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
@@ -95,6 +98,12 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 leader.setLayout(new FlowLayout());
 	 JButton leaderboardButton=new JButton("LeaderBoard");
 	 leader.add(leaderboardButton);
+    easy=new JRadioButton("Easy",true);
+    medium=new JRadioButton("Medium");
+    hard=new JRadioButton("Hard");
+    title.add(easy);
+    title.add(medium);
+    title.add(hard);
 	 title.add(leader);
 	 leaderboardButton.addActionListener(this);
 	 cp.add(title);
@@ -594,7 +603,6 @@ public void winner()
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -717,11 +725,36 @@ public void winner()
 		this.setContentPane(temp);
 		this.repaint();
 	}
+   private void rePainter()
+   {
+      this.repaint();
+   }
 	private class ButtonActionListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent arg0)
 		{
 			Object source=arg0.getSource();
+         if(source==easy)
+         {
+            difficulty=1;
+            medium=new JRadioButton("Medium");
+            hard=new JRadioButton("Hard");
+            GUI.this.rePainter();
+         }
+         if(source==medium)
+         {
+            difficulty=2;
+            easy=new JRadioButton("Easy");
+            hard=new JRadioButton("Hard");
+            GUI.this.rePainter();
+         }
+         if(source==hard)
+         {
+            difficulty=3;
+            medium=new JRadioButton("Medium");
+            easy=new JRadioButton("Easy");
+            GUI.this.rePainter();
+         }
 			if(source==ConfirmButton)
 			{
 				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
@@ -768,7 +801,7 @@ public void winner()
 					else if(difficulty==2)
 						MediumAI.draftPlayer(conn,remainingPlayers,order[x]+2);
 					else if(difficulty==3)
-						HardAI.draftPlayer(conn,remainingPlayers,order[x]+2)
+						HardAI.draftPlayer(conn,remainingPlayers,order[x]+2);
 					//System.out.println(order[x]+"turn");
 				}
 				//updates the screen

@@ -746,7 +746,32 @@ public void leaderBoardGui()
 	}
    private void rePainter()
    {
-   this.setContentPane(cp);
+	   cp.removeAll();
+		cp=getContentPane();
+	   title =new JPanel();
+	 title.setLayout(new GridLayout(3,1));
+	 //first item in grid
+	 title.add(new JLabel("Draft Queens"));
+	 //second item in grid
+	 JPanel teamNamer=new JPanel();
+	 teamNamer.setLayout(new FlowLayout());
+	 teamNamer.add(new JLabel("Team Name:"));
+	 teamName.setEditable(true);
+	 teamNamer.add(teamName);
+	 teamNamer.add(teamConfirm);
+	 teamConfirm.addActionListener(this);
+	 //teamName.addActionListener(this);
+	 title.add(teamNamer);
+	 //third item in the grid
+	 JPanel leader=new JPanel();
+	 leader.setLayout(new FlowLayout());
+	 leader.add(leaderBoard);
+    leader.add(easy);
+    leader.add(medium);
+    leader.add(hard);
+	 title.add(leader);
+	 cp.add(title);
+	this.setContentPane(cp);
       this.repaint();
    }
 	private class ButtonActionListener implements ActionListener
@@ -963,15 +988,8 @@ public void leaderBoardGui()
 			}
 			if(source==back)
 			{
-				
+				GUI.this.rePainter();
 			}
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
 }

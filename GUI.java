@@ -1009,6 +1009,7 @@ public void leaderBoardGui()
 				playerAdd.setText("");
 				GUI.this.swapUpdate();
 				}
+				System.out.println("aiWent value:"+aiWent);
 				if(aiWent==false)
 				{
 					for(int x=0;x<order.length;x++)

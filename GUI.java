@@ -572,7 +572,7 @@ public void leaderboardGui()
 {
 	JPanel leaderBoard=new JPanel();
 	leaderBoard.add(new JLabel("LeaderBoard"));
-	back=new JButton("back")
+	back=new JButton("back");
 	leaderBoard.add(back);
 	cpid.add(win);
 }

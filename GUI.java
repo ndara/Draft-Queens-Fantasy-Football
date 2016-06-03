@@ -726,8 +726,7 @@ public void leaderBoardGui()
 		Container temp=getContentPane();
 		temp.removeAll();
 		JPanel roundPane=new JPanel();
-		roundPane.setLayout(new GridLayout(3,1));
-		roundPane.add(new JLabel("Round: "+round));
+		roundPane.setLayout(new GridLayout(2,1));
 		round++;
 		String loser=Scoring.getLoserTeam(conn);
 		Scanner sscan=new Scanner(loser);
@@ -831,6 +830,7 @@ public void leaderBoardGui()
 		JPanel but=new JPanel();
 		but.setLayout(new FlowLayout());
 		but.add(new JLabel("Eliminated: "+loser.substring(1)));
+		but.add(new JLabel("Round: "+round);
 		//adds proper boolean to screen
 		
 		but.add(next);

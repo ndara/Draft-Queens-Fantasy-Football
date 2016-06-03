@@ -37,6 +37,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JButton dropButton;
 	private JButton back;
 	private JButton leaderBoard;
+	private JButton restart;
    private JRadioButton easy;
    private JRadioButton medium;
    private JRadioButton hard;
@@ -111,7 +112,7 @@ public void title()
 	 leaderBoard.addActionListener(ButtonListener);
 	 leader.add(leaderBoard);
 	 
-    easy=new JRadioButton("Easy",true);
+    easy=new JRadioButton("Random",true);
     easy.addActionListener(ButtonListener);
     medium=new JRadioButton("Medium");
     medium.addActionListener(ButtonListener);
@@ -559,7 +560,7 @@ public void swapDraft()
 public void winner()
 {
 	JPanel win=new JPanel();
-	win.setLayout(new GridLayout(2,1));
+	win.setLayout(new GridLayout(3,1));
 	win.add(new JLabel("Winner Screen"));
 	JPanel statsScreen=new JPanel();
 	statsScreen.setLayout(new FlowLayout());
@@ -568,6 +569,12 @@ public void winner()
 	JList<String> stats=new JList<String>(input);
 	statsScreen.add(stats);
 	win.add(statsScreen);
+	JPanel bacs=new JPanel();
+	restart=new JButton("Restart");
+	restart.addActionListener(ButtonListener);
+	bacs.add(restart);
+	
+	win.add(restart);
 	cpid.add(win);
 }
 public void leaderBoardGui()
@@ -575,7 +582,6 @@ public void leaderBoardGui()
 	JPanel leaderBoardP=new JPanel();
 	leaderBoard.add(new JLabel("LeaderBoard"));
 	back=new JButton("back");
-	back.addActionListener(ButtonListener);
 	leaderBoardP.add(back);
 	cp.add(leaderBoardP);
 }
@@ -787,7 +793,7 @@ public void leaderBoardGui()
          if(source==easy)
          {
             difficulty=1;
-            easy=new JRadioButton("Easy",true);
+            easy=new JRadioButton("Random",true);
             easy.addActionListener(ButtonListener);
             medium=new JRadioButton("Medium");
             medium.addActionListener(ButtonListener);
@@ -798,7 +804,7 @@ public void leaderBoardGui()
          if(source==medium)
          {
             difficulty=2;
-            easy=new JRadioButton("Easy");
+            easy=new JRadioButton("Random");
             easy.addActionListener(ButtonListener);
             medium=new JRadioButton("Medium",true);
             medium.addActionListener(ButtonListener);
@@ -811,7 +817,7 @@ public void leaderBoardGui()
             difficulty=3;
             medium=new JRadioButton("Medium");
             medium.addActionListener(ButtonListener);
-            easy=new JRadioButton("Easy");
+            easy=new JRadioButton("Random");
             easy.addActionListener(ButtonListener);
             hard=new JRadioButton("Hard",true);
             hard.addActionListener(ButtonListener);
@@ -1005,6 +1011,16 @@ public void leaderBoardGui()
 			}
 			if(source==back)
 			{
+				GUI.this.rePainter();
+			}
+			if(source==restart)
+			{
+				//make all booleans false
+	 Arrays.fill(losers, Boolean.FALSE);
+	 
+	 //resets players
+	 DBConnection.resetPlayers(conn);
+	 Scoring.resetTeams(conn);
 				GUI.this.rePainter();
 			}
 		}

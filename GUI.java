@@ -573,7 +573,7 @@ public void leaderBoardGui()
 	leaderBoard.add(new JLabel("LeaderBoard"));
 	back=new JButton("back");
 	leaderBoardP.add(back);
-	cpid.add(leaderBoardP);
+	cp.add(leaderBoardP);
 }
 	
 	// All methods we need to overide so they do correct function
@@ -700,11 +700,10 @@ public void leaderBoardGui()
 	}
 	public void leaderBoardUpdate()
 	{
-		cpid.removeAll();
-		cpid=getContentPane();
-		posTabs.removeAll();
+		cp.removeAll();
+		cp=getContentPane();
 		this.leaderBoardGui();
-		this.setContentPane(cpid);
+		this.setContentPane(cp);
 		this.repaint();
 	}
 	public void roundUpdater()

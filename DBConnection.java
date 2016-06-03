@@ -746,7 +746,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             count++;
 
          }
-         query += ")";
+         query += ") ORDER BY pos1";
 
       }
       //System.out.println("QUERY MADE:");

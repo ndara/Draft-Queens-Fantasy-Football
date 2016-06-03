@@ -830,7 +830,7 @@ public void leaderBoardGui()
 		JPanel but=new JPanel();
 		but.setLayout(new FlowLayout());
 		but.add(new JLabel("Eliminated: "+loser.substring(1)));
-		but.add(new JLabel("Round: "+round);
+		but.add(new JLabel("Round: "+round));
 		//adds proper boolean to screen
 		
 		but.add(next);

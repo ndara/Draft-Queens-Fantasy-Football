@@ -66,6 +66,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private Boolean[] losers = new Boolean[7];
 	private boolean lost=false;
 	private int difficulty=1;
+	private boolean aiWent=false;
 
 	public GUI() throws Exception
 	{
@@ -884,6 +885,7 @@ public void leaderBoardGui()
 			if(source==doWeek)
 			{
 				//we can move this to last time confirm button is hit
+				aiWent=false;
 				if(round<7)
 				{
 				Random num=new Random();
@@ -1006,6 +1008,20 @@ public void leaderBoardGui()
 				droppedPos="";
 				playerAdd.setText("");
 				GUI.this.swapUpdate();
+				}
+				if(!aiWent)
+				{
+					for(int x=0;x<order.length;x++)
+					{
+						if(difficulty==1)
+							RandomAI.swapPlayerRandom(conn,order[x]+2);
+						else if(difficulty==2)
+							MediumAI.swapPlayerRandom(conn,order[x]+2);
+						else if(difficulty==3)
+							HardAI.swapPlayerRandom(conn,order[x]+2);
+						//System.out.println(order[x]+"turn");
+					}
+				aiWent=true;
 				}
 				
 			}

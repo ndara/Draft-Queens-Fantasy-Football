@@ -109,7 +109,7 @@ public void title()
 	 leader.setLayout(new FlowLayout());
 	 leaderBoard=new JButton("LeaderBoard");
 	 leaderBoard.addActionListener(ButtonListener);
-	 leader.add(leaderboardButton);
+	 leader.add(leaderboard);
 	 
     easy=new JRadioButton("Easy",true);
     medium=new JRadioButton("Medium");
@@ -118,7 +118,6 @@ public void title()
     leader.add(medium);
     leader.add(hard);
 	 title.add(leader);
-	 leaderboardButton.addActionListener(this);
 	 cp.add(title);
 }
 	
@@ -570,11 +569,11 @@ public void winner()
 }
 public void leaderboardGui()
 {
-	JPanel leaderBoard=new JPanel();
+	JPanel leaderBoardP=new JPanel();
 	leaderBoard.add(new JLabel("LeaderBoard"));
 	back=new JButton("back");
-	leaderBoard.add(back);
-	cpid.add(win);
+	leaderBoardP.add(back);
+	cpid.add(leaderBoardP);
 }
 	
 	// All methods we need to overide so they do correct function

@@ -865,7 +865,7 @@ public void leaderBoardGui()
 				//AI drafting
 				for(int x=0;x<order.length;x++)
 				{
-					else if(difficulty==1)
+					if(difficulty==1)
 						RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);
 					else if(difficulty==2)
 						MediumAI.draftPlayer(conn,remainingPlayers,order[x]+2);

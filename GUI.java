@@ -80,9 +80,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 //resets players
 	 DBConnection.resetPlayers(conn);
 	 Scoring.resetTeams(conn);
-	 
+/*	 
 	String className = getLookAndFeelClassName("Nimbus");
-	UIManager.setLookAndFeel(className); 	 
+	UIManager.setLookAndFeel(className); 	 */
 	 
 	 
 	 //Title screen
@@ -93,6 +93,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	   setSize(1200, 500);         // "this" JFrame sets initial size
 	   setVisible(true);    
 	}
+	/*
 	public static String getLookAndFeelClassName(String nameSnippet) 
 	{
     LookAndFeelInfo[] plafs = UIManager.getInstalledLookAndFeels();
@@ -102,7 +103,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
         }
     }
     return null;
-}
+}*/
 public void title()
 {
 	title =new JPanel();

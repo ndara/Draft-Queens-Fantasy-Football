@@ -703,7 +703,7 @@ public void leaderBoardGui()
 		cpid.removeAll();
 		cpid=getContentPane();
 		posTabs.removeAll();
-		leaderBoardGUI();
+		this.leaderBoardGui();
 		this.setContentPane(cpid);
 		this.repaint();
 	}

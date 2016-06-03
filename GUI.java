@@ -1007,9 +1007,8 @@ public void leaderBoardGui()
 				dropPhase=true;
 				droppedPos="";
 				playerAdd.setText("");
-				GUI.this.swapUpdate();
+				
 				}
-				System.out.println("aiWent value:"+aiWent);
 				if(aiWent==false)
 				{
 					for(int x=0;x<order.length;x++)
@@ -1020,10 +1019,10 @@ public void leaderBoardGui()
 							MediumAI.swapPlayerRandom(conn,order[x]+2);
 						else if(difficulty==3)
 							HardAI.swapPlayerRandom(conn,order[x]+2);
-						System.out.println(order[x]+"turn for swap");
 					}
 				aiWent=true;
 				}
+				GUI.this.swapUpdate();
 				
 			}
 			if(source==leaderBoard)

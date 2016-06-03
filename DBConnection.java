@@ -166,21 +166,68 @@ public class DBConnection {
    }
 public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId) {
       Statement statement = null;
-      ResultSet results = null;
+      ResultSet results1 = null;
+      ResultSet results2 = null;
+      ResultSet results3 = null;
+      ResultSet results4 = null;
       ArrayList<String> allPlayers = new ArrayList<String>();
-      String query = "SELECT player, pos1,fname, lname FROM Player WHERE teamOn = " + teamId;
+      String query1 = "SELECT player, pos1,fname, lname FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'QB'";
+      String query2 = "SELECT player, pos1,fname, lname FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'RB'";
+      String query3 = "SELECT player, pos1,fname, lname FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'WR'";
+      String query4 = "SELECT player, pos1,fname, lname FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'TE'";
+
+
       try {
          // Get a statement from the connection
          statement = conn.createStatement();
 
          // Execute the query
-         results = statement.executeQuery(query);
+         results1 = statement.executeQuery(query1);
 
-         while (results.next()) {
-            String playerID = results.getString(1);
-            String pos = results.getString(2);
-            String first = results.getString(3);
-            String last = results.getString(4);
+
+         while (results1.next()) {
+            String playerID = results1.getString(1);
+            String pos = results1.getString(2);
+            String first = results1.getString(3);
+            String last = results1.getString(4);
+            //String first = results.getString("first");
+            //int room = results.getInt(3);
+
+            allPlayers.add(String.format("%s %s %s %s", playerID, pos,first, last));
+         }
+         results2 = statement.executeQuery(query2);
+
+         while (results2.next()) {
+            String playerID = results2.getString(1);
+            String pos = results2.getString(2);
+            String first = results2.getString(3);
+            String last = results2.getString(4);
+            //String first = results.getString("first");
+            //int room = results.getInt(3);
+
+            allPlayers.add(String.format("%s %s %s %s", playerID, pos,first, last));
+         }
+
+         results3 = statement.executeQuery(query3);
+
+         while (results3.next()) {
+            String playerID = results3.getString(1);
+            String pos = results3.getString(2);
+            String first = results3.getString(3);
+            String last = results3.getString(4);
+            //String first = results.getString("first");
+            //int room = results.getInt(3);
+
+            allPlayers.add(String.format("%s %s %s %s", playerID, pos,first, last));
+         }
+
+         results4 = statement.executeQuery(query4);
+
+         while (results4.next()) {
+            String playerID = results4.getString(1);
+            String pos = results4.getString(2);
+            String first = results4.getString(3);
+            String last = results4.getString(4);
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
@@ -191,9 +238,21 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
          sqlEx.printStackTrace(System.err);
       } finally {
          try {
-            if (results != null) {
-               results.close();
-               results = null;
+            if (results1 != null) {
+               results1.close();
+               results1 = null;
+            }
+            if (results2 != null) {
+               results2.close();
+               results2 = null;
+            }
+            if (results3 != null) {
+               results3.close();
+               results3 = null;
+            }
+            if (results4 != null) {
+               results4.close();
+               results4 = null;
             }
 
             if (statement != null) {

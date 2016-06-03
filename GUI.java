@@ -1019,7 +1019,7 @@ public void leaderBoardGui()
 							MediumAI.swapPlayerRandom(conn,order[x]+2);
 						else if(difficulty==3)
 							HardAI.swapPlayerRandom(conn,order[x]+2);
-						//System.out.println(order[x]+"turn");
+						System.out.println(order[x]+"turn for swap");
 					}
 				aiWent=true;
 				}

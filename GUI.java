@@ -727,6 +727,7 @@ public void winner()
 	}
    private void rePainter()
    {
+   this.setContentPane(cp);
       this.repaint();
    }
 	private class ButtonActionListener implements ActionListener

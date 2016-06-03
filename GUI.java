@@ -1036,15 +1036,12 @@ public void leaderBoardGui()
 			if(source==restart)
 			{
 				qbleft=1;
-	rbleft=2;
-	wrleft=3;
-	teleft=1;
-				//make all booleans false
-	 Arrays.fill(losers, Boolean.FALSE);
-	 
-	 //resets players
-	 DBConnection.resetPlayers(conn);
-	 Scoring.resetTeams(conn);
+				rbleft=2;
+				wrleft=3;
+				teleft=1;
+				Arrays.fill(losers, Boolean.FALSE);
+				DBConnection.resetPlayers(conn);
+				Scoring.resetTeams(conn);
 				GUI.this.rePainter();
 			}
 		}

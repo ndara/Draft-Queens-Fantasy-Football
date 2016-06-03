@@ -57,7 +57,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int rbleft=2;
 	private int wrleft=3;
 	private int teleft=1;
-	private int[] order=Draft.getDraftOrder(7);
+	private int[] order=Draft.getDraftOrder(8);
 	private JTable teamOn;
 	private int round=1;
 	private boolean dropPhase=false;
@@ -829,48 +829,52 @@ public void leaderBoardGui()
 				int remainingPlayers=qbleft+rbleft+wrleft+teleft;
 				remainingPlayers=8-remainingPlayers;
 				//need to have a checker
-				String temp=playerAdd.getText();
-				if(temp.length()>0)
-				{
 				
-				String playerId=temp.substring(0,7);
-				String pos=temp.substring(8,10);
-				if(pos.equals("RB") && rbleft>0)
-				{
-				pos=pos+rbleft;
-				DBConnection.updatePlayer(conn,playerId,1);
-				DBConnection.updateTeam(conn,pos,playerId,1);
-				rbleft--;
-				}
-				if(pos.equals("WR") && wrleft>0)
-				{
-				pos=pos+wrleft;
-				DBConnection.updatePlayer(conn,playerId,1);
-				DBConnection.updateTeam(conn,pos,playerId,1);
-				wrleft--;
-				}
-				else if(pos.equals("QB") && qbleft>0)
-				{
-				DBConnection.updatePlayer(conn,playerId,1);
-				DBConnection.updateTeam(conn,pos,playerId,1);
-				qbleft--;
-				}
-				else if(pos.equals("TE") && teleft>0)
-				{
-				DBConnection.updatePlayer(conn,playerId,1);
-				DBConnection.updateTeam(conn,pos,playerId,1);	
-				teleft--;
-				}
 				
 				//AI drafting
 				for(int x=0;x<order.length;x++)
 				{
-					if(difficulty==1)
-						RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+					if(order[x]==0)
+					{
+								String temp=playerAdd.getText();
+						if(temp.length()>0)
+						{
+						
+						String playerId=temp.substring(0,7);
+						String pos=temp.substring(8,10);
+						if(pos.equals("RB") && rbleft>0)
+						{
+						pos=pos+rbleft;
+						DBConnection.updatePlayer(conn,playerId,1);
+						DBConnection.updateTeam(conn,pos,playerId,1);
+						rbleft--;
+						}
+						if(pos.equals("WR") && wrleft>0)
+						{
+						pos=pos+wrleft;
+						DBConnection.updatePlayer(conn,playerId,1);
+						DBConnection.updateTeam(conn,pos,playerId,1);
+						wrleft--;
+						}
+						else if(pos.equals("QB") && qbleft>0)
+						{
+						DBConnection.updatePlayer(conn,playerId,1);
+						DBConnection.updateTeam(conn,pos,playerId,1);
+						qbleft--;
+						}
+						else if(pos.equals("TE") && teleft>0)
+						{
+						DBConnection.updatePlayer(conn,playerId,1);
+						DBConnection.updateTeam(conn,pos,playerId,1);	
+						teleft--;
+						}
+					}
+					else if(difficulty==1)
+						RandomAI.draftPlayer(conn,remainingPlayers,order[x]+1);
 					else if(difficulty==2)
-						MediumAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						MediumAI.draftPlayer(conn,remainingPlayers,order[x]+1);
 					else if(difficulty==3)
-						HardAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						HardAI.draftPlayer(conn,remainingPlayers,order[x]+1);
 					//System.out.println(order[x]+"turn");
 				}
 				//updates the screen

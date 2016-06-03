@@ -575,6 +575,7 @@ public void leaderBoardGui()
 	JPanel leaderBoardP=new JPanel();
 	leaderBoard.add(new JLabel("LeaderBoard"));
 	back=new JButton("back");
+	back.addActionListener(ButtonListener);
 	leaderBoardP.add(back);
 	cp.add(leaderBoardP);
 }

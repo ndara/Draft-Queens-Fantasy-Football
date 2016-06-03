@@ -81,6 +81,10 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 DBConnection.resetPlayers(conn);
 	 Scoring.resetTeams(conn);
 	 
+	String className = getLookAndFeelClassName("Nimbus");
+	UIManager.setLookAndFeel(className); 	 
+	 
+	 
 	 //Title screen
 	 title();
 	   //set main setting of CP
@@ -89,6 +93,16 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	   setSize(1200, 500);         // "this" JFrame sets initial size
 	   setVisible(true);    
 	}
+	public static String getLookAndFeelClassName(String nameSnippet) 
+	{
+    LookAndFeelInfo[] plafs = UIManager.getInstalledLookAndFeels();
+    for (LookAndFeelInfo info : plafs) {
+        if (info.getName().contains(nameSnippet)) {
+            return info.getClassName();
+        }
+    }
+    return null;
+}
 public void title()
 {
 	title =new JPanel();

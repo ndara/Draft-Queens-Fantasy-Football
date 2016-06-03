@@ -741,10 +741,91 @@ public void leaderBoardGui()
 			lost=true;
 		}
 		Scoring.eliminateTeam(conn,loserAI);
-		ArrayList<String> tempp=Scoring.getRoundStats(conn,false);
-		String[] input=tempp.toArray(new String[tempp.size()]);
-		JList<String> stats=new JList<String>(input);
-		roundPane.add(stats);
+		//here goes tabs
+		
+		
+     
+     //tab1
+     tabs =new JTabbedPane();
+     JPanel hTab=new JPanel();
+     hTab.setLayout(new GridLayout(1,1));
+     JPanel sTab=new JPanel();
+     sTab.setLayout(new GridLayout(1,1));
+     ArrayList<String> tempp=Scoring.getRoundStats(conn,false);
+	String[] input=tempp.toArray(new String[tempp.size()]);
+	JList<String> stats=new JList<String>(input);
+	stab.add(stats);
+     tabs.addTab("Scores",stab);
+     tempp=DBConnection.getAllTeamPosPlayers(conn,1);
+     input=tempp.toArray(new String[tempp.size()]);
+     cTeam=new JList<String>(input);
+     hTab.add(cTeam);
+     
+     
+     tabs.addTab(teamName.getText(), hTab);
+     //AI starts at 2
+     //AI one
+     JPanel a1Tab=new JPanel();
+     a1Tab.setLayout(new GridLayout(1,1));
+     
+     tempp=DBConnection.getAllTeamPosPlayers(conn,2);
+     input=tempp.toArray(new String[tempp.size()]);
+     JList<String> a1Team=new JList<String>(input);
+     a1Tab.add(a1Team);
+     tabs.addTab("Ai1", a1Tab);
+      
+     //AI two
+     JPanel a2Tab=new JPanel();
+     a2Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,3);
+     input=tempp.toArray(new String[tempp.size()]);
+     JList<String> a2Team=new JList<String>(input);
+     a2Tab.add(a2Team);
+     tabs.addTab("Ai2", a2Tab);
+     //AI three
+     JPanel a3Tab=new JPanel();
+     a3Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,4);
+     input=tempp.toArray(new String[tempp.size()]);
+     JList<String> a3Team=new JList<String>(input);
+     a3Tab.add(a3Team);
+     tabs.addTab("Ai3", a3Tab);
+      //AI four
+     JPanel a4Tab=new JPanel();
+     a4Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,5);
+     input=tempp.toArray(new String[tempp.size()]);
+     JList<String> a4Team=new JList<String>(input);
+     a4Tab.add(a4Team);
+     tabs.addTab("Ai4", a4Tab);
+     //AI five
+     JPanel a5Tab=new JPanel();
+     a5Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,6);
+     input=tempp.toArray(new String[tempp.size()]);
+     JList<String> a5Team=new JList<String>(input);
+     a5Tab.add(a5Team);
+     tabs.addTab("Ai5", a5Tab);
+        //AI six
+     JPanel a6Tab=new JPanel();
+     a6Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,7);
+     input=tempp.toArray(new String[tempp.size()]);
+     JList<String> a6Team=new JList<String>(input);
+     a6Tab.add(a6Team);
+     tabs.addTab("Ai6", a6Tab);
+         //AI seven
+     JPanel a7Tab=new JPanel();
+     a7Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,8);
+     input=tempp.toArray(new String[tempp.size()]);
+     JList<String> a7Team=new JList<String>(input);
+     a7Tab.add(a7Team);
+     tabs.addTab("Ai7", a7Tab);
+     
+		
+		//
+		roundPane.add(tabs);
 		next=new JButton("next");
 		next.addActionListener(ButtonListener);
 		JPanel but=new JPanel();
@@ -1041,6 +1122,7 @@ public void leaderBoardGui()
 				rbleft=2;
 				wrleft=3;
 				teleft=1;
+				lost=false;
 				Arrays.fill(losers, Boolean.FALSE);
 				DBConnection.resetPlayers(conn);
 				Scoring.resetTeams(conn);

@@ -8,33 +8,33 @@ import java.lang.*;
 
 public class Scoring {
    
-   /*
-	public static void main(String[] args) throws Exception {
+   
+	/*public static void main(String[] args) throws Exception {
 
       //DO ALL DB STUFF HERE
       Connection conn = DBConnection.getConnection();
       
       //DB TESTING
       //getPlayerScore(conn,1 , "DW-4300");
-      // DBConnection.initTeam(conn, "bitchnigga");
-      // DBConnection.updateTeam(conn, "QB", "CN-0500", 1);
-      // DBConnection.updateTeam(conn, "RB1", "DM-0450", 1);
-      // DBConnection.updateTeam(conn, "RB2", "LB-0250", 1);
-      // DBConnection.updateTeam(conn, "WR1", "WS-0925", 1);
-      // DBConnection.updateTeam(conn, "WR2", "BM-0300", 1);
-      // DBConnection.updateTeam(conn, "WR3", "JJ-4700", 1);
-      // DBConnection.updateTeam(conn, "TE", "RG-2200", 1);
+      DBConnection.initTeam(conn, "bitchnigga");
+      DBConnection.updateTeam(conn, "QB", "CN-0500", 1);
+      DBConnection.updateTeam(conn, "RB1", "DM-0450", 1);
+      DBConnection.updateTeam(conn, "RB2", "LB-0250", 1);
+      DBConnection.updateTeam(conn, "WR1", "WS-0925", 1);
+      DBConnection.updateTeam(conn, "WR2", "BM-0300", 1);
+      DBConnection.updateTeam(conn, "WR3", "JJ-4700", 1);
+      DBConnection.updateTeam(conn, "TE", "RG-2200", 1);
       // System.out.println("here is the total team score : " + getTeamScore(conn, 3, 1));
-
+      addTeamToLeaderboard(conn, 1);
       // RandomAI.swapPlayerRandom(conn, 2);
       // RandomAI.swapPlayerRandom(conn, 2);
       // RandomAI.swapPlayerRandom(conn, 2);
       // RandomAI.swapPlayerRandom(conn, 2);
-      resetTeams(conn);
+      //resetTeams(conn);
       
       DBConnection.close(conn);
-   }
-   */
+   }*/
+   
    
 
    public static void editTeamScore(Connection conn, int id, double score) {
@@ -299,12 +299,8 @@ public class Scoring {
       Statement statement = null;
       ResultSet results = null;
       String query = "UPDATE Team SET score = 0, elim = false ,QB = '', RB1 = '', RB2 = '', WR1 = '', WR2 = '', WR3 = '', TE = ''";
-      //System.out.println(query);
         try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          statement.executeUpdate(query);
 
       } catch (SQLException sqlEx) {
@@ -387,9 +383,7 @@ public class Scoring {
       	   			"JOIN Td T ON P.pid = T.pid WHERE wk = " + week + " AND P.type = 'RUSH' AND L.player = '" + player + "') X ON X.player = L.player " +
 							"WHERE wk = " + week + " AND P.type = 'RUSH' AND L.player = '" + player + "'";
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-         // Execute the query
          results = statement.executeQuery(query);
          if(results.next())
             scoreStr = results.getString(1);
@@ -431,9 +425,7 @@ public class Scoring {
          				"JOIN Td T ON P.pid = T.pid WHERE wk = " + week + " AND P.type = 'PASS' AND L.player = '" + player + "') X ON X.player = L.player " + 
 							"WHERE wk = " + week + " AND P.type = 'PASS' AND L.player = '" + player + "'";
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-         // Execute the query
          results = statement.executeQuery(query);
          if(results.next())
             scoreStr = results.getString(1);
@@ -462,4 +454,151 @@ public class Scoring {
       }
       return score;
    }
+
+   public static void addTeamToLeaderboard(Connection conn, int teamId) {
+      Statement statement = null;
+      ResultSet results = null;
+      String name = getTeamName(conn, teamId);
+      Double score = queryTeamScore(conn, teamId);
+      String qb = getPostionFromTeam(conn, teamId, "QB");
+      String rb1 = getPostionFromTeam(conn, teamId, "RB1");
+      String rb2 = getPostionFromTeam(conn, teamId, "RB2");
+      String wr1 = getPostionFromTeam(conn, teamId, "WR1");
+      String wr2 = getPostionFromTeam(conn, teamId, "WR2");
+      String wr3 = getPostionFromTeam(conn, teamId, "WR3");
+      String te = getPostionFromTeam(conn, teamId, "TE");
+      String query = "INSERT INTO Leaderboard (name, score, QB, RB1, RB2, WR1, WR2, WR3, TE) VALUES (" + "'" + name + "', " + score +
+                     ", '" + qb + "', '" + rb1 + "', '" + rb2 + "', '" + wr1 + "', '" + wr2 + "', '" + wr3 + "', '" + te + "')";
+
+      try {
+         statement = conn.createStatement();
+         statement.executeUpdate(query);
+
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+   }
+
+   private static String getPostionFromTeam(Connection conn, int teamId, String pos) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "SELECT " + pos + " FROM Team WHERE id = " + teamId;
+      String player = "";
+
+      try {
+         statement = conn.createStatement();
+         results = statement.executeQuery(query);
+         if(results.next())
+            player = results.getString(1);
+
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+      return player;
+   }
+
+   private static String getTeamName(Connection conn, int teamId) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "SELECT name FROM Team WHERE id = " + teamId;
+      String team = "";
+
+      try {
+         statement = conn.createStatement();
+         results = statement.executeQuery(query);
+         if(results.next())
+            team = results.getString(1);
+
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+      return team;
+   }
+
+   public static double queryTeamScore(Connection conn, int teamId) {
+      Statement statement = null;
+      ResultSet results = null;
+      double score = 0;
+      String scoreStr = "";
+
+      String query = "SELECT score FROM Team WHERE id = " + teamId;
+      try {
+         statement = conn.createStatement();
+         results = statement.executeQuery(query);
+         if(results.next())
+            scoreStr = results.getString(1);
+         if (scoreStr == null)
+            scoreStr = "0";
+         score = Double.parseDouble(scoreStr);
+         
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+      return score;
+   }
+
 }

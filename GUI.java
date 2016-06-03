@@ -109,7 +109,7 @@ public void title()
 	 leader.setLayout(new FlowLayout());
 	 leaderBoard=new JButton("LeaderBoard");
 	 leaderBoard.addActionListener(ButtonListener);
-	 leader.add(leaderboard);
+	 leader.add(leaderBoard);
 	 
     easy=new JRadioButton("Easy",true);
     medium=new JRadioButton("Medium");
@@ -567,7 +567,7 @@ public void winner()
 	win.add(statsScreen);
 	cpid.add(win);
 }
-public void leaderboardGui()
+public void leaderBoardGui()
 {
 	JPanel leaderBoardP=new JPanel();
 	leaderBoard.add(new JLabel("LeaderBoard"));

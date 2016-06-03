@@ -35,6 +35,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JButton next;
 	private JButton swap;
 	private JButton dropButton;
+	private JButton back;
+	private JButton leaderBoard;
    private JRadioButton easy;
    private JRadioButton medium;
    private JRadioButton hard;
@@ -78,7 +80,19 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 Scoring.resetTeams(conn);
 	 
 	 //Title screen
-	 title =new JPanel();
+	 title();
+	 
+	 
+        
+	   //set main setting of CP
+	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
+	   setTitle("Draft Queens"); // "this" JFrame sets title
+	   setSize(1200, 500);         // "this" JFrame sets initial size
+	   setVisible(true);    
+	}
+public void title()
+{
+	title =new JPanel();
 	 title.setLayout(new GridLayout(3,1));
 	 //first item in grid
 	 title.add(new JLabel("Draft Queens"));
@@ -96,7 +110,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 //third item in the grid
 	 JPanel leader=new JPanel();
 	 leader.setLayout(new FlowLayout());
-	 JButton leaderboardButton=new JButton("LeaderBoard");
+	 leaderBoard=new JButton("LeaderBoard");
 	 leader.add(leaderboardButton);
     easy=new JRadioButton("Easy",true);
     medium=new JRadioButton("Medium");
@@ -107,16 +121,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 title.add(leader);
 	 leaderboardButton.addActionListener(this);
 	 cp.add(title);
-	 
-	 
-        
-	   //set main setting of CP
-	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
-	   setTitle("Draft Queens"); // "this" JFrame sets title
-	   setSize(1200, 500);         // "this" JFrame sets initial size
-	   setVisible(true);    
-	}
-	
+}
 	
 public void initDraft()
 	{
@@ -564,6 +569,14 @@ public void winner()
 	win.add(statsScreen);
 	cpid.add(win);
 }
+public void leaderboardGui()
+{
+	JPanel leaderBoard=new JPanel();
+	leaderBoard.add(new JLabel("LeaderBoard"));
+	back=new JButton("back")
+	leaderBoard.add(back);
+	cpid.add(win);
+}
 	
 	// All methods we need to overide so they do correct function
 	public void mouseClicked(MouseEvent arg0) {
@@ -684,6 +697,15 @@ public void winner()
 		cpid=getContentPane();
 		posTabs.removeAll();
 		winner();
+		this.setContentPane(cpid);
+		this.repaint();
+	}
+	public void leaderBoardUpdate()
+	{
+		cpid.removeAll();
+		cpid=getContentPane();
+		posTabs.removeAll();
+		leaderBoardGUI();
 		this.setContentPane(cpid);
 		this.repaint();
 	}
@@ -936,6 +958,15 @@ public void winner()
 				playerAdd.setText("");
 				GUI.this.swapUpdate();
 				}
+				
+			}
+			if(source==leaderBoard)
+			{
+				GUI.this.leaderBoardUpdate();
+			}
+			if(source==back)
+			{
+				
 			}
 		}
 	}

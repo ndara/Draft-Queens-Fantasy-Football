@@ -81,9 +81,6 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 
 	 //Title screen
 	 title();
-	 
-	 
-        
 	   //set main setting of CP
 	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
 	   setTitle("Draft Queens"); // "this" JFrame sets title
@@ -111,13 +108,15 @@ public void title()
 	 JPanel leader=new JPanel();
 	 leader.setLayout(new FlowLayout());
 	 leaderBoard=new JButton("LeaderBoard");
+	 leaderBoard.addActionListener(ButtonListener);
 	 leader.add(leaderboardButton);
+	 
     easy=new JRadioButton("Easy",true);
     medium=new JRadioButton("Medium");
     hard=new JRadioButton("Hard");
-    title.add(easy);
-    title.add(medium);
-    title.add(hard);
+    leader.add(easy);
+    leader.add(medium);
+    leader.add(hard);
 	 title.add(leader);
 	 leaderboardButton.addActionListener(this);
 	 cp.add(title);

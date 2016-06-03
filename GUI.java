@@ -781,6 +781,8 @@ public void leaderBoardGui()
 	//third item in the grid
 	JPanel leader=new JPanel();
 	leader.setLayout(new FlowLayout());
+	leaderBoard=new JButton("LeaderBoard");
+	 leaderBoard.addActionListener(ButtonListener);
 	leader.add(leaderBoard);
     leader.add(easy);
     leader.add(medium);

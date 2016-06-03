@@ -786,6 +786,8 @@ public void leaderBoardGui()
          if(source==easy)
          {
             difficulty=1;
+            easy=new JRadioButton("Easy",true);
+            easy.addActionListener(ButtonListener);
             medium=new JRadioButton("Medium");
             medium.addActionListener(ButtonListener);
             hard=new JRadioButton("Hard");
@@ -797,6 +799,8 @@ public void leaderBoardGui()
             difficulty=2;
             easy=new JRadioButton("Easy");
             easy.addActionListener(ButtonListener);
+            medium=new JRadioButton("Medium",true);
+            medium.addActionListener(ButtonListener);
             hard=new JRadioButton("Hard");
             hard.addActionListener(ButtonListener);
             GUI.this.rePainter();
@@ -808,6 +812,8 @@ public void leaderBoardGui()
             medium.addActionListener(ButtonListener);
             easy=new JRadioButton("Easy");
             easy.addActionListener(ButtonListener);
+            hard=new JRadioButton("Hard",true);
+            hard.addActionListener(ButtonListener);
             GUI.this.rePainter();
          }
 			if(source==ConfirmButton)

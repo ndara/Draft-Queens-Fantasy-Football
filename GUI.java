@@ -583,7 +583,10 @@ public void winner()
 	ArrayList<String> tempp=Scoring.getRoundStats(conn,true);
 	String[] input=tempp.toArray(new String[tempp.size()]);
 	JList<String> stats=new JList<String>(input);
-	statsScreen.add(stats);
+	JPanel winnerStat=new JPanel();
+	winnerStat.setLayout(new GridLayout(1,1));
+	winnerStat.add(stats);
+	statsScreen.add(winnerStat);
 	win.add(statsScreen);
 	JPanel bacs=new JPanel();
 	restart=new JButton("Restart");

@@ -38,9 +38,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JButton back;
 	private JButton leaderBoard;
 	private JButton restart;
-   private JRadioButton easy;
-   private JRadioButton medium;
-   private JRadioButton hard;
+    private JRadioButton easy;
+    private JRadioButton medium;
+    private JRadioButton hard;
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;
@@ -150,60 +150,60 @@ public void initDraft()
      JPanel a1Tab=new JPanel();
      a1Tab.setLayout(new GridLayout(1,1));
      
-      tempp=DBConnection.getAllTeamPosPlayers(conn,2);
+     tempp=DBConnection.getAllTeamPosPlayers(conn,2);
      input=tempp.toArray(new String[tempp.size()]);
-    JList<String> a1Team=new JList<String>(input);
+     JList<String> a1Team=new JList<String>(input);
      a1Tab.add(a1Team);
-      tabs.addTab("Ai1", a1Tab);
+     tabs.addTab("Ai1", a1Tab);
       
      //AI two
-      JPanel a2Tab=new JPanel();
-      a2Tab.setLayout(new GridLayout(1,1));
-      tempp=DBConnection.getAllTeamPosPlayers(conn,3);
+     JPanel a2Tab=new JPanel();
+     a2Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,3);
      input=tempp.toArray(new String[tempp.size()]);
      JList<String> a2Team=new JList<String>(input);
-      a2Tab.add(a2Team);
-       tabs.addTab("Ai2", a2Tab);
+     a2Tab.add(a2Team);
+     tabs.addTab("Ai2", a2Tab);
      //AI three
-       JPanel a3Tab=new JPanel();
-       a3Tab.setLayout(new GridLayout(1,1));
-       tempp=DBConnection.getAllTeamPosPlayers(conn,4);
+     JPanel a3Tab=new JPanel();
+     a3Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,4);
      input=tempp.toArray(new String[tempp.size()]);
-      JList<String> a3Team=new JList<String>(input);
-       a3Tab.add(a3Team);
-        tabs.addTab("Ai3", a3Tab);
+     JList<String> a3Team=new JList<String>(input);
+     a3Tab.add(a3Team);
+     tabs.addTab("Ai3", a3Tab);
       //AI four
-        JPanel a4Tab=new JPanel();
-        a4Tab.setLayout(new GridLayout(1,1));
-        tempp=DBConnection.getAllTeamPosPlayers(conn,5);
+     JPanel a4Tab=new JPanel();
+     a4Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,5);
      input=tempp.toArray(new String[tempp.size()]);
-       JList<String> a4Team=new JList<String>(input);
-        a4Tab.add(a4Team);
-         tabs.addTab("Ai4", a4Tab);
-       //AI five
-         JPanel a5Tab=new JPanel();
-         a5Tab.setLayout(new GridLayout(1,1));
-         tempp=DBConnection.getAllTeamPosPlayers(conn,6);
+     JList<String> a4Team=new JList<String>(input);
+     a4Tab.add(a4Team);
+     tabs.addTab("Ai4", a4Tab);
+     //AI five
+     JPanel a5Tab=new JPanel();
+     a5Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,6);
      input=tempp.toArray(new String[tempp.size()]);
-        JList<String> a5Team=new JList<String>(input);
-         a5Tab.add(a5Team);
-          tabs.addTab("Ai5", a5Tab);
+     JList<String> a5Team=new JList<String>(input);
+     a5Tab.add(a5Team);
+     tabs.addTab("Ai5", a5Tab);
         //AI six
-          JPanel a6Tab=new JPanel();
-          a6Tab.setLayout(new GridLayout(1,1));
-          tempp=DBConnection.getAllTeamPosPlayers(conn,7);
+     JPanel a6Tab=new JPanel();
+     a6Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,7);
      input=tempp.toArray(new String[tempp.size()]);
-         JList<String> a6Team=new JList<String>(input);
-          a6Tab.add(a6Team);
-           tabs.addTab("Ai6", a6Tab);
+     JList<String> a6Team=new JList<String>(input);
+     a6Tab.add(a6Team);
+     tabs.addTab("Ai6", a6Tab);
          //AI seven
-           JPanel a7Tab=new JPanel();
-           a7Tab.setLayout(new GridLayout(1,1));
-           tempp=DBConnection.getAllTeamPosPlayers(conn,8);
+     JPanel a7Tab=new JPanel();
+     a7Tab.setLayout(new GridLayout(1,1));
+     tempp=DBConnection.getAllTeamPosPlayers(conn,8);
      input=tempp.toArray(new String[tempp.size()]);
-          JList<String> a7Team=new JList<String>(input);
-           a7Tab.add(a7Team);
-            tabs.addTab("Ai7", a7Tab);
+     JList<String> a7Team=new JList<String>(input);
+     a7Tab.add(a7Team);
+     tabs.addTab("Ai7", a7Tab);
       
       
       //PLayer tab
@@ -450,13 +450,13 @@ public void swapDraft()
          //AI seven
          if(!losers[6])
          {
-           JPanel a7Tab=new JPanel();
-           a7Tab.setLayout(new GridLayout(1,1));
-           tempp=DBConnection.getAllTeamPosPlayers(conn,8);
-     input=tempp.toArray(new String[tempp.size()]);
-          JList<String> a7Team=new JList<String>(input);
-           a7Tab.add(a7Team);
-            tabs.addTab("Ai7", a7Tab);
+        JPanel a7Tab=new JPanel();
+        a7Tab.setLayout(new GridLayout(1,1));
+        tempp=DBConnection.getAllTeamPosPlayers(conn,8);
+		input=tempp.toArray(new String[tempp.size()]);
+        JList<String> a7Team=new JList<String>(input);
+        a7Tab.add(a7Team);
+        tabs.addTab("Ai7", a7Tab);
          }
       
       //PLayer tab
@@ -761,34 +761,34 @@ public void leaderBoardGui()
 	}
    private void rePainter()
    {
-	   cp.removeAll();
-		cp=getContentPane();
-	   title =new JPanel();
-	 title.setLayout(new GridLayout(3,1));
-	 //first item in grid
-	 title.add(new JLabel("Draft Queens"));
-	 //second item in grid
-	 JPanel teamNamer=new JPanel();
-	 teamNamer.setLayout(new FlowLayout());
-	 teamNamer.add(new JLabel("Team Name:"));
-	 teamName.setEditable(true);
-	 teamNamer.add(teamName);
-	 JButton teamConfirm=new JButton("Confirm");
-	 teamNamer.add(teamConfirm);
-	 teamConfirm.addActionListener(this);
-	 //teamName.addActionListener(this);
-	 title.add(teamNamer);
-	 //third item in the grid
-	 JPanel leader=new JPanel();
-	 leader.setLayout(new FlowLayout());
-	 leader.add(leaderBoard);
+	cp.removeAll();
+	cp=getContentPane();
+	title =new JPanel();
+	title.setLayout(new GridLayout(3,1));
+	//first item in grid
+	title.add(new JLabel("Draft Queens"));
+	//second item in grid
+	JPanel teamNamer=new JPanel();
+	teamNamer.setLayout(new FlowLayout());
+	teamNamer.add(new JLabel("Team Name:"));
+	teamName.setEditable(true);
+	teamNamer.add(teamName);
+	JButton teamConfirm=new JButton("Confirm");
+	teamNamer.add(teamConfirm);
+	teamConfirm.addActionListener(this);
+	//teamName.addActionListener(this);
+	title.add(teamNamer);
+	//third item in the grid
+	JPanel leader=new JPanel();
+	leader.setLayout(new FlowLayout());
+	leader.add(leaderBoard);
     leader.add(easy);
     leader.add(medium);
     leader.add(hard);
-	 title.add(leader);
-	 cp.add(title);
+	title.add(leader);
+	cp.add(title);
 	this.setContentPane(cp);
-      this.repaint();
+    this.repaint();
    }
 	private class ButtonActionListener implements ActionListener
 	{

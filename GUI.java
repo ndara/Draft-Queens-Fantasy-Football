@@ -754,8 +754,8 @@ public void leaderBoardGui()
      ArrayList<String> tempp=Scoring.getRoundStats(conn,false);
 	String[] input=tempp.toArray(new String[tempp.size()]);
 	JList<String> stats=new JList<String>(input);
-	stab.add(stats);
-     tabs.addTab("Scores",stab);
+	sTab.add(stats);
+     tabs.addTab("Scores",sTab);
      tempp=DBConnection.getAllTeamPosPlayers(conn,1);
      input=tempp.toArray(new String[tempp.size()]);
      cTeam=new JList<String>(input);

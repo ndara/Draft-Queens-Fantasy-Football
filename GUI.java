@@ -674,7 +674,7 @@ public void leaderBoardGui()
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if(teamName.getText().length>0)
+		if(teamName.getText().length()>0)
 		{
 		DBConnection.initTeam(conn,teamName.getText());
 		cpid=getContentPane();

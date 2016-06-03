@@ -758,6 +758,7 @@ public void leaderBoardGui()
 	 teamNamer.add(new JLabel("Team Name:"));
 	 teamName.setEditable(true);
 	 teamNamer.add(teamName);
+	 JButton teamConfirm=new JButton("Confirm");
 	 teamNamer.add(teamConfirm);
 	 teamConfirm.addActionListener(this);
 	 //teamName.addActionListener(this);

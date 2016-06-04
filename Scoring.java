@@ -9,7 +9,7 @@ import java.lang.*;
 public class Scoring {
    
    
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 
       //DO ALL DB STUFF HERE
       Connection conn = DBConnection.getConnection();
@@ -29,7 +29,7 @@ public class Scoring {
       addTeamToLeaderboard(conn, 1);
       addTeamToLeaderboard(conn, 1);
       ArrayList<String> tmp = new ArrayList<String>();
-      tmp = getLeadeoard(conn);
+      tmp = getLeaderboard(conn);
 
       for (int i = 0; i < tmp.size(); i++) {
          System.out.println(tmp.get(i));
@@ -44,7 +44,7 @@ public class Scoring {
       
       DBConnection.close(conn);
    }
-   
+   */
    
 
    public static void editTeamScore(Connection conn, int id, double score) {
@@ -685,9 +685,6 @@ public class Scoring {
       ResultSet results = null;
       String query = "SELECT fname, lname FROM Player WHERE player = '" + id + "'";
       String name = "";
-
-      statement = conn.createStatement();
-      results = statement.executeQuery(query);
 
       try {
          statement = conn.createStatement();

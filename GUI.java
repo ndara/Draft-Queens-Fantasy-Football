@@ -38,9 +38,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JButton back;
 	private JButton leaderBoard;
 	private JButton restart;
-    private JRadioButton easy;
-    private JRadioButton medium;
-    private JRadioButton hard;
+    	private JRadioButton easy;
+    	private JRadioButton medium;
+    	private JRadioButton hard;
 	public Connection conn;
 	public Statement statement = null;
 	public ResultSet results = null;

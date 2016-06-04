@@ -597,7 +597,7 @@ public void winner()
 public void leaderBoardGui()
 {
 	JPanel leaderBoardP=new JPanel();
-	leaderBoardP.setLayout(new GridLayout(1,1));
+	leaderBoardP.setLayout(new GridLayout(2,1));
 	ArrayList<String> tempp=Scoring.getLeaderboard(conn);
 	String[] input=tempp.toArray(new String[tempp.size()]);
 	JList<String> stats=new JList<String>(input);
@@ -605,7 +605,10 @@ public void leaderBoardGui()
 	leaderBoardP.add(statsS);
 	back=new JButton("back");
 	back.addActionListener(ButtonListener);
-	leaderBoardP.add(back);
+	JPanel backside=new JPanel();
+	backside.setLayout(new FlowLayout());
+	backside.add(back);
+	leaderBoardP.add(backside);
 	cp.add(leaderBoardP);
 }
 	

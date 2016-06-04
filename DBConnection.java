@@ -785,7 +785,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            allPlayers.add(String.format("%s %s %s %s", playerID, pos1, first, last, height, weight, col, cteam));
+            allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos1, first, last, height, weight, col, cteam));
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);

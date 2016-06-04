@@ -9,7 +9,7 @@ import java.lang.*;
 public class Scoring {
    
    
-	/*public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 
       //DO ALL DB STUFF HERE
       Connection conn = DBConnection.getConnection();
@@ -43,7 +43,7 @@ public class Scoring {
       //resetTeams(conn);
       
       DBConnection.close(conn);
-   }*/
+   }
    
    
 
@@ -652,9 +652,10 @@ public class Scoring {
          results = statement.executeQuery(query);
 
          while (results.next()) {
-            leaders.add(results.getString(1) + "|" + results.getString(2) + "|" + results.getString(3) + 
-                        "|" + results.getString(4) + "|" + results.getString(5) + "|" + results.getString(6) +
-                        "|" + results.getString(7) + "|" + results.getString(8) + "|" + results.getString(9));
+            leaders.add(results.getString(1) + "|" + results.getString(2) + "|" + getPlayerFromId(conn, results.getString(3)) + 
+                        "|" + getPlayerFromId(conn, results.getString(4)) + "|" + getPlayerFromId(conn, results.getString(5)) + 
+                        "|" + getPlayerFromId(conn, results.getString(6)) + "|" + getPlayerFromId(conn, results.getString(7)) + 
+                        "|" + getPlayerFromId(conn, results.getString(8)) + "|" + getPlayerFromId(conn, results.getString(9)));
          }
          
       } catch (SQLException sqlEx) {
@@ -677,5 +678,44 @@ public class Scoring {
          }     
       }
       return leaders;
+   }
+
+   public static String getPlayerFromId(Connection conn, String id) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "SELECT fname, lname FROM Player WHERE player = '" + id + "'";
+      String name = "";
+
+      statement = conn.createStatement();
+      results = statement.executeQuery(query);
+
+      try {
+         statement = conn.createStatement();
+         results = statement.executeQuery(query);
+         if(results.next())
+            name = results.getString(1) + " " +results.getString(2);
+
+         
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+
+      return name;
    }
 }

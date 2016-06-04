@@ -601,9 +601,18 @@ public void leaderBoardGui()
 	JPanel leaderBoardP=new JPanel();
 	leaderBoardP.setLayout(new GridLayout(2,1));
 	ArrayList<String> tempp=Scoring.getLeaderboard(conn);
-	JTable table=new JTable(tempp.size(),9);
+	JTable table=new JTable(tempp.size()+1,9);
 	System.out.println(tempp.get(0));
-	for(int x=0;x<tempp.size();x++)
+	table.setValueAt("Team",0,0);
+	table.setValueAt("Score",0,1);
+	table.setValueAt("QB",0,2);
+	table.setValueAt("RB",0,3);
+	table.setValueAt("RB2",0,4);
+	table.setValueAt("WR",0,5);
+	table.setValueAt("WR2",0,6);
+	table.setValueAt("WR3",0,7);
+	table.setValueAt("TE",0,8);
+	for(int x=1;x<tempp.size()+1;x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<9;y++)

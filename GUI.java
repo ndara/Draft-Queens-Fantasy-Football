@@ -158,6 +158,7 @@ public void title()
     		JOptionPane.showMessageDialog(new JFrame(),helpStr,"Help",JOptionPane.PLAIN_MESSAGE);
     	}
     });
+    leader.add(help);
 	 title.add(leader);
 	 cp.add(title);
 }

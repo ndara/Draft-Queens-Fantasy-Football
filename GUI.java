@@ -24,8 +24,8 @@ import java.sql.Statement;
 
 public class GUI extends JFrame implements ActionListener, WindowListener, MouseListener {
 	private JTextField teamName =new JTextField("", 20);// 20 is variable
-	private JTextField playerAdd=new JTextField("", 20);
-	private JTextField playerDrop=new JTextField("",20);
+	private JTextField playerAdd=new JTextField("", 40);
+	private JTextField playerDrop=new JTextField("",40);
 	private Container cp;
 	private Container cpid;
 	private JPanel title;
@@ -601,10 +601,17 @@ public void leaderBoardGui()
 	JPanel leaderBoardP=new JPanel();
 	leaderBoardP.setLayout(new GridLayout(2,1));
 	ArrayList<String> tempp=Scoring.getLeaderboard(conn);
-	String[] input=tempp.toArray(new String[tempp.size()]);
-	JList<String> stats=new JList<String>(input);
-	JScrollPane statsS=new JScrollPane(stats);
-	leaderBoardP.add(statsS);
+	JTable table=new JTable(tempp.size(),9);
+	
+	for(int x=0;x<tempp.size();x++)
+	{
+		String [] values=tempp.get(x).split("|");
+		for(int y=0;y<9;y++)
+		{
+			table.setValueAt(values[y],x,y);
+		}
+	}
+	leaderBoardP.add(table);
 	back=new JButton("back");
 	back.addActionListener(ButtonListener);
 	JPanel backside=new JPanel();
@@ -1000,6 +1007,7 @@ public void leaderBoardGui()
 			}
 			if(source==doWeek)
 			{
+				playerDrop.setText("");
 				//we can move this to last time confirm button is hit
 				aiWent=false;
 				if(round<7)

@@ -622,7 +622,7 @@ public void leaderBoardGui()
 		}
 	}
 	JScrollPane scroll=new JScrollPane();
-	scroll.getViewPort().add(table);
+	scroll.getViewport().add(table);
 	leaderBoardP.add(scroll);
 	back=new JButton("back");
 	back.addActionListener(ButtonListener);

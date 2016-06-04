@@ -604,7 +604,7 @@ public void leaderBoardGui()
 	JTable table=new JTable(tempp.size(),9);
 	System.out.println(tempp.get(0));
 	for(int x=0;x<tempp.size();x++)
-	{
+	{ 
 		String [] values=tempp.get(x).split("\|");
 		for(int y=0;y<9;y++)
 		{

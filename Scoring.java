@@ -89,10 +89,7 @@ public class Scoring {
       String str = "";
       String query = "SELECT id, name, score FROM Team WHERE elim = false ORDER BY score LIMIT 1" ;
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          results = statement.executeQuery(query);
 
          while (results.next()) {
@@ -138,10 +135,7 @@ public class Scoring {
          query += "SELECT name, score FROM Team ORDER BY score DESC";
       }
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          results = statement.executeQuery(query);
 
          while (results.next()) {
@@ -265,7 +259,6 @@ public class Scoring {
 
    public static double getPlayerScore(Connection conn, int week, String player) {
       double score = qbScore(conn, week, player) + rbScore(conn, week, player) + recScore(conn, week, player);
-      //System.out.println(player + " on week " + week + " scored " + score + " points.");
       System.out.println("SCORE: " + score + " WEEK: " + week + " PLAYER: " + player);
 		return score;      
    }
@@ -275,12 +268,8 @@ public class Scoring {
       ResultSet results = null;
       String query = "UPDATE Team SET elim = true where id = " + teamId;
       System.out.println(query);
-      //System.out.println(query);
         try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          statement.executeUpdate(query);
 
       } catch (SQLException sqlEx) {
@@ -348,9 +337,7 @@ public class Scoring {
                      week + " AND P.type = 'PASS' AND L.player = '" + player + "'";
 
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-         // Execute the query
          results = statement.executeQuery(query);
          if(results.next())
             scoreStr = results.getString(1);

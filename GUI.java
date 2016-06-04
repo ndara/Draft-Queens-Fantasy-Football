@@ -602,7 +602,7 @@ public void leaderBoardGui()
 	leaderBoardP.setLayout(new GridLayout(2,1));
 	ArrayList<String> tempp=Scoring.getLeaderboard(conn);
 	JTable table=new JTable(tempp.size(),9);
-	System.out.println(tempp.get(x));
+	System.out.println(tempp.get(0));
 	for(int x=0;x<tempp.size();x++)
 	{
 		String [] values=tempp.get(x).split("|");

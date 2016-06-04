@@ -621,7 +621,8 @@ public void leaderBoardGui()
 			table.setValueAt(values[y],x+1,y);
 		}
 	}
-	leaderBoardP.add(table);
+	JScrollPane scroll=new JScrollPane(table);
+	leaderBoardP.add(scroll);
 	back=new JButton("back");
 	back.addActionListener(ButtonListener);
 	JPanel backside=new JPanel();

@@ -643,6 +643,7 @@ public void leaderBoardGui()
 			table.setValueAt(values[y],x+1,y);
 		}
 	}
+	table.setTableHeader(null);
 	JScrollPane scroll=new JScrollPane();
 	scroll.getViewport().add(table);
 	leaderBoardP.add(scroll);

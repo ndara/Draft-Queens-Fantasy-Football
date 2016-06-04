@@ -155,7 +155,7 @@ public void title()
     {
     	public void actionPerformed(ActionEvent e)
     	{
-    		JOptionPane.showMessageDialog(new JFrame(),helpstr,"Help",JOptionPane.PLAIN_MESSAGE);
+    		JOptionPane.showMessageDialog(new JFrame(),helpStr,"Help",JOptionPane.PLAIN_MESSAGE);
     	}
     });
 	 title.add(leader);

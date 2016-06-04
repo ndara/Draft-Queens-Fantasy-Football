@@ -393,7 +393,8 @@ public void swapDraft()
      
      
      tabs.addTab(teamName.getText(), hTab);
-     
+     if(dropPhase)
+	 {
      //AI starts at 2
      if(!losers[0])
      {
@@ -473,7 +474,7 @@ public void swapDraft()
         a7Tab.add(a7Team);
         tabs.addTab("Ai7", a7Tab);
          }
-      
+	}
       //PLayer tab
      //tab 1 of Players Tab
      ArrayList<String> temp;
@@ -699,14 +700,21 @@ public void leaderBoardGui()
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+		
+		if(teamName.getText().length()>20)
+		{
+			String temp=teamName.getText();
+			temp=temp.substring(0,19);
+			teamName.setText(temp);
+		}
 		if(teamName.getText().length()>0)
 		{
-		DBConnection.initTeam(conn,teamName.getText());
-		cpid=getContentPane();
-		initDraft();
-		cpid.remove(title);
-		this.setContentPane(cpid);
-		this.repaint();
+			DBConnection.initTeam(conn,teamName.getText());
+			cpid=getContentPane();
+			initDraft();
+			cpid.remove(title);
+			this.setContentPane(cpid);
+			this.repaint();
 		}
 	}
 	public void humanTeamUpdate()

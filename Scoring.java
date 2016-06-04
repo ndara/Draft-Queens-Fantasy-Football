@@ -298,9 +298,11 @@ public class Scoring {
       Statement statement = null;
       ResultSet results = null;
       String query = "UPDATE Team SET score = 0, elim = false ,QB = '', RB1 = '', RB2 = '', WR1 = '', WR2 = '', WR3 = '', TE = ''";
+      String query2 = "UPDATE Team SET name = '' WHERE id = 1";
         try {
          statement = conn.createStatement();
          statement.executeUpdate(query);
+         statement.executeUpdate(query2);
 
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);

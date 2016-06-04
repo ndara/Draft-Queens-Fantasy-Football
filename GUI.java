@@ -612,13 +612,13 @@ public void leaderBoardGui()
 	table.setValueAt("WR2",0,6);
 	table.setValueAt("WR3",0,7);
 	table.setValueAt("TE",0,8);
-	for(int x=1;x<tempp.size()+1;x++)
+	for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<9;y++)
 		{
 			System.out.println(values[y]);
-			table.setValueAt(values[y],x,y);
+			table.setValueAt(values[y],x+1,y);
 		}
 	}
 	leaderBoardP.add(table);

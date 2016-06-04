@@ -171,10 +171,10 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       ResultSet results3 = null;
       ResultSet results4 = null;
       ArrayList<String> allPlayers = new ArrayList<String>();
-      String query1 = "SELECT player, pos1,fname, lname FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'QB'";
-      String query2 = "SELECT player, pos1,fname, lname FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'RB'";
-      String query3 = "SELECT player, pos1,fname, lname FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'WR'";
-      String query4 = "SELECT player, pos1,fname, lname FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'TE'";
+      String query1 = "SELECT player, pos1,fname, lname, height, weight, col, cteam FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'QB'";
+      String query2 = "SELECT player, pos1,fname, lname, height, weight, col, cteam FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'RB'";
+      String query3 = "SELECT player, pos1,fname, lname, height, weight, col, cteam FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'WR'";
+      String query4 = "SELECT player, pos1,fname, lname, height, weight, col, cteam FROM Player WHERE teamOn = " + teamId + " AND pos1 = " + "'TE'";
 
 
       try {
@@ -190,10 +190,14 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String pos = results1.getString(2);
             String first = results1.getString(3);
             String last = results1.getString(4);
+            String height = results1.getString(5);
+            String weight = results1.getString(6);
+            String col = results1.getString(7);
+            String cteam = results1.getString(8);
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            allPlayers.add(String.format("%s %s %s %s", playerID, pos,first, last));
+            allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos,first, last, height, weight, col, cteam));
          }
          results2 = statement.executeQuery(query2);
 
@@ -202,10 +206,14 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String pos = results2.getString(2);
             String first = results2.getString(3);
             String last = results2.getString(4);
+            String height = results2.getString(5);
+            String weight = results2.getString(6);
+            String col = results2.getString(7);
+            String cteam = results2.getString(8);
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            allPlayers.add(String.format("%s %s %s %s", playerID, pos,first, last));
+            allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos,first, last, height, weight, col, cteam));
          }
 
          results3 = statement.executeQuery(query3);
@@ -215,10 +223,14 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String pos = results3.getString(2);
             String first = results3.getString(3);
             String last = results3.getString(4);
+            String height = results3.getString(5);
+            String weight = results3.getString(6);
+            String col = results3.getString(7);
+            String cteam = results3.getString(8);
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            allPlayers.add(String.format("%s %s %s %s", playerID, pos,first, last));
+            allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos,first, last, height, weight, col, cteam));
          }
 
          results4 = statement.executeQuery(query4);
@@ -228,10 +240,14 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String pos = results4.getString(2);
             String first = results4.getString(3);
             String last = results4.getString(4);
+            String height = results4.getString(5);
+            String weight = results4.getString(6);
+            String col = results4.getString(7);
+            String cteam = results4.getString(8);
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            allPlayers.add(String.format("%s %s %s %s", playerID, pos,first, last));
+            allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos,first, last, height, weight, col, cteam));
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);
@@ -706,8 +722,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
          return allPlayers;
       }
 
-
-      String query = "SELECT player, pos1, fname, lname FROM Player";
+      String query = "SELECT player, pos1, fname, lname, height, weight, col, cteam FROM Player";
       query += " WHERE teamOn = 0 ";
       if (numTrue > 0) {
          query += " AND ( ";
@@ -763,10 +778,14 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String pos1 = results.getString(2);
             String first = results.getString(3);
             String last = results.getString(4);
+            String height = results.getString(5);
+            String weight = results.getString(6);
+            String col = results.getString(7);
+            String cteam = results.getString(8);
             //String first = results.getString("first");
             //int room = results.getInt(3);
 
-            allPlayers.add(String.format("%s %s %s %s", playerID, pos1, first, last));
+            allPlayers.add(String.format("%s %s %s %s", playerID, pos1, first, last, height, weight, col, cteam));
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);

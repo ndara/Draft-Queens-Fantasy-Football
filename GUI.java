@@ -597,7 +597,12 @@ public void winner()
 public void leaderBoardGui()
 {
 	JPanel leaderBoardP=new JPanel();
-	leaderBoard.add(new JLabel("LeaderBoard"));
+	leaderBoardP.setLayout(new GridLayout(1,1));
+	ArrayList<String> tempp=Scoring.getLeaderboard(conn);
+	String[] input=tempp.toArray(new String[tempp.size()]);
+	JList<String> stats=new JList<String>(input);
+	JScrollPane statsS=new JScrollPane(stats);
+	leaderBoardP.add(statsS);
 	back=new JButton("back");
 	back.addActionListener(ButtonListener);
 	leaderBoardP.add(back);
@@ -1005,6 +1010,7 @@ public void leaderBoardGui()
 				}
 				else
 				{
+					Scoring.addTeamToLeaderboard(conn,1);
 					GUI.this.winnerUpdate();
 				}
 				//we add the thing here
@@ -1013,6 +1019,7 @@ public void leaderBoardGui()
 			{
 				if(lost)
 				{
+					Scoring.addTeamToLeaderboard(conn,1);
 					GUI.this.winnerUpdate();
 				}
 				else

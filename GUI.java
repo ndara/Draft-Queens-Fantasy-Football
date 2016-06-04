@@ -137,6 +137,15 @@ public void title()
     leader.add(easy);
     leader.add(medium);
     leader.add(hard);
+    JButton help=new JButton("Help");
+    //put String here
+    help.addActionListener(new ActionListener()
+    {
+    	public void actionPerformed(ActionEvent e)
+    	{
+    		JOptionPane.showMessageDialog(new JFrame(),helpstr,"Help",JOptionPane.PLAIN_MESSAGE);
+    	}
+    });
 	 title.add(leader);
 	 cp.add(title);
 }

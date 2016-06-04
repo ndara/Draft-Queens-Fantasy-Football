@@ -559,6 +559,7 @@ public void swapDraft()
 	     swap.addActionListener(ButtonListener);
 	     addEntry.add(swap);
 	     swapBot.add(addEntry);
+	     tabs.setSelectedIndex(1);
      }
      JPanel turnEntry=new JPanel();
      turnEntry.setLayout(new FlowLayout());
@@ -1081,6 +1082,7 @@ public void leaderBoardGui()
 				}
 				//end logic
 				playerDrop.setText("");
+				playerAdd.setText("");
 				GUI.this.swapUpdate();
 			}
 			}
@@ -1139,6 +1141,8 @@ public void leaderBoardGui()
 					}
 				aiWent=true;
 				}
+				playerDrop.setText("");
+				playerADD.setText("");
 				GUI.this.swapUpdate();
 				
 			}

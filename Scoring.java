@@ -179,13 +179,13 @@ public class Scoring {
       Statement statement = null;
       ResultSet results = null;
 
-      String qbQuery = "SELECT QB FROM Team WHERE id = " + id;
-      String rb1Query = "SELECT RB1 FROM Team WHERE id = " + id;
-      String rb2Query = "SELECT RB2 FROM Team WHERE id = " + id;
-      String wr1Query = "SELECT WR1 FROM Team WHERE id = " + id;
-      String wr2Query = "SELECT WR2 FROM Team WHERE id = " + id;
-      String wr3Query = "SELECT WR3 FROM Team WHERE id = " + id;
-      String teQuery = "SELECT TE FROM Team WHERE id = " + id;
+      String qbQuery = "SELECT QB FROM Team WHERE id = " + id + " AND elim = false";
+      String rb1Query = "SELECT RB1 FROM Team WHERE id = " + id + " AND elim = false";
+      String rb2Query = "SELECT RB2 FROM Team WHERE id = " + id + " AND elim = false";
+      String wr1Query = "SELECT WR1 FROM Team WHERE id = " + id + " AND elim = false";
+      String wr2Query = "SELECT WR2 FROM Team WHERE id = " + id + " AND elim = false";
+      String wr3Query = "SELECT WR3 FROM Team WHERE id = " + id + " AND elim = false";
+      String teQuery = "SELECT TE FROM Team WHERE id = " + id + " AND elim = false";
 
       String qbStr = "";
       String rb1Str = "";

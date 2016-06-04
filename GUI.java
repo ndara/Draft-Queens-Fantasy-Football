@@ -1198,10 +1198,12 @@ public void leaderBoardGui()
 			}
 			if(source==restart)
 			{
+				//add shit that has to be reset
 				qbleft=1;
 				rbleft=2;
 				wrleft=3;
 				teleft=1;
+				round=1;
 				lost=false;
 				Arrays.fill(losers, Boolean.FALSE);
 				DBConnection.resetPlayers(conn);

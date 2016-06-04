@@ -623,6 +623,8 @@ public void leaderBoardGui()
 	JPanel leaderBoardP=new JPanel();
 	leaderBoardP.setLayout(new GridLayout(2,1));
 	ArrayList<String> tempp=Scoring.getLeaderboard(conn);
+	if(tempp.size()>0)
+	{
 	JTable table=new JTable(tempp.size()+1,9);
 	System.out.println(tempp.get(0));
 	table.setValueAt("Team",0,0);
@@ -647,6 +649,7 @@ public void leaderBoardGui()
 	JScrollPane scroll=new JScrollPane();
 	scroll.getViewport().add(table);
 	leaderBoardP.add(scroll);
+	}
 	back=new JButton("back");
 	back.addActionListener(ButtonListener);
 	JPanel backside=new JPanel();

@@ -640,7 +640,7 @@ public class Scoring {
       }
    }
 
-   public static ArrayList<String> getLeadeoard(Connection conn) {
+   public static ArrayList<String> getLeaderboard(Connection conn) {
       Statement statement = null;
       ResultSet results = null;
       String res = "";

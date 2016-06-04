@@ -1142,7 +1142,7 @@ public void leaderBoardGui()
 				aiWent=true;
 				}
 				playerDrop.setText("");
-				playerADD.setText("");
+				playerAdd.setText("");
 				GUI.this.swapUpdate();
 				
 			}

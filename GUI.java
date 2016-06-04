@@ -138,7 +138,7 @@ public void title()
     leader.add(medium);
     leader.add(hard);
     JButton help=new JButton("Help");
-    String helpStr = "Welcome to Draft Queens’ Fantasy Football Simulation! This simulation allows you to draft a fantasy team and\n” +
+    String helpStr = "Welcome to Draft Queens Fantasy Football Simulation! This simulation allows you to draft a fantasy team and\n” +
 “proceed through an elimination league. Every week, the team with the lowest cumulative point total will be eliminated.\n” +
 “The points are calculated given the stats that your team showcased on a random week. The game proceeds in the following steps.\n” +
 “   1. To begin the game, type in a team name for your team (20 characters or less). Select the level of difficulty of the AIs\n” +

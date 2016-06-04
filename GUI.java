@@ -704,7 +704,7 @@ public void leaderBoardGui()
 		if(teamName.getText().length()>20)
 		{
 			String temp=teamName.getText();
-			temp=teamName.substring(0,19);
+			temp=temp.substring(0,19);
 			teamName.setText(temp);
 		}
 		if(teamName.getText().length()>0)

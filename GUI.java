@@ -946,6 +946,28 @@ public void leaderBoardGui()
     leader.add(easy);
     leader.add(medium);
     leader.add(hard);
+    JButton help=new JButton("Help");
+    String helpStr = "Welcome to Draft Queens Fantasy Football Simulation! This simulation allows you to draft a fantasy team and\n" +
+"proceed through an elimination league. Every week, the team with the lowest cumulative point total will be eliminated.\n" +
+"The points are calculated given the stats that your team showcased on a random week. The game proceeds in the following steps.\n" +
+"   1. To begin the game, type in a team name for your team (20 characters or less). Select the level of difficulty of the AIs\n" +
+"   you would like to play against.\n\n" +
+"   2. The draft order will be randomly chosen and you will draft 1 player every round. The AIs will make their choices\n" +
+"   and you will then again select another player until your team has no open positions.\n\n" +
+"   3. Once the draft is complete, you will proceed to the first week. Every week you will have the opportunity\n" +
+" to drop players on your team and swap them with another player who has not been selected onto a team\n\n" +
+"   4. After every week, there will be a transition screen that will display how all teams performed during that week.\n" +
+" The team that has the lowest cumulative point total will be dismissed from the league.\n\n" +
+"   5. Upon being eliminated or fortunate enough to defeat all AI opponents, you will be directed to a leaderboard screen.\n" +
+"This leaderboard will hold the hall of fame of playing the Draft Queens’ Fantasy Football Simulation and their teams and scores.\n\n";
+    help.addActionListener(new ActionListener()
+    {
+    	public void actionPerformed(ActionEvent e)
+    	{
+    		JOptionPane.showMessageDialog(new JFrame(),helpStr,"Help",JOptionPane.PLAIN_MESSAGE);
+    	}
+    });
+    leader.add(help);
 	title.add(leader);
 	cp.add(title);
 	this.setContentPane(cp);

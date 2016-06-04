@@ -26,6 +26,16 @@ public class Scoring {
       DBConnection.updateTeam(conn, "TE", "RG-2200", 1);
       // System.out.println("here is the total team score : " + getTeamScore(conn, 3, 1));
       addTeamToLeaderboard(conn, 1);
+      addTeamToLeaderboard(conn, 1);
+      addTeamToLeaderboard(conn, 1);
+      ArrayList<String> tmp = new ArrayList<String>();
+      tmp = getLeadeoard(conn);
+
+      for (int i = 0; i < tmp.size(); i++) {
+         System.out.println(tmp.get(i));
+      }
+
+      resetLeaderboard(conn);
       // RandomAI.swapPlayerRandom(conn, 2);
       // RandomAI.swapPlayerRandom(conn, 2);
       // RandomAI.swapPlayerRandom(conn, 2);
@@ -601,4 +611,71 @@ public class Scoring {
       return score;
    }
 
+   public static void resetLeaderboard(Connection conn) {
+      Statement statement = null;
+      ResultSet results = null;
+      String query = "DELETE FROM Leaderboard";
+        try {
+         statement = conn.createStatement();
+         statement.executeUpdate(query);
+
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+   }
+
+   public static ArrayList<String> getLeadeoard(Connection conn) {
+      Statement statement = null;
+      ResultSet results = null;
+      String res = "";
+      ArrayList<String> leaders = new ArrayList<String>();
+
+      String query = "SELECT * FROM Leaderboard";
+      try {
+         statement = conn.createStatement();
+         results = statement.executeQuery(query);
+
+         while (results.next()) {
+            leaders.add(results.getString(1) + "|" + results.getString(2) + "|" + results.getString(3) + 
+                        "|" + results.getString(4) + "|" + results.getString(5) + "|" + results.getString(6) +
+                        "|" + results.getString(7) + "|" + results.getString(8) + "|" + results.getString(9));
+         }
+         
+      } catch (SQLException sqlEx) {
+         System.err.println("Error doing query: " + sqlEx);
+         sqlEx.printStackTrace(System.err);
+      } finally {
+         try {
+            if (results != null) {
+               results.close();
+               results = null;
+            }
+
+            if (statement != null) {
+               statement.close();
+               statement = null;
+            }
+         } catch (Exception ex) {
+            System.err.println("Error closing query: " + ex);
+            ex.printStackTrace(System.err);
+         }     
+      }
+      return leaders;
+   }
 }

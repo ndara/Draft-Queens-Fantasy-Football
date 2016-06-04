@@ -1082,7 +1082,7 @@ public void leaderBoardGui()
 				}
 				//end logic
 				playerDrop.setText("");
-				playerADD.setText("");
+				playerAdd.setText("");
 				GUI.this.swapUpdate();
 			}
 			}

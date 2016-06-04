@@ -646,7 +646,7 @@ public class Scoring {
       String res = "";
       ArrayList<String> leaders = new ArrayList<String>();
 
-      String query = "SELECT * FROM Leaderboard ORDER BY score";
+      String query = "SELECT * FROM Leaderboard ORDER BY score DESC";
       try {
          statement = conn.createStatement();
          results = statement.executeQuery(query);

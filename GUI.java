@@ -168,6 +168,8 @@ public void title()
 public void initDraft()
 	{
 	 //this is initial draft
+	 //temp
+	 input=new String[1];
     initialDraft=new JPanel();
      initialDraft.setLayout(new GridLayout(2,1));
      tabs =new JTabbedPane();
@@ -196,7 +198,7 @@ public void initDraft()
 		for(int y=0;y<8;y++)
 		{
 			System.out.println(values[y]);
-			table.setValueAt(values[y],x+1,y);
+			cTable.setValueAt(values[y],x+1,y);
 		}
 	}
     cTable.setTableHeader(null);

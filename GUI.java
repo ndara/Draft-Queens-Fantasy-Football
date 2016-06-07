@@ -418,8 +418,8 @@ public void initDraft()
 				tempF.add(temp[x]);
 			}
 		}
-		orderF=tempF.toArray(new String[tempF.size()]);
-		orderL=tempB.toArray(new String[tempB.size()]);
+		orderF=tempF.toArray(new Integer[tempF.size()]);
+		orderL=tempB.toArray(new Integer[tempB.size()]);
 	}
 public void swapDraft()
 	{
@@ -789,11 +789,11 @@ public void leaderBoardGui()
 			for(int x=0;x<orderF.length;x++)
 				{
 					if(difficulty==1)
-						RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						RandomAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
 					else if(difficulty==2)
-						MediumAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						MediumAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
 					else if(difficulty==3)
-						HardAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						HardAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
 					//System.out.println(order[x]+"turn");
 				}
 			initDraft();
@@ -1092,11 +1092,11 @@ public void leaderBoardGui()
 				for(int x=0;x<orderL.length;x++)
 				{
 					if(difficulty==1)
-						RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						RandomAI.draftPlayer(conn,remainingPlayers,orderL[x]+2);
 					else if(difficulty==2)
-						MediumAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						MediumAI.draftPlayer(conn,remainingPlayers,orderL[x]+2);
 					else if(difficulty==3)
-						HardAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						HardAI.draftPlayer(conn,remainingPlayers,orderL[x]+2);
 					//System.out.println(order[x]+"turn");
 				}
 				if(cTeam.getSize()<7)
@@ -1104,11 +1104,11 @@ public void leaderBoardGui()
 					for(int x=0;x<orderF.length;x++)
 				{
 					if(difficulty==1)
-						RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						RandomAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
 					else if(difficulty==2)
-						MediumAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						MediumAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
 					else if(difficulty==3)
-						HardAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						HardAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
 					//System.out.println(order[x]+"turn");
 				}
 				}

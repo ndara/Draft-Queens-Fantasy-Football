@@ -3,46 +3,6 @@ import java.sql.*;
 import java.lang.*;
 
 public class Scoring {
-   
-   
-	/*public static void main(String[] args) throws Exception {
-
-      //DO ALL DB STUFF HERE
-      Connection conn = DBConnection.getConnection();
-      
-      //DB TESTING
-      //getPlayerScore(conn,1 , "DW-4300");
-      DBConnection.initTeam(conn, "bitchnigga");
-      DBConnection.updateTeam(conn, "QB", "CN-0500", 1);
-      DBConnection.updateTeam(conn, "RB1", "DM-0450", 1);
-      DBConnection.updateTeam(conn, "RB2", "LB-0250", 1);
-      DBConnection.updateTeam(conn, "WR1", "WS-0925", 1);
-      DBConnection.updateTeam(conn, "WR2", "BM-0300", 1);
-      DBConnection.updateTeam(conn, "WR3", "JJ-4700", 1);
-      DBConnection.updateTeam(conn, "TE", "RG-2200", 1);
-      // System.out.println("here is the total team score : " + getTeamScore(conn, 3, 1));
-      addTeamToLeaderboard(conn, 1);
-      addTeamToLeaderboard(conn, 1);
-      addTeamToLeaderboard(conn, 1);
-      ArrayList<String> tmp = new ArrayList<String>();
-      tmp = getLeaderboard(conn);
-
-      for (int i = 0; i < tmp.size(); i++) {
-         System.out.println(tmp.get(i));
-      }
-
-      resetLeaderboard(conn);
-      // RandomAI.swapPlayerRandom(conn, 2);
-      // RandomAI.swapPlayerRandom(conn, 2);
-      // RandomAI.swapPlayerRandom(conn, 2);
-      // RandomAI.swapPlayerRandom(conn, 2);
-      //resetTeams(conn);
-      
-      DBConnection.close(conn);
-   }
-   */
-   
-
    public static void editTeamScore(Connection conn, int id, double score) {
       Statement statement = null;
       ResultSet results = null;
@@ -92,8 +52,6 @@ public class Scoring {
             String teamID = results.getString(1);
             String teamName = results.getString(2);
             String teamScore = results.getString(3);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             str += String.format("%s %s %s", teamID, teamName, teamScore);
          }
@@ -137,8 +95,6 @@ public class Scoring {
          while (results.next()) {
             String teamName = results.getString(1);
             String teamScore = results.getString(2);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             allTeams.add(String.format("%s %s", teamName, teamScore));
          }

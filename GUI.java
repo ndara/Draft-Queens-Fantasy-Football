@@ -1051,7 +1051,7 @@ public void leaderBoardGui()
 	 System.out.println("1:"+tempp.size());
 	 if(tempp.size()>0)
 	 {
-	 JTable cTable=new JTable(tempp.size()+1,8);
+	 JTable cTable=new JTable(tempp.size()+1,9);
 	 cTable.setValueAt("Player Id",0,0);
 	 cTable.setValueAt("Position",0,1);
 	 cTable.setValueAt("First Name",0,2);

@@ -25,26 +25,9 @@ import javax.sound.sampled.*;
 public class main {
 	public static void main(String[] args) throws Exception {
 
-      //DO ALL DB STUFF HERE
-      //Connection conn = DBConnection.getConnection();
       Statement statement = null;
       ResultSet results = null;
 
-
-      //DB TESTING
-
-      //DBConnection.getAllPlayers(conn);
-      //DBConnection.updatePlayer(conn, "AA-1300", 42);
-      //DBConnection.resetPlayer(conn);
-      //DBConnection.getAllPlayers(conn);
-      //DBConnection.getAllTeamPlayers(conn, 42);
-      //DBConnection.getPosPlayers(conn, false, false, false, true, 1);
-      //DBConnection.initTeam(conn, "TESTING");
-      //DBConnection.updateTeam(conn, "RB1", "AA-1300", 3);
-
-      //END DB TESTS
-
-      //DO GUI STUFF HERE
      
       Thread music = new Thread() {
          public void run() {
@@ -76,9 +59,6 @@ public class main {
 					}
 	         }}
 		);
-
-         //close connection to DB 
-         //DBConnection.close(conn);
    }
 
 }

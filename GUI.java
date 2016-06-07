@@ -418,8 +418,8 @@ public void initDraft()
 				tempF.add(temp[x]);
 			}
 		}
-		orderF=tempF.toArray(new Integer[tempF.size()]);
-		orderL=tempB.toArray(new Integer[tempB.size()]);
+		orderF=tempF.toArray(new int[tempF.size()]);
+		orderL=tempB.toArray(new int[tempB.size()]);
 	}
 public void swapDraft()
 	{

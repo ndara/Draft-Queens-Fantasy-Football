@@ -34,7 +34,6 @@ public class main {
             try {
                Clip clip = AudioSystem.getClip();
                clip.open(AudioSystem.getAudioInputStream(new File("song.wav")));
-               //clip.start();
 	       clip.loop(Clip.LOOP_CONTINUOUSLY);
                Thread.sleep(10000); // looping as long as this thread is alive
             }

@@ -167,7 +167,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String col = results2.getString(7);
             String cteam = results2.getString(8);
 
-            allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos,first, last, height, weight, col, cteam));
+            allPlayers.add(String.format("%s|%s|%s|%s|%s|%s|%s|%s", playerID, pos,first, last, height, weight, col, cteam));
          }
 
          results3 = statement.executeQuery(query3);
@@ -182,7 +182,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String col = results3.getString(7);
             String cteam = results3.getString(8);
 
-            allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos,first, last, height, weight, col, cteam));
+            allPlayers.add(String.format("%s|%s|%s|%s|%s|%s|%s|%s", playerID, pos,first, last, height, weight, col, cteam));
          }
 
          results4 = statement.executeQuery(query4);
@@ -197,7 +197,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String col = results4.getString(7);
             String cteam = results4.getString(8);
 
-            allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos,first, last, height, weight, col, cteam));
+            allPlayers.add(String.format("%s|%s|%s|%s|%s|%s|%s|%s", playerID, pos,first, last, height, weight, col, cteam));
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);

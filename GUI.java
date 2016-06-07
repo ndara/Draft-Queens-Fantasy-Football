@@ -179,7 +179,6 @@ public void initDraft()
      hTab.setLayout(new GridLayout(1,1));
 	 
      ArrayList<String> tempp=DBConnection.getAllTeamPosPlayers(conn,1);
-	 System.out.println("1:"+tempp.size());
 	 if(tempp.size()>0)
 	 {
 	 JTable cTable=new JTable(tempp.size()+1,8);
@@ -211,7 +210,6 @@ public void initDraft()
      a1Tab.setLayout(new GridLayout(1,1));
      
      tempp=DBConnection.getAllTeamPosPlayers(conn,2);
-	 System.out.println("1:"+tempp.size());
     if(tempp.size()>0)
 	 {
 	 JTable a1Table=new JTable(tempp.size()+1,8);
@@ -227,7 +225,6 @@ public void initDraft()
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
-		System.out.println(Arrays.toString(values));
 		for(int y=0;y<values.length;y++)
 		{
 			a1Table.setValueAt(values[y],x+1,y);
@@ -260,7 +257,6 @@ public void initDraft()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a2Table.setValueAt(values[y],x+1,y);
 		}
 	}
@@ -273,7 +269,6 @@ public void initDraft()
      JPanel a3Tab=new JPanel();
      a3Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,4);
-     System.out.println("3:"+tempp.size());
       if(tempp.size()>0)
 	 {
 	 JTable a3Table=new JTable(tempp.size()+1,8);
@@ -291,7 +286,6 @@ public void initDraft()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a3Table.setValueAt(values[y],x+1,y);
 		}
 	}
@@ -304,7 +298,6 @@ public void initDraft()
      JPanel a4Tab=new JPanel();
      a4Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,5);
-     System.out.println("4:"+tempp.size());
       if(tempp.size()>0)
 	 {
 	 JTable a4Table=new JTable(tempp.size()+1,8);
@@ -322,7 +315,6 @@ public void initDraft()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a4Table.setValueAt(values[y],x+1,y);
 		}
 	}
@@ -352,7 +344,6 @@ public void initDraft()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a5Table.setValueAt(values[y],x+1,y);
 		}
 	}
@@ -382,7 +373,6 @@ public void initDraft()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a6Table.setValueAt(values[y],x+1,y);
 		}
 	}
@@ -412,7 +402,6 @@ public void initDraft()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a7Table.setValueAt(values[y],x+1,y);
 		}
 	}
@@ -830,7 +819,6 @@ public void leaderBoardGui()
 	if(tempp.size()>0)
 	{
 	JTable table=new JTable(tempp.size()+1,9);
-	System.out.println(tempp.get(0));
 	table.setValueAt("Team",0,0);
 	table.setValueAt("Score",0,1);
 	table.setValueAt("QB",0,2);
@@ -845,7 +833,6 @@ public void leaderBoardGui()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<9;y++)
 		{
-			System.out.println(values[y]);
 			table.setValueAt(values[y],x+1,y);
 		}
 	}
@@ -973,7 +960,6 @@ public void leaderBoardGui()
 						MediumAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
 					else if(difficulty==3)
 						HardAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
-					//System.out.println(order[x]+"turn");
 				}
 			initDraft();
 			cpid.remove(title);
@@ -1048,7 +1034,6 @@ public void leaderBoardGui()
      hTab.setLayout(new GridLayout(1,1));
 	 
      tempp=DBConnection.getAllTeamPosPlayers(conn,1);
-	 System.out.println("1:"+tempp.size());
 	 if(tempp.size()>0)
 	 {
 	 JTable cTable=new JTable(tempp.size()+1,9);
@@ -1081,7 +1066,6 @@ public void leaderBoardGui()
      a1Tab.setLayout(new GridLayout(1,1));
      
      tempp=DBConnection.getAllTeamPosPlayers(conn,2);
-	 System.out.println("1:"+tempp.size());
     if(tempp.size()>0)
 	 {
 	 JTable a1Table=new JTable(tempp.size()+1,9);
@@ -1098,7 +1082,6 @@ public void leaderBoardGui()
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
-		System.out.println(Arrays.toString(values));
 		for(int y=0;y<values.length;y++)
 		{
 			a1Table.setValueAt(values[y],x+1,y);
@@ -1132,7 +1115,6 @@ public void leaderBoardGui()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a2Table.setValueAt(values[y],x+1,y);
 		}
 		a2Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
@@ -1146,7 +1128,6 @@ public void leaderBoardGui()
      JPanel a3Tab=new JPanel();
      a3Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,4);
-     System.out.println("3:"+tempp.size());
       if(tempp.size()>0)
 	 {
 	 JTable a3Table=new JTable(tempp.size()+1,9);
@@ -1164,7 +1145,6 @@ public void leaderBoardGui()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a3Table.setValueAt(values[y],x+1,y);
 		}
 		a3Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
@@ -1178,7 +1158,6 @@ public void leaderBoardGui()
      JPanel a4Tab=new JPanel();
      a4Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,5);
-     System.out.println("4:"+tempp.size());
       if(tempp.size()>0)
 	 {
 	 JTable a4Table=new JTable(tempp.size()+1,9);
@@ -1196,7 +1175,6 @@ public void leaderBoardGui()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a4Table.setValueAt(values[y],x+1,y);
 		}
 		a4Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
@@ -1227,7 +1205,6 @@ public void leaderBoardGui()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a5Table.setValueAt(values[y],x+1,y);
 		}
 		a5Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
@@ -1258,7 +1235,6 @@ public void leaderBoardGui()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a6Table.setValueAt(values[y],x+1,y);
 		}
 		a6Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
@@ -1289,7 +1265,6 @@ public void leaderBoardGui()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<values.length;y++)
 		{
-			System.out.println(values[y]);
 			a7Table.setValueAt(values[y],x+1,y);
 		}
 		a7Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
@@ -1458,7 +1433,6 @@ public void leaderBoardGui()
 						MediumAI.draftPlayer(conn,remainingPlayers,orderL[x]+1);
 					else if(difficulty==3)
 						HardAI.draftPlayer(conn,remainingPlayers,orderL[x]+1);
-					//System.out.println(order[x]+"turn");
 				}
 				if(orderF.length<7)
 				{
@@ -1470,7 +1444,6 @@ public void leaderBoardGui()
 						MediumAI.draftPlayer(conn,remainingPlayers+1,orderF[x]+1);
 					else if(difficulty==3)
 						HardAI.draftPlayer(conn,remainingPlayers+1,orderF[x]+1);
-					//System.out.println(order[x]+"turn");
 				}
 				}
 					
@@ -1498,7 +1471,6 @@ public void leaderBoardGui()
 					Scoring.runWeek(conn,week,8);
 				}
 				//up to here
-				System.out.println("doWeek executed ");
 				iniD=false;
 				GUI.this.roundUpdater();
 				}
@@ -1518,7 +1490,6 @@ public void leaderBoardGui()
 				}
 				else
 				{
-				System.out.println("Woo you reacher next");
 				dropPhase=true;
 				GUI.this.swapUpdate();
 				}

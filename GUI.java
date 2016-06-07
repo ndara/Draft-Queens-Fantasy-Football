@@ -1293,6 +1293,7 @@ public void leaderBoardGui()
 				teleft=1;
 				round=1;
 				lost=false;
+				this.arraySplit();
 				Arrays.fill(losers, Boolean.FALSE);
 				DBConnection.resetPlayers(conn);
 				Scoring.resetTeams(conn);

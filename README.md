@@ -15,7 +15,7 @@ This repository will be used to store our source code for our CPE365 final proje
         
    
    3. Run the following command:  
-       `./run < input`  
+       `./run`  
 
 ###Sample Input File:
     rootismyusername  

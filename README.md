@@ -8,10 +8,10 @@ This repository will be used to store our source code for our CPE365 final proje
 
    2. Create a file called input and format it as follows. This file will be used to establish a database connection.   
 
-        line 1 <database username>  
-        line 2 <database password>  
-        line 3 <database address>  
-        line 4 <database name>  
+   line 1 `<database username>`  
+   line 2 `<database password>`  
+   line 3 `<database address>`  
+   line 4 `<database name>`  
         
    
    3. Run the following command:  

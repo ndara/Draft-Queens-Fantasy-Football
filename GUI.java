@@ -57,7 +57,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int rbleft=2;
 	private int wrleft=3;
 	private int teleft=1;
-	private Integer[] orderF=Draft.getDraftOrder(8);
+	private Integer[] orderF=(Integer)Draft.getDraftOrder(8);
 	private Integer[] orderL;
 	private JTable teamOn;
 	private int round=1;

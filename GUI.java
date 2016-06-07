@@ -196,7 +196,7 @@ public void initDraft()
 		for(int y=0;y<8;y++)
 		{
 			System.out.println(values[y]);
-			table.setValueAt(values[y],x+1,y);
+			cTable.setValueAt(values[y],x+1,y);
 		}
 	}
     cTable.setTableHeader(null);

@@ -194,7 +194,7 @@ public void initDraft()
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
-		for(int y=0;y<8;y++)
+		for(int y=0;y<values.length;y++)
 		{
 			cTable.setValueAt(values[y],x+1,y);
 		}
@@ -227,7 +227,7 @@ public void initDraft()
 	{ 
 		String [] values=tempp.get(x).split("\\|");
 		System.out.println(Arrays.toString(values));
-		for(int y=0;y<8;y++)
+		for(int y=0;y<values.length;y++)
 		{
 			a1Table.setValueAt(values[y],x+1,y);
 		}
@@ -257,7 +257,7 @@ public void initDraft()
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
-		for(int y=0;y<8;y++)
+		for(int y=0;y<values.length;y++)
 		{
 			System.out.println(values[y]);
 			a2Table.setValueAt(values[y],x+1,y);
@@ -288,7 +288,7 @@ public void initDraft()
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
-		for(int y=0;y<8;y++)
+		for(int y=0;y<values.length;y++)
 		{
 			System.out.println(values[y]);
 			a3Table.setValueAt(values[y],x+1,y);
@@ -319,7 +319,7 @@ public void initDraft()
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
-		for(int y=0;y<8;y++)
+		for(int y=0;y<values.length;y++)
 		{
 			System.out.println(values[y]);
 			a4Table.setValueAt(values[y],x+1,y);
@@ -349,7 +349,7 @@ public void initDraft()
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
-		for(int y=0;y<8;y++)
+		for(int y=0;y<values.length;y++)
 		{
 			System.out.println(values[y]);
 			a5Table.setValueAt(values[y],x+1,y);
@@ -379,7 +379,7 @@ public void initDraft()
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
-		for(int y=0;y<8;y++)
+		for(int y=0;y<values.length;y++)
 		{
 			System.out.println(values[y]);
 			a6Table.setValueAt(values[y],x+1,y);
@@ -409,7 +409,7 @@ public void initDraft()
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
-		for(int y=0;y<8;y++)
+		for(int y=0;y<values.length;y++)
 		{
 			System.out.println(values[y]);
 			a7Table.setValueAt(values[y],x+1,y);

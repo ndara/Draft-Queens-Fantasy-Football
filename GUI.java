@@ -1037,8 +1037,10 @@ public void leaderBoardGui()
 		Scoring.eliminateTeam(conn,loserAI);
 		//here goes tabs
 		
-		
-     
+		ArrayList<String> tempp=Scoring.getRoundStats(conn,false);
+		String[] info=tempp.toArray(new String[tempp.size()]);
+		JList list=new JList<String>(info);
+     		tabs.addTab("Scores",list);
      //tab1
     JPanel hTab=new JPanel();
      hTab.setLayout(new GridLayout(1,1));

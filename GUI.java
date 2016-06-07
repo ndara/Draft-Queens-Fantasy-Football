@@ -672,6 +672,7 @@ public void leaderBoardGui()
 		}
 	}
 	table.setTableHeader(null);
+	table.setEnabled(false);
 	JScrollPane scroll=new JScrollPane();
 	scroll.getViewport().add(table);
 	leaderBoardP.add(scroll);

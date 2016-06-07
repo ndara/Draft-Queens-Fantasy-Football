@@ -1045,7 +1045,7 @@ public void leaderBoardGui()
     JPanel hTab=new JPanel();
      hTab.setLayout(new GridLayout(1,1));
 	 
-     ArrayList<String> tempp=DBConnection.getAllTeamPosPlayers(conn,1);
+     tempp=DBConnection.getAllTeamPosPlayers(conn,1);
 	 System.out.println("1:"+tempp.size());
 	 if(tempp.size()>0)
 	 {

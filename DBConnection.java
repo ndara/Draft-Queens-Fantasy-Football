@@ -14,13 +14,6 @@ public class DBConnection {
       // Instantiate Driver
       Class.forName("com.mysql.jdbc.Driver");
 
-      /*
-      String dbUser = "eaugusti";
-      String dbPass = "funfun";
-      String host = "csc-db0.csc.calpoly.edu";
-      String dbName = "eaugusti";
-      */
-
       String dbUser = "";
       String dbPass = "";
       String host = "";
@@ -63,18 +56,13 @@ public class DBConnection {
       ArrayList<String> allPlayers = new ArrayList<String>();
       String query = "SELECT player, fname, lname FROM Player";
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          results = statement.executeQuery(query);
 
          while (results.next()) {
             String playerID = results.getString(1);
             String first = results.getString(2);
             String last = results.getString(3);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             allPlayers.add(String.format("%s %s %s", playerID, first, last));
          }
@@ -106,18 +94,13 @@ public class DBConnection {
       ArrayList<String> allPlayers = new ArrayList<String>();
       String query = "SELECT player, fname, lname FROM Player WHERE teamOn = " + teamId;
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          results = statement.executeQuery(query);
 
          while (results.next()) {
             String playerID = results.getString(1);
             String first = results.getString(2);
             String last = results.getString(3);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             allPlayers.add(String.format("%s %s %s", playerID, first, last));
          }
@@ -156,10 +139,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
 
 
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          results1 = statement.executeQuery(query1);
 
 
@@ -172,8 +152,6 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String weight = results1.getString(6);
             String col = results1.getString(7);
             String cteam = results1.getString(8);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             allPlayers.add(String.format("%s|%s|%s|%s|%s|%s|%s|%s", playerID, pos,first, last, height, weight, col, cteam));
          }
@@ -188,8 +166,6 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String weight = results2.getString(6);
             String col = results2.getString(7);
             String cteam = results2.getString(8);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos,first, last, height, weight, col, cteam));
          }
@@ -205,8 +181,6 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String weight = results3.getString(6);
             String col = results3.getString(7);
             String cteam = results3.getString(8);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos,first, last, height, weight, col, cteam));
          }
@@ -222,8 +196,6 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String weight = results4.getString(6);
             String col = results4.getString(7);
             String cteam = results4.getString(8);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos,first, last, height, weight, col, cteam));
          }
@@ -265,10 +237,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       ResultSet results = null;
       String query = "UPDATE Player SET teamOn = "+ teamId + " WHERE player =  " + "'" + playerId+ "'";
          try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          statement.executeUpdate(query);
 
          
@@ -299,10 +268,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       
       String query = "UPDATE Team SET " + position + " = " + "'" + playerId + "'" + " WHERE id = " + teamId;
          try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          statement.executeUpdate(query);
 
          
@@ -332,15 +298,10 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       ResultSet results = null;
       String query = "UPDATE Team SET name = ? WHERE id = 1";
 
-         try {
-         // Get a statement from the connection
+      try {
          prep = conn.prepareStatement(query);
          prep.setString(1, playerName);
-
-         // Execute the query
-         prep.executeUpdate();
-
-         
+         prep.executeUpdate(); 
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);
          sqlEx.printStackTrace(System.err);
@@ -350,7 +311,6 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
                results.close();
                results = null;
             }
-
             if (prep != null) {
                prep.close();
                prep = null;
@@ -375,7 +335,6 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             }
          }
       }
-      //bad if it reaches here
       return -1; 
    }
 
@@ -399,10 +358,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
          rb = true;
       }
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          results = statement.executeQuery(query);
 
          while (results.next()) {
@@ -419,7 +375,6 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
                      return realPos;
                   }
                }
-
             }
             else if (rb) {
                realPos += "RB";
@@ -434,8 +389,6 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
                   }
                }
             }
-           
-
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);
@@ -466,10 +419,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       System.out.println("CURRENT POSITION PASSED:" + position);
       String query = "UPDATE Team SET " + position + " = '' WHERE id = " + teamId;
         try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          statement.executeUpdate(query);
 
       } catch (SQLException sqlEx) {
@@ -528,10 +478,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       ResultSet results = null;
       String query = "UPDATE Player SET teamOn = 0";
         try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          statement.executeUpdate(query);
 
       } catch (SQLException sqlEx) {
@@ -606,13 +553,8 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
          }
 
       }
-      //System.out.println("QUERY MADE:");
-      //System.out.println(query);
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          results = statement.executeQuery(query);
 
          while (results.next()) {
@@ -620,8 +562,6 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String pos1 = results.getString(2);
             String first = results.getString(3);
             String last = results.getString(4);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             allPlayers.add(String.format("%s %s %s %s", playerID, pos1, first, last));
          }
@@ -654,18 +594,13 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       ArrayList<String> allPlayers = new ArrayList<String>();
       String query = "SELECT player, fname, lname FROM Player WHERE teamOn = 0";
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          results = statement.executeQuery(query);
 
          while (results.next()) {
             String playerID = results.getString(1);
             String first = results.getString(2);
             String last = results.getString(3);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             allPlayers.add(String.format("%s %s %s", playerID, first, last));
          }
@@ -743,13 +678,8 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
          query += ") ORDER BY pos1";
 
       }
-      //System.out.println("QUERY MADE:");
-      //System.out.println(query);
       try {
-         // Get a statement from the connection
          statement = conn.createStatement();
-
-         // Execute the query
          results = statement.executeQuery(query);
 
          while (results.next()) {
@@ -761,8 +691,6 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String weight = results.getString(6);
             String col = results.getString(7);
             String cteam = results.getString(8);
-            //String first = results.getString("first");
-            //int room = results.getInt(3);
 
             allPlayers.add(String.format("%s %s %s %s %s %s %s %s", playerID, pos1, first, last, height, weight, col, cteam));
          }
@@ -787,6 +715,4 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       }
       return allPlayers;
    }
-
-
 }

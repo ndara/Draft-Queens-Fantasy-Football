@@ -227,6 +227,7 @@ public void initDraft()
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
+		System.out.println(values.length);
 		for(int y=0;y<8;y++)
 		{
 			System.out.println(values[y]);

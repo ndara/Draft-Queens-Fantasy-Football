@@ -57,7 +57,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int rbleft=2;
 	private int wrleft=3;
 	private int teleft=1;
-	private int[] order=Draft.getDraftOrder(7);
+	private Integer[] orderF;
+	private Integer[] orderL;
 	private JTable teamOn;
 	private int round=1;
 	private boolean dropPhase=false;
@@ -80,6 +81,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 //resets players
 	 DBConnection.resetPlayers(conn);
 	 Scoring.resetTeams(conn);
+	 this.arraySplit();
 /*	 
 	String className = getLookAndFeelClassName("Nimbus");
 	UIManager.setLookAndFeel(className); 	 */
@@ -394,6 +396,30 @@ public void initDraft()
      initialDraft.add(botScreen);
         cpid.add(initialDraft);
 		
+	}
+	public void arraySplit()
+	{
+		int [] temp=Draft.getDraftOrder(8);
+		ArrayList<Integer> tempF=new ArrayList<Integer>();
+		ArrayList<Integer> tempB=new ArrayList<Integer>();
+		boolean reachedP=false;
+		for(int x=0;x<temp.length;x++)
+		{
+			if(reachedP)
+			{
+				tempB.add(temp[x]);
+			}
+			if(temp[x]==0)
+			{
+				reachedP=true;
+			}
+			if(!reachedP)
+			{
+				tempF.add(temp[x]);
+			}
+		}
+		orderF=tempF.toArray(new Integer[tempF.size()]);
+		orderL=tempB.toArray(new Integer[tempB.size()]);
 	}
 public void swapDraft()
 	{
@@ -757,6 +783,19 @@ public void leaderBoardGui()
 		{
 			DBConnection.initTeam(conn,teamName.getText());
 			cpid=getContentPane();
+			//orderF AI needs to go
+			int remainingPlayers=qbleft+rbleft+wrleft+teleft;
+				remainingPlayers=8-remainingPlayers;
+			for(int x=0;x<orderF.length;x++)
+				{
+					if(difficulty==1)
+						RandomAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
+					else if(difficulty==2)
+						MediumAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
+					else if(difficulty==3)
+						HardAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
+					//System.out.println(order[x]+"turn");
+				}
 			initDraft();
 			cpid.remove(title);
 			this.setContentPane(cpid);
@@ -1050,16 +1089,30 @@ public void leaderBoardGui()
 				}
 				
 				//AI drafting
-				for(int x=0;x<order.length;x++)
+				for(int x=0;x<orderL.length;x++)
 				{
 					if(difficulty==1)
-						RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						RandomAI.draftPlayer(conn,remainingPlayers,orderL[x]+1);
 					else if(difficulty==2)
-						MediumAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						MediumAI.draftPlayer(conn,remainingPlayers,orderL[x]+1);
 					else if(difficulty==3)
-						HardAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+						HardAI.draftPlayer(conn,remainingPlayers,orderL[x]+1);
 					//System.out.println(order[x]+"turn");
 				}
+				if(orderF.length<7)
+				{
+					for(int x=0;x<orderF.length;x++)
+				{
+					if(difficulty==1)
+						RandomAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
+					else if(difficulty==2)
+						MediumAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
+					else if(difficulty==3)
+						HardAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
+					//System.out.println(order[x]+"turn");
+				}
+				}
+					
 				//updates the screen
 				GUI.this.humanTeamUpdate();
 				playerAdd.setText("");
@@ -1198,14 +1251,23 @@ public void leaderBoardGui()
 				}
 				if(aiWent==false)
 				{
-					for(int x=0;x<order.length;x++)
+					for(int x=0;x<orderF.length;x++)
 					{
 						if(difficulty==1)
-							RandomAI.swapPlayerRandom(conn,order[x]+2);
+							RandomAI.swapPlayerRandom(conn,orderF[x]+1);
 						else if(difficulty==2)
-							MediumAI.swapPlayerRandom(conn,order[x]+2);
+							MediumAI.swapPlayerRandom(conn,orderF[x]+1);
 						else if(difficulty==3)
-							HardAI.swapPlayerRandom(conn,order[x]+2);
+							HardAI.swapPlayerRandom(conn,orderF[x]+1);
+					}
+					for(int x=0;x<orderL.length;x++)
+					{
+						if(difficulty==1)
+							RandomAI.swapPlayerRandom(conn,orderL[x]+1);
+						else if(difficulty==2)
+							MediumAI.swapPlayerRandom(conn,orderL[x]+1);
+						else if(difficulty==3)
+							HardAI.swapPlayerRandom(conn,orderL[x]+1);
 					}
 				aiWent=true;
 				}

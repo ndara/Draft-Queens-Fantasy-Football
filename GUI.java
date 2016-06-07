@@ -400,8 +400,8 @@ public void initDraft()
 	public void arraySplit()
 	{
 		int [] temp=orderF;
-		ArrayList<int> tempF=new ArrayList<int>();
-		ArrayList<int> tempB=new ArrayList<int>();
+		ArrayList<Integer> tempF=new ArrayList<Integer>();
+		ArrayList<Integer> tempB=new ArrayList<Integer>();
 		boolean reachedP=false;
 		for(int x=0;x<temp.length;x++)
 		{

@@ -789,11 +789,11 @@ public void leaderBoardGui()
 			for(int x=0;x<orderF.length;x++)
 				{
 					if(difficulty==1)
-						RandomAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
+						RandomAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
 					else if(difficulty==2)
-						MediumAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
+						MediumAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
 					else if(difficulty==3)
-						HardAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
+						HardAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
 					//System.out.println(order[x]+"turn");
 				}
 			initDraft();
@@ -1092,11 +1092,11 @@ public void leaderBoardGui()
 				for(int x=0;x<orderL.length;x++)
 				{
 					if(difficulty==1)
-						RandomAI.draftPlayer(conn,remainingPlayers,orderL[x]+2);
+						RandomAI.draftPlayer(conn,remainingPlayers,orderL[x]+1);
 					else if(difficulty==2)
-						MediumAI.draftPlayer(conn,remainingPlayers,orderL[x]+2);
+						MediumAI.draftPlayer(conn,remainingPlayers,orderL[x]+1);
 					else if(difficulty==3)
-						HardAI.draftPlayer(conn,remainingPlayers,orderL[x]+2);
+						HardAI.draftPlayer(conn,remainingPlayers,orderL[x]+1);
 					//System.out.println(order[x]+"turn");
 				}
 				if(orderF.length<7)
@@ -1104,11 +1104,11 @@ public void leaderBoardGui()
 					for(int x=0;x<orderF.length;x++)
 				{
 					if(difficulty==1)
-						RandomAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
+						RandomAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
 					else if(difficulty==2)
-						MediumAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
+						MediumAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
 					else if(difficulty==3)
-						HardAI.draftPlayer(conn,remainingPlayers,orderF[x]+2);
+						HardAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
 					//System.out.println(order[x]+"turn");
 				}
 				}
@@ -1254,20 +1254,20 @@ public void leaderBoardGui()
 					for(int x=0;x<orderF.length;x++)
 					{
 						if(difficulty==1)
-							RandomAI.swapPlayerRandom(conn,orderF[x]+2);
+							RandomAI.swapPlayerRandom(conn,orderF[x]+1);
 						else if(difficulty==2)
-							MediumAI.swapPlayerRandom(conn,orderF[x]+2);
+							MediumAI.swapPlayerRandom(conn,orderF[x]+1);
 						else if(difficulty==3)
-							HardAI.swapPlayerRandom(conn,orderF[x]+2);
+							HardAI.swapPlayerRandom(conn,orderF[x]+1);
 					}
 					for(int x=0;x<orderL.length;x++)
 					{
 						if(difficulty==1)
-							RandomAI.swapPlayerRandom(conn,orderL[x]+2);
+							RandomAI.swapPlayerRandom(conn,orderL[x]+1);
 						else if(difficulty==2)
-							MediumAI.swapPlayerRandom(conn,orderL[x]+2);
+							MediumAI.swapPlayerRandom(conn,orderL[x]+1);
 						else if(difficulty==3)
-							HardAI.swapPlayerRandom(conn,orderL[x]+2);
+							HardAI.swapPlayerRandom(conn,orderL[x]+1);
 					}
 				aiWent=true;
 				}

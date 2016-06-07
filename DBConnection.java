@@ -1,9 +1,6 @@
 import java.util.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
 
 /**
  * A class to manage a connection to the database.
@@ -350,16 +347,17 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
    }
 
    public static void initTeam(Connection conn, String playerName) {
-      Statement statement = null;
+      PreparedStatement prep = null;
       ResultSet results = null;
-      String query = "UPDATE Team SET name = " + "'" + playerName + "'" + " WHERE id = 1";
+      String query = "UPDATE Team SET name = ? WHERE id = 1";
 
          try {
          // Get a statement from the connection
-         statement = conn.createStatement();
+         prep = conn.prepareStatement(query);
+         prep.setString(1, playerName);
 
          // Execute the query
-         statement.executeUpdate(query);
+         prep.executeUpdate();
 
          
       } catch (SQLException sqlEx) {
@@ -372,9 +370,9 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
                results = null;
             }
 
-            if (statement != null) {
-               statement.close();
-               statement = null;
+            if (prep != null) {
+               prep.close();
+               prep = null;
             }
          } catch (Exception ex) {
             System.err.println("Error closing query: " + ex);

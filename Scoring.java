@@ -1,9 +1,5 @@
 import java.util.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.lang.*;
 
 public class Scoring {
@@ -455,7 +451,7 @@ public class Scoring {
    }
 
    public static void addTeamToLeaderboard(Connection conn, int teamId) {
-      Statement statement = null;
+      PreparedStatement prep = null;
       ResultSet results = null;
       String name = getTeamName(conn, teamId);
       Double score = queryTeamScore(conn, teamId);
@@ -466,12 +462,22 @@ public class Scoring {
       String wr2 = getPostionFromTeam(conn, teamId, "WR2");
       String wr3 = getPostionFromTeam(conn, teamId, "WR3");
       String te = getPostionFromTeam(conn, teamId, "TE");
-      String query = "INSERT INTO Leaderboard (name, score, QB, RB1, RB2, WR1, WR2, WR3, TE) VALUES (" + "'" + name + "', " + score +
-                     ", '" + qb + "', '" + rb1 + "', '" + rb2 + "', '" + wr1 + "', '" + wr2 + "', '" + wr3 + "', '" + te + "')";
+      String query = "INSERT INTO Leaderboard (name, score, QB, RB1, RB2, WR1, WR2, WR3, TE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
       try {
-         statement = conn.createStatement();
-         statement.executeUpdate(query);
+         prep = conn.prepareStatement(query);
+         prep.setString(1, name);
+         prep.setDouble(2, score);
+         prep.setString(3, qb);
+         prep.setString(4, rb1);
+         prep.setString(5, rb2);
+         prep.setString(6, wr1);
+         prep.setString(7, wr2);
+         prep.setString(8, wr3);
+         prep.setString(9, te);
+
+
+         prep.executeUpdate();
 
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);
@@ -483,9 +489,9 @@ public class Scoring {
                results = null;
             }
 
-            if (statement != null) {
-               statement.close();
-               statement = null;
+            if (prep != null) {
+               prep.close();
+               prep = null;
             }
          } catch (Exception ex) {
             System.err.println("Error closing query: " + ex);

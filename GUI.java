@@ -57,7 +57,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int rbleft=2;
 	private int wrleft=3;
 	private int teleft=1;
-	private Integer[] orderF=(Integer)Draft.getDraftOrder(8);
+	private Integer[] orderF;
 	private Integer[] orderL;
 	private JTable teamOn;
 	private int round=1;
@@ -399,7 +399,7 @@ public void initDraft()
 	}
 	public void arraySplit()
 	{
-		int [] temp=orderF;
+		int [] temp=Draft.getDraftOrder(8);
 		ArrayList<Integer> tempF=new ArrayList<Integer>();
 		ArrayList<Integer> tempB=new ArrayList<Integer>();
 		boolean reachedP=false;

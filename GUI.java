@@ -57,7 +57,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int rbleft=2;
 	private int wrleft=3;
 	private int teleft=1;
-	private int[] order=Draft.getDraftOrder(7);
+	private int[] orderF=Draft.getDraftOrder(8);
+	private int[] orderL;
 	private JTable teamOn;
 	private int round=1;
 	private boolean dropPhase=false;
@@ -80,6 +81,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	 //resets players
 	 DBConnection.resetPlayers(conn);
 	 Scoring.resetTeams(conn);
+	 this.arraySplit();
 /*	 
 	String className = getLookAndFeelClassName("Nimbus");
 	UIManager.setLookAndFeel(className); 	 */
@@ -394,6 +396,30 @@ public void initDraft()
      initialDraft.add(botScreen);
         cpid.add(initialDraft);
 		
+	}
+	public void arraySplit()
+	{
+		int [] temp=orderF;
+		ArrayList<int> tempF=new ArrayList<int>();
+		ArrayList<int> tempB=new ArrayList<int>();
+		boolean reachedP=false;
+		for(int x=0;x<temp.length;x++)
+		{
+			if(reachedP)
+			{
+				tempB.add(temp[x]);
+			}
+			if(temp[x]==0)
+			{
+				reachedP=true;
+			}
+			if(!reachedP)
+			{
+				tempF.add(temp[x]);
+			}
+		}
+		orderF=tempF.toArray(new String[tempF.size()]);
+		orderL=tempB.toArray(new String[tempB.size()]);
 	}
 public void swapDraft()
 	{
@@ -757,6 +783,19 @@ public void leaderBoardGui()
 		{
 			DBConnection.initTeam(conn,teamName.getText());
 			cpid=getContentPane();
+			//orderF AI needs to go
+			int remainingPlayers=qbleft+rbleft+wrleft+teleft;
+				remainingPlayers=8-remainingPlayers;
+			for(int x=0;x<orderF.length;x++)
+				{
+					if(difficulty==1)
+						RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+					else if(difficulty==2)
+						MediumAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+					else if(difficulty==3)
+						HardAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+					//System.out.println(order[x]+"turn");
+				}
 			initDraft();
 			cpid.remove(title);
 			this.setContentPane(cpid);
@@ -1050,7 +1089,7 @@ public void leaderBoardGui()
 				}
 				
 				//AI drafting
-				for(int x=0;x<order.length;x++)
+				for(int x=0;x<orderL.length;x++)
 				{
 					if(difficulty==1)
 						RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);
@@ -1060,6 +1099,20 @@ public void leaderBoardGui()
 						HardAI.draftPlayer(conn,remainingPlayers,order[x]+2);
 					//System.out.println(order[x]+"turn");
 				}
+				if(cTeam.getSize()<7)
+				{
+					for(int x=0;x<orderF.length;x++)
+				{
+					if(difficulty==1)
+						RandomAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+					else if(difficulty==2)
+						MediumAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+					else if(difficulty==3)
+						HardAI.draftPlayer(conn,remainingPlayers,order[x]+2);
+					//System.out.println(order[x]+"turn");
+				}
+				}
+					
 				//updates the screen
 				GUI.this.humanTeamUpdate();
 				playerAdd.setText("");

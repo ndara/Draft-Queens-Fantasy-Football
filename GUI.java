@@ -29,6 +29,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private Container cp;
 	private Container cpid;
 	private JPanel title;
+	private int week;
 	private JPanel initialDraft;
 	private JButton ConfirmButton;
 	private JButton doWeek;
@@ -1059,7 +1060,7 @@ public void leaderBoardGui()
 	 cTable.setValueAt("Weight(lbs)",0,5);
 	 cTable.setValueAt("College",0,6);
 	 cTable.setValueAt("NFL Team",0,7);
-	 
+	 cTable.setValueAt("Score",0,8);
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
@@ -1067,6 +1068,7 @@ public void leaderBoardGui()
 		{
 			cTable.setValueAt(values[y],x+1,y);
 		}
+		cTable.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
 	}
     cTable.setTableHeader(null);
 	cTable.setEnabled(false);
@@ -1477,7 +1479,7 @@ public void leaderBoardGui()
 				if(round<7)
 				{
 				Random num=new Random();
-				int week=num.nextInt(8);
+				week=num.nextInt(8);
 				//needs to have 8 changed maybe to a another fucking global
 				if(week==0)
 				{

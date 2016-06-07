@@ -224,7 +224,7 @@ public void initDraft()
 	 a1Table.setValueAt("College",0,6);
 	 a1Table.setValueAt("NFL Team",0,7);
 	 
-     for(int x=0;x<tempp.size();x++)
+     for(int x=0;x<tempp.size()-1;x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
 		System.out.println(values.length);

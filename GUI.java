@@ -1084,7 +1084,7 @@ public void leaderBoardGui()
 	 System.out.println("1:"+tempp.size());
     if(tempp.size()>0)
 	 {
-	 JTable a1Table=new JTable(tempp.size()+1,8);
+	 JTable a1Table=new JTable(tempp.size()+1,9);
 	 a1Table.setValueAt("Player Id",0,0);
 	 a1Table.setValueAt("Position",0,1);
 	 a1Table.setValueAt("First Name",0,2);
@@ -1093,6 +1093,7 @@ public void leaderBoardGui()
 	 a1Table.setValueAt("Weight(lbs)",0,5);
 	 a1Table.setValueAt("College",0,6);
 	 a1Table.setValueAt("NFL Team",0,7);
+	 a1Table.setValueAt("Score",0,8);
 	 
      for(int x=0;x<tempp.size();x++)
 	{ 
@@ -1102,6 +1103,7 @@ public void leaderBoardGui()
 		{
 			a1Table.setValueAt(values[y],x+1,y);
 		}
+		a1Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
 	}
     a1Table.setTableHeader(null);
 	a1Table.setEnabled(false);
@@ -1115,7 +1117,7 @@ public void leaderBoardGui()
      tempp=DBConnection.getAllTeamPosPlayers(conn,3);
       if(tempp.size()>0)
 	 {
-	 JTable a2Table=new JTable(tempp.size()+1,8);
+	 JTable a2Table=new JTable(tempp.size()+1,9);
 	 a2Table.setValueAt("Player Id",0,0);
 	 a2Table.setValueAt("Position",0,1);
 	 a2Table.setValueAt("First Name",0,2);
@@ -1124,7 +1126,7 @@ public void leaderBoardGui()
 	 a2Table.setValueAt("Weight(lbs)",0,5);
 	 a2Table.setValueAt("College",0,6);
 	 a2Table.setValueAt("NFL Team",0,7);
-	 
+	 a2Table.setValueAt("Score",0,8);
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
@@ -1133,6 +1135,7 @@ public void leaderBoardGui()
 			System.out.println(values[y]);
 			a2Table.setValueAt(values[y],x+1,y);
 		}
+		a2Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
 	}
     a2Table.setTableHeader(null);
 	a2Table.setEnabled(false);
@@ -1146,7 +1149,7 @@ public void leaderBoardGui()
      System.out.println("3:"+tempp.size());
       if(tempp.size()>0)
 	 {
-	 JTable a3Table=new JTable(tempp.size()+1,8);
+	 JTable a3Table=new JTable(tempp.size()+1,9);
 	 a3Table.setValueAt("Player Id",0,0);
 	 a3Table.setValueAt("Position",0,1);
 	 a3Table.setValueAt("First Name",0,2);
@@ -1155,7 +1158,7 @@ public void leaderBoardGui()
 	 a3Table.setValueAt("Weight(lbs)",0,5);
 	 a3Table.setValueAt("College",0,6);
 	 a3Table.setValueAt("NFL Team",0,7);
-	 
+	 a3Table.setValueAt("Score",0,8);
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
@@ -1164,6 +1167,7 @@ public void leaderBoardGui()
 			System.out.println(values[y]);
 			a3Table.setValueAt(values[y],x+1,y);
 		}
+		a3Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
 	}
     a3Table.setTableHeader(null);
 	a3Table.setEnabled(false);
@@ -1177,7 +1181,7 @@ public void leaderBoardGui()
      System.out.println("4:"+tempp.size());
       if(tempp.size()>0)
 	 {
-	 JTable a4Table=new JTable(tempp.size()+1,8);
+	 JTable a4Table=new JTable(tempp.size()+1,9);
 	 a4Table.setValueAt("Player Id",0,0);
 	 a4Table.setValueAt("Position",0,1);
 	 a4Table.setValueAt("First Name",0,2);
@@ -1186,7 +1190,7 @@ public void leaderBoardGui()
 	 a4Table.setValueAt("Weight(lbs)",0,5);
 	 a4Table.setValueAt("College",0,6);
 	 a4Table.setValueAt("NFL Team",0,7);
-	 
+	 a4Table.setValueAt("Score",0,8);
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
@@ -1195,6 +1199,7 @@ public void leaderBoardGui()
 			System.out.println(values[y]);
 			a4Table.setValueAt(values[y],x+1,y);
 		}
+		a4Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
 	}
     a4Table.setTableHeader(null);
 	a4Table.setEnabled(false);
@@ -1207,7 +1212,7 @@ public void leaderBoardGui()
      tempp=DBConnection.getAllTeamPosPlayers(conn,6);
       if(tempp.size()>0)
 	 {
-	 JTable a5Table=new JTable(tempp.size()+1,8);
+	 JTable a5Table=new JTable(tempp.size()+1,9);
 	 a5Table.setValueAt("Player Id",0,0);
 	 a5Table.setValueAt("Position",0,1);
 	 a5Table.setValueAt("First Name",0,2);
@@ -1216,7 +1221,7 @@ public void leaderBoardGui()
 	 a5Table.setValueAt("Weight(lbs)",0,5);
 	 a5Table.setValueAt("College",0,6);
 	 a5Table.setValueAt("NFL Team",0,7);
-	 
+	 a5Table.setValueAt("Score",0,8);
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
@@ -1225,6 +1230,7 @@ public void leaderBoardGui()
 			System.out.println(values[y]);
 			a5Table.setValueAt(values[y],x+1,y);
 		}
+		a5Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
 	}
     a5Table.setTableHeader(null);
 	a5Table.setEnabled(false);
@@ -1237,7 +1243,7 @@ public void leaderBoardGui()
      tempp=DBConnection.getAllTeamPosPlayers(conn,7);
       if(tempp.size()>0)
 	 {
-	 JTable a6Table=new JTable(tempp.size()+1,8);
+	 JTable a6Table=new JTable(tempp.size()+1,9);
 	 a6Table.setValueAt("Player Id",0,0);
 	 a6Table.setValueAt("Position",0,1);
 	 a6Table.setValueAt("First Name",0,2);
@@ -1246,7 +1252,7 @@ public void leaderBoardGui()
 	 a6Table.setValueAt("Weight(lbs)",0,5);
 	 a6Table.setValueAt("College",0,6);
 	 a6Table.setValueAt("NFL Team",0,7);
-	 
+	 a6Table.setValueAt("Score",0,8);
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
@@ -1255,6 +1261,7 @@ public void leaderBoardGui()
 			System.out.println(values[y]);
 			a6Table.setValueAt(values[y],x+1,y);
 		}
+		a6Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
 	}
     a6Table.setTableHeader(null);
 	a6Table.setEnabled(false);
@@ -1267,7 +1274,7 @@ public void leaderBoardGui()
      tempp=DBConnection.getAllTeamPosPlayers(conn,8);
      if(tempp.size()>0)
 	 {
-	 JTable a7Table=new JTable(tempp.size()+1,8);
+	 JTable a7Table=new JTable(tempp.size()+1,9);
 	 a7Table.setValueAt("Player Id",0,0);
 	 a7Table.setValueAt("Position",0,1);
 	 a7Table.setValueAt("First Name",0,2);
@@ -1276,7 +1283,7 @@ public void leaderBoardGui()
 	 a7Table.setValueAt("Weight(lbs)",0,5);
 	 a7Table.setValueAt("College",0,6);
 	 a7Table.setValueAt("NFL Team",0,7);
-	 
+	 a7Table.setValueAt("Score",0,8);
      for(int x=0;x<tempp.size();x++)
 	{ 
 		String [] values=tempp.get(x).split("\\|");
@@ -1285,6 +1292,7 @@ public void leaderBoardGui()
 			System.out.println(values[y]);
 			a7Table.setValueAt(values[y],x+1,y);
 		}
+		a7Table.setValueAt(Scoring.getPlayerScore(conn,week,values[0]),x+1,8);
 	}
     a7Table.setTableHeader(null);
 	a7Table.setEnabled(false);

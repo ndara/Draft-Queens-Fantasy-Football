@@ -57,8 +57,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private int rbleft=2;
 	private int wrleft=3;
 	private int teleft=1;
-	private int[] orderF=Draft.getDraftOrder(8);
-	private int[] orderL;
+	private Integer[] orderF=Draft.getDraftOrder(8);
+	private Integer[] orderL;
 	private JTable teamOn;
 	private int round=1;
 	private boolean dropPhase=false;
@@ -418,8 +418,8 @@ public void initDraft()
 				tempF.add(temp[x]);
 			}
 		}
-		orderF=tempF.toArray(new int[tempF.size()]);
-		orderL=tempB.toArray(new int[tempB.size()]);
+		orderF=tempF.toArray(new Integer[tempF.size()]);
+		orderL=tempB.toArray(new Integer[tempB.size()]);
 	}
 public void swapDraft()
 	{

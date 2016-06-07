@@ -7,22 +7,6 @@ import java.sql.Statement;
 import java.lang.*;
 
 public class HardAI {
-   /*public static void main(String[] args) throws Exception{
-      Connection conn = DBConnection.getConnection();
-      DBConnection.initTeam(conn, "bitchnigga");
-      draftPlayer(conn, 1, 3);
-      draftPlayer(conn, 2, 3);
-      draftPlayer(conn, 3, 3);
-      draftPlayer(conn, 4, 3);
-      draftPlayer(conn, 5, 3);
-      draftPlayer(conn, 6, 3);
-      draftPlayer(conn, 7, 3);
-
-      DBConnection.close(conn);
-
-
-
-   }*/
 
    public static void draftPlayer(Connection conn, int round, int teamId) {
 
@@ -216,9 +200,4 @@ public class HardAI {
              "WHERE P.type = 'PASS' AND teamOn = 0 GROUP BY G.wk, L.player) Y WHERE Y.pos1 = 'TE' AND Y.teamOn = 0 " +
              "GROUP BY Y.player ORDER BY avgPts DESC LIMIT 5) Z ORDER BY RAND() LIMIT 1";
    }
-
-
-
-
 }
-

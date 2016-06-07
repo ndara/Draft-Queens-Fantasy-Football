@@ -1040,22 +1040,35 @@ public void leaderBoardGui()
 		
      
      //tab1
-     tabs =new JTabbedPane();
-     JPanel hTab=new JPanel();
+    JPanel hTab=new JPanel();
      hTab.setLayout(new GridLayout(1,1));
-     JPanel sTab=new JPanel();
-     sTab.setLayout(new GridLayout(1,1));
-     ArrayList<String> tempp=Scoring.getRoundStats(conn,false);
-	String[] input=tempp.toArray(new String[tempp.size()]);
-	JList<String> stats=new JList<String>(input);
-	sTab.add(stats);
-     tabs.addTab("Scores",sTab);
-     tempp=DBConnection.getAllTeamPosPlayers(conn,1);
-     input=tempp.toArray(new String[tempp.size()]);
-     cTeam=new JList<String>(input);
-     hTab.add(cTeam);
-     
-     
+	 
+     ArrayList<String> tempp=DBConnection.getAllTeamPosPlayers(conn,1);
+	 System.out.println("1:"+tempp.size());
+	 if(tempp.size()>0)
+	 {
+	 JTable cTable=new JTable(tempp.size()+1,8);
+	 cTable.setValueAt("Player Id",0,0);
+	 cTable.setValueAt("Position",0,1);
+	 cTable.setValueAt("First Name",0,2);
+	 cTable.setValueAt("Last Name",0,3);
+	 cTable.setValueAt("Height(Inches)",0,4);
+	 cTable.setValueAt("Weight(lbs)",0,5);
+	 cTable.setValueAt("College",0,6);
+	 cTable.setValueAt("NFL Team",0,7);
+	 
+     for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<values.length;y++)
+		{
+			cTable.setValueAt(values[y],x+1,y);
+		}
+	}
+    cTable.setTableHeader(null);
+	cTable.setEnabled(false);
+     hTab.add(cTable);
+	 }
      tabs.addTab(teamName.getText(), hTab);
      //AI starts at 2
      //AI one
@@ -1063,58 +1076,215 @@ public void leaderBoardGui()
      a1Tab.setLayout(new GridLayout(1,1));
      
      tempp=DBConnection.getAllTeamPosPlayers(conn,2);
-     input=tempp.toArray(new String[tempp.size()]);
-     JList<String> a1Team=new JList<String>(input);
-     a1Tab.add(a1Team);
+	 System.out.println("1:"+tempp.size());
+    if(tempp.size()>0)
+	 {
+	 JTable a1Table=new JTable(tempp.size()+1,8);
+	 a1Table.setValueAt("Player Id",0,0);
+	 a1Table.setValueAt("Position",0,1);
+	 a1Table.setValueAt("First Name",0,2);
+	 a1Table.setValueAt("Last Name",0,3);
+	 a1Table.setValueAt("Height(Inches)",0,4);
+	 a1Table.setValueAt("Weight(lbs)",0,5);
+	 a1Table.setValueAt("College",0,6);
+	 a1Table.setValueAt("NFL Team",0,7);
+	 
+     for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		System.out.println(Arrays.toString(values));
+		for(int y=0;y<values.length;y++)
+		{
+			a1Table.setValueAt(values[y],x+1,y);
+		}
+	}
+    a1Table.setTableHeader(null);
+	a1Table.setEnabled(false);
+     a1Tab.add(a1Table);
+	 }
      tabs.addTab("Ai1", a1Tab);
       
      //AI two
      JPanel a2Tab=new JPanel();
      a2Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,3);
-     input=tempp.toArray(new String[tempp.size()]);
-     JList<String> a2Team=new JList<String>(input);
-     a2Tab.add(a2Team);
+      if(tempp.size()>0)
+	 {
+	 JTable a2Table=new JTable(tempp.size()+1,8);
+	 a2Table.setValueAt("Player Id",0,0);
+	 a2Table.setValueAt("Position",0,1);
+	 a2Table.setValueAt("First Name",0,2);
+	 a2Table.setValueAt("Last Name",0,3);
+	 a2Table.setValueAt("Height(Inches)",0,4);
+	 a2Table.setValueAt("Weight(lbs)",0,5);
+	 a2Table.setValueAt("College",0,6);
+	 a2Table.setValueAt("NFL Team",0,7);
+	 
+     for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<values.length;y++)
+		{
+			System.out.println(values[y]);
+			a2Table.setValueAt(values[y],x+1,y);
+		}
+	}
+    a2Table.setTableHeader(null);
+	a2Table.setEnabled(false);
+     a2Tab.add(a2Table);
+	 }
      tabs.addTab("Ai2", a2Tab);
      //AI three
      JPanel a3Tab=new JPanel();
      a3Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,4);
-     input=tempp.toArray(new String[tempp.size()]);
-     JList<String> a3Team=new JList<String>(input);
-     a3Tab.add(a3Team);
+     System.out.println("3:"+tempp.size());
+      if(tempp.size()>0)
+	 {
+	 JTable a3Table=new JTable(tempp.size()+1,8);
+	 a3Table.setValueAt("Player Id",0,0);
+	 a3Table.setValueAt("Position",0,1);
+	 a3Table.setValueAt("First Name",0,2);
+	 a3Table.setValueAt("Last Name",0,3);
+	 a3Table.setValueAt("Height(Inches)",0,4);
+	 a3Table.setValueAt("Weight(lbs)",0,5);
+	 a3Table.setValueAt("College",0,6);
+	 a3Table.setValueAt("NFL Team",0,7);
+	 
+     for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<values.length;y++)
+		{
+			System.out.println(values[y]);
+			a3Table.setValueAt(values[y],x+1,y);
+		}
+	}
+    a3Table.setTableHeader(null);
+	a3Table.setEnabled(false);
+     a3Tab.add(a3Table);
+	 }
      tabs.addTab("Ai3", a3Tab);
       //AI four
      JPanel a4Tab=new JPanel();
      a4Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,5);
-     input=tempp.toArray(new String[tempp.size()]);
-     JList<String> a4Team=new JList<String>(input);
-     a4Tab.add(a4Team);
+     System.out.println("4:"+tempp.size());
+      if(tempp.size()>0)
+	 {
+	 JTable a4Table=new JTable(tempp.size()+1,8);
+	 a4Table.setValueAt("Player Id",0,0);
+	 a4Table.setValueAt("Position",0,1);
+	 a4Table.setValueAt("First Name",0,2);
+	 a4Table.setValueAt("Last Name",0,3);
+	 a4Table.setValueAt("Height(Inches)",0,4);
+	 a4Table.setValueAt("Weight(lbs)",0,5);
+	 a4Table.setValueAt("College",0,6);
+	 a4Table.setValueAt("NFL Team",0,7);
+	 
+     for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<values.length;y++)
+		{
+			System.out.println(values[y]);
+			a4Table.setValueAt(values[y],x+1,y);
+		}
+	}
+    a4Table.setTableHeader(null);
+	a4Table.setEnabled(false);
+     a4Tab.add(a4Table);
+	 }
      tabs.addTab("Ai4", a4Tab);
      //AI five
      JPanel a5Tab=new JPanel();
      a5Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,6);
-     input=tempp.toArray(new String[tempp.size()]);
-     JList<String> a5Team=new JList<String>(input);
-     a5Tab.add(a5Team);
+      if(tempp.size()>0)
+	 {
+	 JTable a5Table=new JTable(tempp.size()+1,8);
+	 a5Table.setValueAt("Player Id",0,0);
+	 a5Table.setValueAt("Position",0,1);
+	 a5Table.setValueAt("First Name",0,2);
+	 a5Table.setValueAt("Last Name",0,3);
+	 a5Table.setValueAt("Height(Inches)",0,4);
+	 a5Table.setValueAt("Weight(lbs)",0,5);
+	 a5Table.setValueAt("College",0,6);
+	 a5Table.setValueAt("NFL Team",0,7);
+	 
+     for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<values.length;y++)
+		{
+			System.out.println(values[y]);
+			a5Table.setValueAt(values[y],x+1,y);
+		}
+	}
+    a5Table.setTableHeader(null);
+	a5Table.setEnabled(false);
+     a5Tab.add(a5Table);
+	 }
      tabs.addTab("Ai5", a5Tab);
         //AI six
      JPanel a6Tab=new JPanel();
      a6Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,7);
-     input=tempp.toArray(new String[tempp.size()]);
-     JList<String> a6Team=new JList<String>(input);
-     a6Tab.add(a6Team);
+      if(tempp.size()>0)
+	 {
+	 JTable a6Table=new JTable(tempp.size()+1,8);
+	 a6Table.setValueAt("Player Id",0,0);
+	 a6Table.setValueAt("Position",0,1);
+	 a6Table.setValueAt("First Name",0,2);
+	 a6Table.setValueAt("Last Name",0,3);
+	 a6Table.setValueAt("Height(Inches)",0,4);
+	 a6Table.setValueAt("Weight(lbs)",0,5);
+	 a6Table.setValueAt("College",0,6);
+	 a6Table.setValueAt("NFL Team",0,7);
+	 
+     for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<values.length;y++)
+		{
+			System.out.println(values[y]);
+			a6Table.setValueAt(values[y],x+1,y);
+		}
+	}
+    a6Table.setTableHeader(null);
+	a6Table.setEnabled(false);
+     a6Tab.add(a6Table);
+	 }
      tabs.addTab("Ai6", a6Tab);
          //AI seven
      JPanel a7Tab=new JPanel();
      a7Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,8);
-     input=tempp.toArray(new String[tempp.size()]);
-     JList<String> a7Team=new JList<String>(input);
-     a7Tab.add(a7Team);
+     if(tempp.size()>0)
+	 {
+	 JTable a7Table=new JTable(tempp.size()+1,8);
+	 a7Table.setValueAt("Player Id",0,0);
+	 a7Table.setValueAt("Position",0,1);
+	 a7Table.setValueAt("First Name",0,2);
+	 a7Table.setValueAt("Last Name",0,3);
+	 a7Table.setValueAt("Height(Inches)",0,4);
+	 a7Table.setValueAt("Weight(lbs)",0,5);
+	 a7Table.setValueAt("College",0,6);
+	 a7Table.setValueAt("NFL Team",0,7);
+	 
+     for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<values.length;y++)
+		{
+			System.out.println(values[y]);
+			a7Table.setValueAt(values[y],x+1,y);
+		}
+	}
+    a7Table.setTableHeader(null);
+	a7Table.setEnabled(false);
+     a7Tab.add(a7Table);
+	 }
      tabs.addTab("Ai7", a7Tab);
      
 		

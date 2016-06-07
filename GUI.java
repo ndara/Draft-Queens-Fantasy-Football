@@ -272,6 +272,7 @@ public void initDraft()
      JPanel a3Tab=new JPanel();
      a3Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,4);
+     System.out.println("3:"+tempp.size());
       if(tempp.size()>0)
 	 {
 	 JTable a3Table=new JTable(tempp.size()+1,8);
@@ -302,6 +303,7 @@ public void initDraft()
      JPanel a4Tab=new JPanel();
      a4Tab.setLayout(new GridLayout(1,1));
      tempp=DBConnection.getAllTeamPosPlayers(conn,5);
+     System.out.println("4:"+tempp.size());
       if(tempp.size()>0)
 	 {
 	 JTable a4Table=new JTable(tempp.size()+1,8);

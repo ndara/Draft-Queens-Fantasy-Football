@@ -1023,6 +1023,7 @@ public void leaderBoardGui()
 		JPanel roundPane=new JPanel();
 		roundPane.setLayout(new GridLayout(2,1));
 		round++;
+		tabs.removeAll();
 		String loser=Scoring.getLoserTeam(conn);
 		Scanner sscan=new Scanner(loser);
 		int loserAI=Integer.parseInt(sscan.next());

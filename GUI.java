@@ -1099,7 +1099,7 @@ public void leaderBoardGui()
 						HardAI.draftPlayer(conn,remainingPlayers,orderL[x]+2);
 					//System.out.println(order[x]+"turn");
 				}
-				if(cTeam.getSize()<7)
+				if(orderF.length<7)
 				{
 					for(int x=0;x<orderF.length;x++)
 				{
@@ -1251,14 +1251,23 @@ public void leaderBoardGui()
 				}
 				if(aiWent==false)
 				{
-					for(int x=0;x<order.length;x++)
+					for(int x=0;x<orderF.length;x++)
 					{
 						if(difficulty==1)
-							RandomAI.swapPlayerRandom(conn,order[x]+2);
+							RandomAI.swapPlayerRandom(conn,orderF[x]+2);
 						else if(difficulty==2)
-							MediumAI.swapPlayerRandom(conn,order[x]+2);
+							MediumAI.swapPlayerRandom(conn,orderF[x]+2);
 						else if(difficulty==3)
-							HardAI.swapPlayerRandom(conn,order[x]+2);
+							HardAI.swapPlayerRandom(conn,orderF[x]+2);
+					}
+					for(int x=0;x<orderL.length;x++)
+					{
+						if(difficulty==1)
+							RandomAI.swapPlayerRandom(conn,orderL[x]+2);
+						else if(difficulty==2)
+							MediumAI.swapPlayerRandom(conn,orderL[x]+2);
+						else if(difficulty==3)
+							HardAI.swapPlayerRandom(conn,orderL[x]+2);
 					}
 				aiWent=true;
 				}

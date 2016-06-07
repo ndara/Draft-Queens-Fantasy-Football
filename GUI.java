@@ -178,6 +178,7 @@ public void initDraft()
      hTab.setLayout(new GridLayout(1,1));
 	 
      ArrayList<String> tempp=DBConnection.getAllTeamPosPlayers(conn,1);
+	 System.out.println("1:"+tempp.size());
 	 if(tempp.size()>0)
 	 {
 	 JTable cTable=new JTable(tempp.size()+1,8);
@@ -195,7 +196,6 @@ public void initDraft()
 		String [] values=tempp.get(x).split("\\|");
 		for(int y=0;y<8;y++)
 		{
-			System.out.println(values[y]);
 			cTable.setValueAt(values[y],x+1,y);
 		}
 	}
@@ -210,6 +210,7 @@ public void initDraft()
      a1Tab.setLayout(new GridLayout(1,1));
      
      tempp=DBConnection.getAllTeamPosPlayers(conn,2);
+	 System.out.println("1:"+tempp.size());
     if(tempp.size()>0)
 	 {
 	 JTable a1Table=new JTable(tempp.size()+1,8);
@@ -228,7 +229,6 @@ public void initDraft()
 		System.out.println(Arrays.toString(values));
 		for(int y=0;y<8;y++)
 		{
-			System.out.println(values[y]);
 			a1Table.setValueAt(values[y],x+1,y);
 		}
 	}

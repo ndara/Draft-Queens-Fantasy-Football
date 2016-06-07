@@ -1,41 +1,24 @@
 # DatabasesFinalProject
 This repository will be used to store our source code for our CPE365 final project. The project will revolve around the idea of fantasy football.
 
+TO RUN THE PROGRAM:
+   1. Run the build-all.mysql with the database of your choice.
+   2. Create a file called input and format it as follows. This file will be used to establish a database connection
+      line 1: n
+      line 2: <database username>
+      line 3: <database password>
+      If the database on a Cal Poly UNIX Server...
+      line 4: y
+      Else (the host will default to 'localhost'):
+      line 4: n
+      line 5: <database name>
+   3. Run the following command:
+      ./run < input
 
-CLASSPATH info (make sure .jar is in same directory as java files)
+SAMPLE INPUT FILE:
+n
+rootismyusername
+thisismypassword
+n
+fantasyfootballdatabase 
 
-export CLASSPATH=$CLASSPATH:mysql-connector-java-5.1.15-bin.jar
-
-POPUP CODE
--   JOptionPane.showMessageDialog(new JFrame(), helpStr, "Help", JOptionPane.PLAIN_MESSAGE);
-
-NOTE2: Rush table bc col should reference player(player)??
-
-
-CLASSES 
-- MAIN.java
-- GUI.java
-
-- DBConnection.java
-getQuery(String Query)
-getCount(String table)
-
-- Player.java // ID is always 1
-getTeamName
-getTeam
-
-
-- Draft.java
-getDraftOrder(numPlayers)
-draftPlayer(INT PlayerId,String player)
-draft(Players)
-
-
-- AI.java // Id starts at 2 and up
-
-
-- Fantasysim.java
-getWeekPlayerScore
-getWeekScoreTeam(Array players scores)
-eliminateLowest Player() // search team scores
-swapPlayer

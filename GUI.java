@@ -38,9 +38,9 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JButton back;
 	private JButton leaderBoard;
 	private JButton restart;
-    	private JRadioButton easy;
-    	private JRadioButton medium;
-    	private JRadioButton hard;
+    private JRadioButton easy;
+    private JRadioButton medium;
+    private JRadioButton hard;
 	private Connection conn;
 	private Statement statement = null;
 	private ResultSet results = null;
@@ -176,11 +176,33 @@ public void initDraft()
      
      JPanel hTab=new JPanel();
      hTab.setLayout(new GridLayout(1,1));
+	 
      ArrayList<String> tempp=DBConnection.getAllTeamPosPlayers(conn,1);
-     
-     String[] input=tempp.toArray(new String[tempp.size()]);
-     cTeam=new JList<String>(input);
-     hTab.add(cTeam);
+	 if(tempp.size()>0)
+	 {
+	 JTable cTable=new JTable(tempp.size()+1,8);
+	 cTable.setValueAt("Player Id",0,0);
+	 cTable.setValueAt("Position",0,1);
+	 cTable.setValueAt("First Name",0,2);
+	 cTable.setValueAt("Last Name",0,3);
+	 cTable.setValueAt("Height(Inches)",0,4);
+	 cTable.setValueAt("Weight(lbs)",0,5);
+	 cTable.setValueAt("College",0,6);
+	 cTable.setValueAt("NFL Team",0,7);
+	 
+     for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<8;y++)
+		{
+			System.out.println(values[y]);
+			table.setValueAt(values[y],x+1,y);
+		}
+	}
+    cTable.setTableHeader(null);
+	cTable.setEnabled(false);
+     hTab.add(cTable);
+	 }
      
      
      tabs.addTab(teamName.getText(), hTab);
@@ -190,9 +212,31 @@ public void initDraft()
      a1Tab.setLayout(new GridLayout(1,1));
      
      tempp=DBConnection.getAllTeamPosPlayers(conn,2);
-     input=tempp.toArray(new String[tempp.size()]);
-     JList<String> a1Team=new JList<String>(input);
-     a1Tab.add(a1Team);
+    if(tempp.size()>0)
+	 {
+	 JTable a1Table=new JTable(tempp.size()+1,8);
+	 a1Table.setValueAt("Player Id",0,0);
+	 a1Table.setValueAt("Position",0,1);
+	 a1Table.setValueAt("First Name",0,2);
+	 a1Table.setValueAt("Last Name",0,3);
+	 a1Table.setValueAt("Height(Inches)",0,4);
+	 a1Table.setValueAt("Weight(lbs)",0,5);
+	 a1Table.setValueAt("College",0,6);
+	 a1Table.setValueAt("NFL Team",0,7);
+	 
+     for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<8;y++)
+		{
+			System.out.println(values[y]);
+			a1Table.setValueAt(values[y],x+1,y);
+		}
+	}
+    a1Table.setTableHeader(null);
+	a1Table.setEnabled(false);
+     a1Tab.add(a1Table);
+	 }
      tabs.addTab("Ai1", a1Tab);
       
      //AI two

@@ -1104,11 +1104,11 @@ public void leaderBoardGui()
 					for(int x=0;x<orderF.length;x++)
 				{
 					if(difficulty==1)
-						RandomAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
+						RandomAI.draftPlayer(conn,remainingPlayers+1,orderF[x]+1);
 					else if(difficulty==2)
-						MediumAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
+						MediumAI.draftPlayer(conn,remainingPlayers+1,orderF[x]+1);
 					else if(difficulty==3)
-						HardAI.draftPlayer(conn,remainingPlayers,orderF[x]+1);
+						HardAI.draftPlayer(conn,remainingPlayers+1,orderF[x]+1);
 					//System.out.println(order[x]+"turn");
 				}
 				}

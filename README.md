@@ -4,7 +4,7 @@ This repository will be used to store our source code for our CPE365 final proje
 ###To Run the Program:
    1. Run the build-all.mysql with the MySQL dbms of your choice.  
 
-        source build-all.mysql  
+        source build-all.mysql;  
 
    2. Create a file called input and format it as follows. This file will be used to establish a database connection.   
 

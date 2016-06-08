@@ -607,7 +607,12 @@ public void swapDraft()
      for(int x=0;x<inputTemp.length;x++)
      {
      	String[] tempSplit=inputTemp[x].split("\\|");
-     	input[x]=tempSplit.toString();
+     	String val="";
+     	for(int y=0;y<tempSplit.length;y++)
+     	{
+     		val=val+" "+tempSplit[y];
+     	}
+     	input[x]=val;
      }
      cTeam=new JList<String>(input);
      cTeam.addMouseListener(this);

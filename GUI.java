@@ -1702,9 +1702,8 @@ public void leaderBoardGui()
 	cp.removeAll();
 	cp=getContentPane();
 	title =new JPanel();
-	title.setLayout(new GridLayout(3,1));
+	title.setLayout(new GridLayout(2,1));
 	//first item in grid
-	title.add(new JLabel("Draft Queens"));
 	//second item in grid
 	JPanel teamNamer=new JPanel();
 	teamNamer.setLayout(new FlowLayout());

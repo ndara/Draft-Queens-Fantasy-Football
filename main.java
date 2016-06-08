@@ -27,7 +27,7 @@ public class main {
 
       Statement statement = null;
       ResultSet results = null;
-
+/*
      
       Thread music = new Thread() {
          public void run() {
@@ -44,7 +44,7 @@ public class main {
          }
       };
 
-      music.start();
+      music.start();*/
 
 		SwingUtilities.invokeLater(new Runnable() {
 	         @Override

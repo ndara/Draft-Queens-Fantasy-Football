@@ -1831,7 +1831,7 @@ public void leaderBoardGui()
 				}
 				if(orderF.length<7)
 				{
-					System.out.println("beinging players went")
+					System.out.println("beinging players went");
 					for(int x=0;x<orderF.length;x++)
 				{
 					if(difficulty==1)

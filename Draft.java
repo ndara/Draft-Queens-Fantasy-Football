@@ -21,7 +21,6 @@ public class Draft {
 			randNums[0] = 0;
 		}
 
-		System.out.println(Arrays.toString(randNums));
 		return randNums;
 	}
 	//helper function for getDraftOrder

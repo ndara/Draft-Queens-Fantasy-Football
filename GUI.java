@@ -1857,7 +1857,7 @@ public void leaderBoardGui()
 				}
 				if(orderF.length<7)
 				{
-					System.out.println("beinging players went");
+					
 					for(int x=0;x<orderF.length;x++)
 				{
 					if(difficulty==1)
@@ -1924,7 +1924,7 @@ public void leaderBoardGui()
 				remainingPlayers=8-remainingPlayers;
 				//need to have a checker
 				String temp=playerDrop.getText();
-				System.out.println(temp);
+			
 				if(temp.length()>0)
 				{
 				dropPhase=false;

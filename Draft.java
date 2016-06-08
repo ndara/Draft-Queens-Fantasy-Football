@@ -13,6 +13,14 @@ public class Draft {
 				done = checkRand(testAgain, i, randNums);
 			}
 		}
+		if (randNums[randNums.length - 1] == 0)
+		{
+			for (int i = randNums.length - 1; i > 0; i--) {
+				randNums[i] = randNums[i - 1];
+			}
+			randNums[0] = 0;
+		}
+
 		System.out.println(Arrays.toString(randNums));
 		return randNums;
 	}

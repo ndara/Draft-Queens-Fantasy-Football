@@ -602,7 +602,13 @@ public void swapDraft()
      hTab.setLayout(new GridLayout(1,1));
      ArrayList<String> tempp=DBConnection.getAllTeamPosPlayers(conn,1);
      
-     String[] input=tempp.toArray(new String[tempp.size()]);
+     String[] inputTemp=tempp.toArray(new String[tempp.size()]);
+     String[] input=new String[inputTemp.length];
+     for(int x=0;x<inputTemp.length;x++)
+     {
+     	String[] tempSplit=inputTemp[x].split("\\|");
+     	input[x]=tempSplit.toString();
+     }
      cTeam=new JList<String>(input);
      cTeam.addMouseListener(this);
      hTab.add(cTeam);

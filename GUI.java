@@ -63,7 +63,6 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	private JTable teamOn;
 	private int round=1;
 	private boolean dropPhase=false;
-	private boolean iniD=true;
 	private String droppedPos="";
 	private Boolean[] losers = new Boolean[7];
 	private boolean lost=false;
@@ -1893,7 +1892,6 @@ public void leaderBoardGui()
 					Scoring.runWeek(conn,week,8);
 				}
 				//up to here
-				iniD=false;
 				GUI.this.roundUpdater();
 				}
 				else

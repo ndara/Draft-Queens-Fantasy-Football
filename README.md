@@ -29,7 +29,7 @@ This repository will be used to store our source code for our CPE365 final proje
 If you continue to use this program, you are agreeing to comply with and be bound by the following terms and conditions of use. You are also releasing liability on the part of the program owners, Gurjeevan Bains, Nishanth Dara, Charnpreet Singh, Luis Verastegui.   
 
 ###I. TRADEMARK   
-‘Draft Queens’ is a trademark in the process of being registered. The attempt to imitate or copy the ‘Infinaino’ logo, motto, or trademark will ultimately result in to the consequences of, but not limited to, ultimate suspension from the further use of the program, administration of appropriate legal court action, and appropriate consequence from the universal trademark violations.   
+‘Draft Queens’ is a trademark in the process of being registered. The attempt to imitate or copy the ‘Draft Queens’ logo, motto, or trademark will ultimately result in to the consequences of, but not limited to, ultimate suspension from the further use of the program, administration of appropriate legal court action, and appropriate consequence from the universal trademark violations.   
 
 ###II. OWNERSHIP   
 It is subject to change without notice as the owners Gurjeevan Bains, Nishanth Dara, Charnpreet Singh, Luis Verastegui deem fit. Complaints on but not limited to upgrades, downgrades, general program feature changes, additions, deletions, software improvements or returns to previous versions will be dismissed.   

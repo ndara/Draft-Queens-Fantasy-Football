@@ -50,12 +50,15 @@ public class main {
 	         @Override
 	         public void run() 
 	         {
-					try {
-						new GUI();
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+			try {
+			// Set cross-platform 
+                        //changing this value will change the look and feel commente onen will get default for the machine
+                	UIManager.setLookAndFeel(/*UIManager.getSystemLookAndFeelClassName()*/"com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+			new GUI();
+			} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
 	         }}
 		);
    }

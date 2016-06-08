@@ -211,7 +211,6 @@ public class Scoring {
 
    public static double getPlayerScore(Connection conn, int week, String player) {
       double score = qbScore(conn, week, player) + rbScore(conn, week, player) + recScore(conn, week, player);
-      System.out.println("SCORE: " + score + " WEEK: " + week + " PLAYER: " + player);
 		return score;      
    }
 
@@ -219,7 +218,6 @@ public class Scoring {
       Statement statement = null;
       ResultSet results = null;
       String query = "UPDATE Team SET elim = true where id = " + teamId;
-      System.out.println(query);
         try {
          statement = conn.createStatement();
          statement.executeUpdate(query);

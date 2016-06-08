@@ -96,7 +96,7 @@ public class Scoring {
             String teamName = results.getString(1);
             String teamScore = results.getString(2);
 
-            allTeams.add(String.format("%s %s", teamName, teamScore));
+            allTeams.add(String.format("%s|%s", teamName, teamScore));
          }
       } catch (SQLException sqlEx) {
          System.err.println("Error doing query: " + sqlEx);

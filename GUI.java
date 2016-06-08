@@ -947,9 +947,20 @@ public void winner()
 	
 	//winner
 	ArrayList<String> tempp=Scoring.getRoundStats(conn,false);
-		String[] info=tempp.toArray(new String[tempp.size()]);
-		JList list=new JList<String>(info);
-     		tabs.addTab("Scores",list);
+		JTable sList=new JTable(tempp.size()+1,9);
+		sList.setValueAt("Team",0,0);
+		sList.setValueAt("Score",0,1);
+		for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<values.length;y++)
+		{
+			sList.setValueAt(values[y],x+1,y);
+		}
+	}
+	sList.setTableHeader(null);
+	sList.setEnabled(false);
+     		tabs.addTab("Scores",sList);
      //tab1
     JPanel hTab=new JPanel();
      hTab.setLayout(new GridLayout(1,1));
@@ -1421,9 +1432,21 @@ public void leaderBoardGui()
 		//here goes tabs
 		
 		ArrayList<String> tempp=Scoring.getRoundStats(conn,false);
-		String[] info=tempp.toArray(new String[tempp.size()]);
-		JList list=new JList<String>(info);
-     		tabs.addTab("Scores",list);
+		JTable sList=new JTable(tempp.size()+1,9);
+		sList.setValueAt("Team",0,0);
+		sList.setValueAt("Score",0,1);
+		for(int x=0;x<tempp.size();x++)
+	{ 
+		String [] values=tempp.get(x).split("\\|");
+		for(int y=0;y<values.length;y++)
+		{
+			sList.setValueAt(values[y],x+1,y);
+		}
+	}
+	sList.setTableHeader(null);
+	sList.setEnabled(false);
+     		tabs.addTab("Scores",sList);
+			
      //tab1
     JPanel hTab=new JPanel();
      hTab.setLayout(new GridLayout(1,1));

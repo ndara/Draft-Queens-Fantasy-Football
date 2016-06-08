@@ -93,7 +93,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 	   //set main setting of CP
 	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Exit program if close button clicked
 	   setTitle("Draft Queens"); // "this" JFrame sets title
-	   setSize(1200, 500);         // "this" JFrame sets initial size
+	   setSize(500, 500);         // "this" JFrame sets initial size
 	   setVisible(true);    
 	}
 	/*
@@ -110,9 +110,8 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 public void title()
 {
 	title =new JPanel();
-	 title.setLayout(new GridLayout(3,1));
+	 title.setLayout(new GridLayout(2,1));
 	 //first item in grid
-	 title.add(new JLabel("Draft Queens"));
 	 //second item in grid
 	 JPanel teamNamer=new JPanel();
 	 teamNamer.setLayout(new FlowLayout());
@@ -169,6 +168,7 @@ public void title()
 public void initDraft()
 	{
 	 //this is initial draft
+	 setSize(1200, 500); 
     initialDraft=new JPanel();
      initialDraft.setLayout(new GridLayout(2,1));
      tabs =new JTabbedPane();

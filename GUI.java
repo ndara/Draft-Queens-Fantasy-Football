@@ -1921,8 +1921,8 @@ public void leaderBoardGui()
 				if(temp.length()>0)
 				{
 				dropPhase=false;
-				String playerId=temp.substring(0,7);
-				String pos=temp.substring(8,10);
+				String playerId=temp.substring(1,8);
+				String pos=temp.substring(9,11);
 				droppedPos=DBConnection.getPosColName(conn,playerId,pos,1);
 				if(pos.equals("RB"))
 				{

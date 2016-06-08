@@ -330,7 +330,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             String temp = teamMembers.get(i);
             String compare = temp.substring(1, 8);
             if (compare.equals(playerId)) {
-               System.out.println("Deleting player from team " + num);
+               
                return num;
             }
          }
@@ -346,7 +346,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
       boolean wr = false;
       boolean rb = false;
       if (rawPos.equals("QB") || rawPos.equals("TE")) {
-         System.out.println(rawPos);
+         
          return rawPos;
       }
       else if (rawPos.equals("WR")) {
@@ -371,7 +371,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
                for (int i = 1; i < 4; i++) {
                   if (cols.get(i - 1).equals(playerId)) {
                      realPos += i;
-                     System.out.println(realPos);
+                     
                      return realPos;
                   }
                }
@@ -384,7 +384,7 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
                for (int i = 1; i < 3; i++) {
                   if (cols.get(i - 1).equals(playerId)) {
                      realPos += i;
-                     System.out.println(realPos);
+                     
                      return realPos;
                   }
                }
@@ -409,14 +409,14 @@ public static ArrayList<String> getAllTeamPosPlayers(Connection conn, int teamId
             ex.printStackTrace(System.err);
          }     
       }
-      System.out.println("Empty string....this is BAD");
+      
       return realPos;
    }
 
    public static void dropPlayerFromTeam(Connection conn, int teamId, String position) {
       Statement statement = null;
       ResultSet results = null;
-      System.out.println("CURRENT POSITION PASSED:" + position);
+      
       String query = "UPDATE Team SET " + position + " = '' WHERE id = " + teamId;
         try {
          statement = conn.createStatement();

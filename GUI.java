@@ -1917,7 +1917,7 @@ public void leaderBoardGui()
 				remainingPlayers=8-remainingPlayers;
 				//need to have a checker
 				String temp=playerDrop.getText();
-				
+				System.out.println(temp);
 				if(temp.length()>0)
 				{
 				dropPhase=false;

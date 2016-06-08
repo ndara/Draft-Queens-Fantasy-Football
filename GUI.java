@@ -109,6 +109,7 @@ public class GUI extends JFrame implements ActionListener, WindowListener, Mouse
 }*/
 public void title()
 {
+	setSize(500, 500); 
 	title =new JPanel();
 	 title.setLayout(new GridLayout(2,1));
 	 //first item in grid
@@ -1201,6 +1202,7 @@ public void winner()
 }
 public void leaderBoardGui()
 {
+	setSize(1200, 500); 
 	JPanel leaderBoardP=new JPanel();
 	leaderBoardP.setLayout(new GridLayout(2,1));
 	ArrayList<String> tempp=Scoring.getLeaderboard(conn);
@@ -1696,6 +1698,7 @@ public void leaderBoardGui()
 	}
    private void rePainter()
    {
+   	setSize(500, 500); 
 	cp.removeAll();
 	cp=getContentPane();
 	title =new JPanel();

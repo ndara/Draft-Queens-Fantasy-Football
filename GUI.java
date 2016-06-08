@@ -941,12 +941,11 @@ public void swapDraft()
 public void winner()
 {
 	JPanel win=new JPanel();
-	win.setLayout(new GridLayout(3,1));
-	win.add(new JLabel("Winner Screen"));
+	win.setLayout(new GridLayout(2,1));
 	
 	
 	//winner
-	ArrayList<String> tempp=Scoring.getRoundStats(conn,false);
+	ArrayList<String> tempp=Scoring.getRoundStats(conn,true);
 		JTable sList=new JTable(tempp.size()+1,9);
 		sList.setValueAt("Team",0,0);
 		sList.setValueAt("Score",0,1);
@@ -1208,7 +1207,7 @@ public void winner()
      tabs.addTab("Ai7", a7Tab);
 	win.add(tabs);
 	JPanel bacs=new JPanel();
-	bacs.setLayout(new FlowLayout());
+	bacs.setLayout(new GridLayout(1,1));
 	restart=new JButton("Restart");
 	restart.addActionListener(ButtonListener);
 	bacs.add(restart);

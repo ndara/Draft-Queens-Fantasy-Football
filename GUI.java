@@ -610,7 +610,14 @@ public void swapDraft()
      	String val="";
      	for(int y=0;y<tempSplit.length;y++)
      	{
+     		if(y==0)
+     		{
+     			val=tempSplit[y];
+     		}
+     		else
+     		{
      		val=val+" "+tempSplit[y];
+     		}
      	}
      	input[x]=val;
      }
@@ -1921,8 +1928,8 @@ public void leaderBoardGui()
 				if(temp.length()>0)
 				{
 				dropPhase=false;
-				String playerId=temp.substring(1,8);
-				String pos=temp.substring(9,11);
+				String playerId=temp.substring(0,7);
+				String pos=temp.substring(8,10);
 				droppedPos=DBConnection.getPosColName(conn,playerId,pos,1);
 				if(pos.equals("RB"))
 				{

@@ -21,13 +21,13 @@ public class DBConnection {
 
       Scanner input = new Scanner(System.in);
       System.out.println("Please enter your database username:");
-      dbUser = input.next();
+      dbUser = input.nextLine();
       System.out.println("Please enter your database password:");
-      dbPass = input.next();
+      dbPass = input.nextLine();
       System.out.println("Please enter the database address: (eg. csc-db0.csc.calpoly.edu ,localhost)");
-      host = input.next();
+      host = input.nextLine();
       System.out.println("Please enter the database name:");
-      dbName = input.next();
+      dbName = input.nextLine();
 
       String dbUrl = String.format("jdbc:mysql://%s/%s?autoReconnect=true", host, dbName);
 
